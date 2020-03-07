@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { NextPage } from 'next'
+import { contentfulClient } from '../data/contentful'
 
 const Home: NextPage = () => (
   <div className="container">
@@ -200,5 +201,11 @@ const Home: NextPage = () => (
     `}</style>
   </div>
 )
+
+Home.getInitialProps = async () => {
+  const entries = await contentfulClient.getEntries()
+  console.log(entries)
+  return entries
+}
 
 export default Home
