@@ -2,13 +2,14 @@ import Head from 'next/head';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { contentfulClient, Post } from '../data/contentful';
+import Layout from '../components/Layout';
 
 interface InitialProps {
   posts: Post[];
 }
 
-const Home: NextPage<InitialProps> = props => (
-  <div className="container">
+const HomePage: NextPage<InitialProps> = ({ posts }) => (
+  <Layout>
     <Head>
       <title>Scoutkåren Munksnäs Spejarna</title>
       <link rel="icon" href="/favicon.ico" />
@@ -17,9 +18,9 @@ const Home: NextPage<InitialProps> = props => (
     <main>
       <h1>Scoutkåren Munksnäs Spejarna</h1>
       <ul>
-        {props.posts.map(post => (
+        {posts.map(post => (
           <li key={post.slug}>
-            <Link href={post.slug}>
+            <Link href="/post/[slug]" as={`/post/${post.slug}`}>
               <a>{post.title}</a>
             </Link>
           </li>
@@ -31,21 +32,10 @@ const Home: NextPage<InitialProps> = props => (
         </Link>
       </p>
     </main>
-
-    <style jsx>{`
-      .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-    `}</style>
-  </div>
+  </Layout>
 );
 
-Home.getInitialProps = async () => {
+HomePage.getInitialProps = async () => {
   const entries = await contentfulClient.getEntries<Post>({
     content_type: 'post',
   });
@@ -54,4 +44,4 @@ Home.getInitialProps = async () => {
   };
 };
 
-export default Home;
+export default HomePage;
