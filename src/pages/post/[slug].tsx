@@ -4,6 +4,7 @@ import { ContentfulPost, fetchPost } from '../../data/contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
+import dayjs from 'dayjs';
 
 interface InitialProps {
   post: ContentfulPost;
@@ -18,6 +19,7 @@ const PostPage: NextPage<InitialProps> = ({ post }) => (
 
     <main>
       <h1>{post.title}</h1>
+      <p>{dayjs(post.date).format('LL')}</p>
       {post.content && <div>{documentToReactComponents(post.content)}</div>}
       <Link href="/">
         <a>Tillbaka hem</a>

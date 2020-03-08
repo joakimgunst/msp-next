@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 import { ContentfulPost, fetchPosts } from '../data/contentful';
 import Layout from '../components/Layout';
+import dayjs from 'dayjs';
 
 interface InitialProps {
   posts: ContentfulPost[];
@@ -22,7 +23,8 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
           <li key={post.slug}>
             <Link href="/post/[slug]" as={`/post/${post.slug}`}>
               <a>{post.title}</a>
-            </Link>
+            </Link>{' '}
+            ({dayjs(post.date).format('LL')})
           </li>
         ))}
       </ul>

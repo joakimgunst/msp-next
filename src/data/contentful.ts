@@ -17,7 +17,8 @@ const contentfulClient = createClient({
 export async function fetchPosts() {
   const entries = await contentfulClient.getEntries<ContentfulPost>({
     content_type: 'post',
-    select: 'fields.title,fields.slug',
+    select: 'fields.title,fields.slug,fields.date',
+    order: '-fields.date',
   });
   return entries.items.map(item => item.fields);
 }
@@ -41,6 +42,7 @@ export async function fetchPage(slug: string | string[]) {
 export interface ContentfulPost {
   title: string;
   slug: string;
+  date: string;
   content?: Document;
 }
 
