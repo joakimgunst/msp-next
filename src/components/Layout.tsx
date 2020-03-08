@@ -1,4 +1,4 @@
-import Menu from './Menu';
+import Header from './Header';
 import classNames from 'classnames';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children, fullWidth }) => (
   <div className="layout">
-    <Menu />
+    <Header />
     <div className={classNames('content', !fullWidth && 'grid')}>
       {children}
     </div>

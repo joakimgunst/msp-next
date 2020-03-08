@@ -3,7 +3,11 @@ import PageLink from './PageLink';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 
-const Menu: React.FC = () => {
+interface Props {
+  mobileVisible: boolean;
+}
+
+const Menu: React.FC<Props> = ({ mobileVisible }) => {
   const { asPath } = useRouter();
 
   function getLinkClass(href: string, exact = false) {
@@ -12,7 +16,7 @@ const Menu: React.FC = () => {
   }
 
   return (
-    <nav className="menu">
+    <nav className={classNames('menu', mobileVisible && 'mobile-visible')}>
       <Link href="/">
         <a className={getLinkClass('/', true)}>Hem</a>
       </Link>
@@ -34,10 +38,22 @@ const Menu: React.FC = () => {
 
       <style jsx>{`
         .menu {
-          display: flex;
+          display: none;
+          flex-direction: column;
           background: var(--color-red);
           border-radius: 0.5rem;
           overflow: hidden;
+        }
+
+        .menu.mobile-visible {
+          display: flex;
+        }
+
+        @media (min-width: 768px) {
+          .menu {
+            display: flex;
+            flex-direction: row;
+          }
         }
 
         .link {
