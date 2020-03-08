@@ -1,10 +1,15 @@
-import { INLINES, Document, EntryHyperlink } from '@contentful/rich-text-types';
+import {
+  INLINES,
+  Document,
+  EntryHyperlink,
+  AssetHyperlink,
+} from '@contentful/rich-text-types';
 import {
   documentToReactComponents,
   Options,
 } from '@contentful/rich-text-react-renderer';
 import PageLink from '../components/PageLink';
-import { Entry } from 'contentful';
+import { Entry, Asset } from 'contentful';
 import { ContentfulPage, ContentfulPost } from './data';
 import PostLink from '../components/PostLink';
 import { ReactNode } from 'react';
@@ -25,6 +30,23 @@ const options: Options = {
           <PostLink slug={target.fields.slug}>
             <a>{children}</a>
           </PostLink>
+        );
+      } else {
+        return <b>UNKNOWN LINK TYPE</b>;
+      }
+    },
+    [INLINES.ASSET_HYPERLINK]: (node, children) => {
+      const link = node as AssetHyperlink;
+      const target = link.data.target;
+      if (isAsset(target)) {
+        return (
+          <a
+            href={target.fields.file?.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {children}
+          </a>
         );
       } else {
         return <b>UNKNOWN LINK TYPE</b>;
@@ -53,5 +75,10 @@ function isPostEntry(target: AnyEntry): target is Entry<ContentfulPost> {
 
 function isEntryType(type: string, target: AnyEntry) {
   const entry = target as Entry<unknown>;
-  return entry.sys?.contentType?.sys?.id === type;
+  return entry.sys.contentType?.sys.id === type;
+}
+
+function isAsset(target: AnyEntry): target is Asset {
+  const entry = target as Asset;
+  return entry.sys.type === 'Asset';
 }

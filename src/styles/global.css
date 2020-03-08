@@ -45,6 +45,11 @@ a:hover {
   text-decoration-color: var(--color-red);
 }
 
+ul,
+ol {
+  padding-left: 2rem;
+}
+
 li p {
   margin: 0;
 }

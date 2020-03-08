@@ -1,40 +1,59 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import { ContentfulPost, fetchPosts } from '../contentful/data';
+import {
+  ContentfulPost,
+  fetchPosts,
+  fetchPage,
+  fetchSidebar,
+  ContentfulPage,
+  ContentfulSidebar,
+} from '../contentful/data';
 import Layout from '../components/Layout';
 import dayjs from 'dayjs';
 import PostLink from '../components/PostLink';
+import { renderDocument } from '../contentful/render';
+import Sidebar from '../components/Sidebar';
 
 interface InitialProps {
+  page: ContentfulPage;
+  sidebar: ContentfulSidebar;
   posts: ContentfulPost[];
 }
 
-const HomePage: NextPage<InitialProps> = ({ posts }) => (
+const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
   <Layout>
     <Head>
       <title>Scoutkåren Munksnäs Spejarna</title>
     </Head>
 
     <main>
-      <h1>Scoutkåren Munksnäs Spejarna</h1>
-      <ul>
-        {posts.map(post => (
-          <li key={post.slug}>
+      <h1>{page.title}</h1>
+      {page.content && <div>{renderDocument(page.content)}</div>}
+
+      <h2>Aktuellt</h2>
+      {posts.map(post => (
+        <div key={post.slug}>
+          <h3>
             <PostLink slug={post.slug}>
               <a>{post.title}</a>
-            </PostLink>{' '}
-            ({dayjs(post.date).format('LL')})
-          </li>
-        ))}
-      </ul>
+            </PostLink>
+          </h3>
+          ({dayjs(post.date).format('LL')})
+        </div>
+      ))}
     </main>
+
+    {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
   </Layout>
 );
 
 HomePage.getInitialProps = async () => {
-  return {
-    posts: await fetchPosts(),
-  };
+  const [page, sidebar, posts] = await Promise.all([
+    fetchPage('hem'),
+    fetchSidebar('hem'),
+    fetchPosts(),
+  ]);
+  return { page, sidebar, posts };
 };
 
 export default HomePage;
