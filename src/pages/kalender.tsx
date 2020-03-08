@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import Layout from '../components/Layout';
 
 const CalendarPage: NextPage = () => (
-  <Layout>
+  <Layout fullWidth>
     <Head>
       <title>Kalender – Scoutkåren Munksnäs Spejarna</title>
     </Head>
