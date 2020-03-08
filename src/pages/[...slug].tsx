@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
 import { ContentfulPage, fetchPage } from '../contentful/data';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import { renderDocument } from '../contentful/render';
 
 interface InitialProps {
   page: ContentfulPage;
@@ -17,7 +17,7 @@ const StandardPage: NextPage<InitialProps> = ({ page }) => (
 
     <main>
       <h1>{page.title}</h1>
-      {page.content && <div>{documentToReactComponents(page.content)}</div>}
+      {page.content && <div>{renderDocument(page.content)}</div>}
       <Link href="/">
         <a>Tillbaka hem</a>
       </Link>

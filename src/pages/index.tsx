@@ -33,10 +33,10 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
         </Link>
       </p>
       <p>
-        <PageLink slug="/karen">Kåren</PageLink>
+        <PageLink slug="karen">Kåren</PageLink>
       </p>
       <p>
-        <PageLink slug="/karen/kuksa">Kuksa</PageLink>
+        <PageLink slug="karen/kuksa">Kuksa</PageLink>
       </p>
     </main>
   </Layout>

@@ -5,7 +5,7 @@ interface Props {
 }
 
 const PageLink: React.FC<Props> = ({ slug, children }) => (
-  <Link href="/[...slug]" as={slug}>
+  <Link href="/[...slug]" as={`/${slug}`}>
     <a>{children}</a>
   </Link>
 );
