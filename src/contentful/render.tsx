@@ -1,8 +1,10 @@
 import {
   INLINES,
+  BLOCKS,
   Document,
   EntryHyperlink,
   AssetHyperlink,
+  AssetLinkBlock,
 } from '@contentful/rich-text-types';
 import {
   documentToReactComponents,
@@ -31,9 +33,8 @@ const options: Options = {
             <a>{children}</a>
           </PostLink>
         );
-      } else {
-        return <b>UNKNOWN LINK TYPE</b>;
       }
+      throw new Error('Unknwon node');
     },
     [INLINES.ASSET_HYPERLINK]: (node, children) => {
       const link = node as AssetHyperlink;
@@ -48,9 +49,16 @@ const options: Options = {
             {children}
           </a>
         );
-      } else {
-        return <b>UNKNOWN LINK TYPE</b>;
       }
+      throw new Error('Unknwon node');
+    },
+    [BLOCKS.EMBEDDED_ASSET]: node => {
+      const link = node as AssetLinkBlock;
+      const target = link.data.target;
+      if (isAsset(target)) {
+        return <img src={target.fields.file?.url} alt={target.fields.title} />;
+      }
+      throw new Error('Unknwon node');
     },
   },
   renderText: text =>

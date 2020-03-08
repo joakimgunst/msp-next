@@ -21,12 +21,18 @@ const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => (
       <title>{page.title} – Scoutkåren Munksnäs Spejarna</title>
     </Head>
 
-    <main>
+    <main className="page">
       <h1>{page.title}</h1>
       {page.content && <div>{renderDocument(page.content)}</div>}
     </main>
 
     {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+
+    <style jsx>{`
+      .page :global(img) {
+        border-radius: 0.25rem;
+      }
+    `}</style>
   </Layout>
 );
 
