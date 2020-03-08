@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "now dev",
-    "deploy": "now deploy",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "eslint": "eslint '**/*.{js,ts,tsx}'"
