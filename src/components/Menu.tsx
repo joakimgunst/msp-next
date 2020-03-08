@@ -16,6 +16,9 @@ const Menu: React.FC = () => {
       <Link href="/">
         <a className={getLinkClass('/', true)}>Hem</a>
       </Link>
+      <Link href="/kalender">
+        <a className={getLinkClass('/kalender')}>Kalender</a>
+      </Link>
       <PageLink slug="karen">
         <a className={getLinkClass('/karen')}>Kåren</a>
       </PageLink>
