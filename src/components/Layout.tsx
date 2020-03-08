@@ -8,23 +8,31 @@ interface Props {
 const Layout: React.FC<Props> = ({ children, fullWidth }) => (
   <div className="layout">
     <Menu />
-    <main className={classNames('main', !fullWidth && 'grid')}>{children}</main>
+    <div className={classNames('content', !fullWidth && 'grid')}>
+      {children}
+    </div>
 
     <style jsx>{`
       .layout {
         margin: 0 auto;
         max-width: 68rem;
-        padding: 1rem;
+        padding: 2rem;
       }
 
-      .main {
+      .content {
         margin-top: 2rem;
       }
 
-      .main.grid {
+      .grid {
         display: grid;
-        grid-template-columns: 1fr 20rem;
-        grid-gap: 3rem;
+        grid-gap: 2rem;
+      }
+
+      @media (min-width: 1024px) {
+        .grid {
+          grid-template-columns: 1fr 20rem;
+          grid-gap: 3rem;
+        }
       }
     `}</style>
   </div>

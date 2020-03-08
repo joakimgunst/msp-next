@@ -4,7 +4,7 @@ const Sidebar: React.FC = ({ children }) => (
 
     <style jsx>{`
       .sidebar {
-        padding: 1rem;
+        padding: 1.25rem;
         background: var(--color-shading);
         border-radius: 0.5em;
       }
