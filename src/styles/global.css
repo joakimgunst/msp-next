@@ -10,6 +10,7 @@
 
 body {
   font-family: 'Alegreya', serif;
+  font-size: 18px;
   line-height: 1.5;
   color: var(--color-text);
 }
@@ -30,4 +31,8 @@ a {
 
 a:hover {
   text-decoration-color: var(--color-link);
+}
+
+li p {
+  margin: 0;
 }
