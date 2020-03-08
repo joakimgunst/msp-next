@@ -1,4 +1,3 @@
-require('dotenv').config();
 module.exports = {
   env: {
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
