@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { ContentfulPost, fetchPosts } from '../data/contentful';
 import Layout from '../components/Layout';
 import dayjs from 'dayjs';
+import PageLink from '../components/PageLink';
+import PostLink from '../components/PostLink';
 
 interface InitialProps {
   posts: ContentfulPost[];
@@ -20,10 +22,8 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
       <ul>
         {posts.map(post => (
           <li key={post.slug}>
-            <Link href="/post/[slug]" as={`/post/${post.slug}`}>
-              <a>{post.title}</a>
-            </Link>{' '}
-            ({dayjs(post.date).format('LL')})
+            <PostLink slug={post.slug}>{post.title}</PostLink> (
+            {dayjs(post.date).format('LL')})
           </li>
         ))}
       </ul>
@@ -33,9 +33,10 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
         </Link>
       </p>
       <p>
-        <Link href="/[slug]" as="/karen">
-          <a>Kåren</a>
-        </Link>
+        <PageLink slug="/karen">Kåren</PageLink>
+      </p>
+      <p>
+        <PageLink slug="/karen/kuksa">Kuksa</PageLink>
       </p>
     </main>
   </Layout>
