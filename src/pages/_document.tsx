@@ -16,6 +16,14 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="keywords"
+            content="msp, munksnäs, spejarna, scout, scouting, spejare, muncca, scoutkår, scoutkåren, hobby, friluft, vargunge, vandring, hajk, läger"
+          />
+          <meta
+            name="description"
+            content="Scoutkåren Munksnäs Spejarna r.f., förkortat MSP, är en finlandssvensk landscoutkår verksam i Munksnäs i västra Helsingfors."
+          />
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
