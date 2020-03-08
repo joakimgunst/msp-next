@@ -38,7 +38,7 @@ const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
               <a>{post.title}</a>
             </PostLink>
           </h3>
-          ({dayjs(post.date).format('LL')})
+          {dayjs(post.date).format('LL')}
         </div>
       ))}
     </main>

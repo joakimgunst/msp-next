@@ -1,5 +1,6 @@
 import { Document } from '@contentful/rich-text-types';
 import { contentfulClient } from './client';
+import { Asset } from 'contentful';
 
 export async function fetchPosts() {
   const entries = await contentfulClient.getEntries<ContentfulPost>({
@@ -38,6 +39,7 @@ export interface ContentfulPost {
   title: string;
   slug: string;
   date: string;
+  image?: Asset;
   content?: Document;
 }
 
