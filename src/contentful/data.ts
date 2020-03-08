@@ -46,6 +46,7 @@ export interface ContentfulPost {
 export interface ContentfulPage {
   title: string;
   slug: string;
+  image?: Asset;
   content?: Document;
 }
 

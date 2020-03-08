@@ -23,6 +23,13 @@ const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => (
 
     <main className="page">
       <h1>{page.title}</h1>
+      {page.image && (
+        <img
+          className="hero"
+          src={page.image.fields.file.url}
+          alt={page.image.fields.title}
+        />
+      )}
       {page.content && renderDocument(page.content)}
     </main>
 
