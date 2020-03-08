@@ -31,6 +31,11 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
           <a>Kontaktuppgifter</a>
         </Link>
       </p>
+      <p>
+        <Link href="/[slug]" as="/karen">
+          <a>Kåren</a>
+        </Link>
+      </p>
     </main>
   </Layout>
 );

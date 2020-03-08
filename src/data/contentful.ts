@@ -11,3 +11,9 @@ export interface Post {
   slug: string;
   content?: Document;
 }
+
+export interface Page {
+  title: string;
+  slug: string;
+  content?: Document;
+}
