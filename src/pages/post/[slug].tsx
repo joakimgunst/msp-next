@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import { contentfulClient, Post } from '../../data/contentful';
+import { ContentfulPost, fetchPost } from '../../data/contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 
 interface InitialProps {
-  post: Post;
+  post: ContentfulPost;
 }
 
 const PostPage: NextPage<InitialProps> = ({ post }) => (
@@ -26,13 +26,9 @@ const PostPage: NextPage<InitialProps> = ({ post }) => (
   </Layout>
 );
 
-PostPage.getInitialProps = async context => {
-  const entries = await contentfulClient.getEntries<Post>({
-    content_type: 'post',
-    'fields.slug': context.query.slug,
-  });
+PostPage.getInitialProps = async ({ query }) => {
   return {
-    post: entries.items[0].fields,
+    post: await fetchPost(query.slug),
   };
 };
 

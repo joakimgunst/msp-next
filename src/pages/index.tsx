@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { contentfulClient, Post } from '../data/contentful';
+import { ContentfulPost, fetchPosts } from '../data/contentful';
 import Layout from '../components/Layout';
 
 interface InitialProps {
-  posts: Post[];
+  posts: ContentfulPost[];
 }
 
 const HomePage: NextPage<InitialProps> = ({ posts }) => (
@@ -41,11 +41,8 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
 );
 
 HomePage.getInitialProps = async () => {
-  const entries = await contentfulClient.getEntries<Post>({
-    content_type: 'post',
-  });
   return {
-    posts: entries.items.map(item => item.fields),
+    posts: await fetchPosts(),
   };
 };
 
