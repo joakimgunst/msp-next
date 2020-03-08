@@ -13,7 +13,7 @@ export async function fetchPosts() {
 export async function fetchPost(slug: string | string[]) {
   const entries = await contentfulClient.getEntries<ContentfulPost>({
     content_type: 'post',
-    'fields.slug': concatSlug(slug),
+    'fields.slug': getFullSlug(slug),
   });
   return entries.items?.[0].fields;
 }
@@ -21,9 +21,17 @@ export async function fetchPost(slug: string | string[]) {
 export async function fetchPage(slug: string | string[]) {
   const entries = await contentfulClient.getEntries<ContentfulPage>({
     content_type: 'page',
-    'fields.slug': concatSlug(slug),
+    'fields.slug': getFullSlug(slug),
   });
-  return entries.items?.[0].fields;
+  return entries.items[0]?.fields;
+}
+
+export async function fetchSidebar(slug: string | string[]) {
+  const entries = await contentfulClient.getEntries<ContentfulSidebar>({
+    content_type: 'sidebar',
+    'fields.slug': getRootSlug(slug),
+  });
+  return entries.items[0]?.fields;
 }
 
 export interface ContentfulPost {
@@ -39,6 +47,14 @@ export interface ContentfulPage {
   content?: Document;
 }
 
-function concatSlug(slug: string | string[]) {
+export interface ContentfulSidebar {
+  content: Document;
+}
+
+function getFullSlug(slug: string | string[]) {
   return Array.isArray(slug) ? slug.join('/') : slug;
+}
+
+function getRootSlug(slug: string | string[]) {
+  return Array.isArray(slug) ? slug[0] : slug;
 }

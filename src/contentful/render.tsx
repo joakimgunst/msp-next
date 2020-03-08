@@ -7,6 +7,7 @@ import PageLink from '../components/PageLink';
 import { Entry } from 'contentful';
 import { ContentfulPage, ContentfulPost } from './data';
 import PostLink from '../components/PostLink';
+import { ReactNode } from 'react';
 
 const options: Options = {
   renderNode: {
@@ -30,6 +31,10 @@ const options: Options = {
       }
     },
   },
+  renderText: text =>
+    text.split('\n').reduce<ReactNode[]>((children, textSegment, index) => {
+      return [...children, index > 0 && <br key={index} />, textSegment];
+    }, []),
 };
 
 export function renderDocument(document: Document) {

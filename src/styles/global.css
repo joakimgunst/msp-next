@@ -4,6 +4,7 @@
   --color-red-light: #de3c41;
   --color-red-dark: #9a1a1e;
   --color-border: #ddd;
+  --color-shading: #f8f8f8;
 }
 
 * {
@@ -23,6 +24,10 @@ h3,
 h4 {
   font-family: 'Alegreya Sans', sans-serif;
   line-height: 1.2;
+}
+
+h1 {
+  margin-top: 0;
 }
 
 a {
