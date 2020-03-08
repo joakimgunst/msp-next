@@ -13,7 +13,6 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
   <Layout>
     <Head>
       <title>Scoutkåren Munksnäs Spejarna</title>
-      <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>

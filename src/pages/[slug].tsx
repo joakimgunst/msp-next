@@ -13,7 +13,6 @@ const StandardPage: NextPage<InitialProps> = ({ page }) => (
   <Layout>
     <Head>
       <title>{page.title} – Scoutkåren Munksnäs Spejarna</title>
-      <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>

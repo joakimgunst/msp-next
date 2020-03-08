@@ -14,7 +14,6 @@ const PostPage: NextPage<InitialProps> = ({ post }) => (
   <Layout>
     <Head>
       <title>{post.title} – Scoutkåren Munksnäs Spejarna</title>
-      <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>
