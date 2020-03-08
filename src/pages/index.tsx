@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { ContentfulPost, fetchPosts } from '../data/contentful';
+import { ContentfulPost, fetchPosts } from '../contentful/data';
 import Layout from '../components/Layout';
 import dayjs from 'dayjs';
 import PageLink from '../components/PageLink';

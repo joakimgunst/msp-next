@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import { ContentfulPost, fetchPost } from '../../data/contentful';
+import { ContentfulPost, fetchPost } from '../../contentful/data';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Link from 'next/link';
 import Layout from '../../components/Layout';

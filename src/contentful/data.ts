@@ -1,18 +1,5 @@
-import { createClient } from 'contentful';
 import { Document } from '@contentful/rich-text-types';
-
-if (!process.env.CONTENTFUL_SPACE_ID) {
-  throw new Error('CONTENTFUL_SPACE_ID environment variable undefined');
-}
-
-if (!process.env.CONTENTFUL_ACCESS_TOKEN) {
-  throw new Error('CONTENTFUL_ACCESS_TOKEN environment variable undefined');
-}
-
-const contentfulClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
+import { contentfulClient } from './client';
 
 export async function fetchPosts() {
   const entries = await contentfulClient.getEntries<ContentfulPost>({
