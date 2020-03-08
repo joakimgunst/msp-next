@@ -1,6 +1,8 @@
 :root {
   --color-text: #333;
-  --color-link: #c62127;
+  --color-red: #c62127;
+  --color-red-light: #de3c41;
+  --color-red-dark: #9a1a1e;
   --color-border: #ddd;
 }
 
@@ -24,13 +26,13 @@ h4 {
 }
 
 a {
-  color: var(--color-link);
+  color: var(--color-red);
   text-decoration: underline;
   text-decoration-color: var(--color-border);
 }
 
 a:hover {
-  text-decoration-color: var(--color-link);
+  text-decoration-color: var(--color-red);
 }
 
 li p {

@@ -14,9 +14,17 @@ const options: Options = {
       const link = node as EntryHyperlink;
       const target = link.data.target;
       if (isPageEntry(target)) {
-        return <PageLink slug={target.fields.slug}>{children}</PageLink>;
+        return (
+          <PageLink slug={target.fields.slug}>
+            <a>{children}</a>
+          </PageLink>
+        );
       } else if (isPostEntry(target)) {
-        return <PostLink slug={target.fields.slug}>{children}</PostLink>;
+        return (
+          <PostLink slug={target.fields.slug}>
+            <a>{children}</a>
+          </PostLink>
+        );
       } else {
         return <b>UNKNOWN LINK TYPE</b>;
       }

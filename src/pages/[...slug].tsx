@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
 import { ContentfulPage, fetchPage } from '../contentful/data';
-import Link from 'next/link';
 import Layout from '../components/Layout';
 import { renderDocument } from '../contentful/render';
 
@@ -18,9 +17,6 @@ const StandardPage: NextPage<InitialProps> = ({ page }) => (
     <main>
       <h1>{page.title}</h1>
       {page.content && <div>{renderDocument(page.content)}</div>}
-      <Link href="/">
-        <a>Tillbaka hem</a>
-      </Link>
     </main>
   </Layout>
 );

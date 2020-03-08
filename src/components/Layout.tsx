@@ -1,5 +1,8 @@
+import Menu from './Menu';
+
 const Layout: React.FC = ({ children }) => (
   <div className="layout">
+    <Menu />
     {children}
 
     <style jsx>{`

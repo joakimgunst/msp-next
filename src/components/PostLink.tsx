@@ -6,7 +6,7 @@ interface Props {
 
 const PostLink: React.FC<Props> = ({ slug, children }) => (
   <Link href="/post/[slug]" as={`/post/${slug}`}>
-    <a>{children}</a>
+    {children}
   </Link>
 );
 

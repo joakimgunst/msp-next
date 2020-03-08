@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import Link from 'next/link';
 import { ContentfulPost, fetchPosts } from '../contentful/data';
 import Layout from '../components/Layout';
 import dayjs from 'dayjs';
-import PageLink from '../components/PageLink';
 import PostLink from '../components/PostLink';
 
 interface InitialProps {
@@ -22,22 +20,13 @@ const HomePage: NextPage<InitialProps> = ({ posts }) => (
       <ul>
         {posts.map(post => (
           <li key={post.slug}>
-            <PostLink slug={post.slug}>{post.title}</PostLink> (
-            {dayjs(post.date).format('LL')})
+            <PostLink slug={post.slug}>
+              <a>{post.title}</a>
+            </PostLink>{' '}
+            ({dayjs(post.date).format('LL')})
           </li>
         ))}
       </ul>
-      <p>
-        <Link href="/kontakt">
-          <a>Kontaktuppgifter</a>
-        </Link>
-      </p>
-      <p>
-        <PageLink slug="karen">Kåren</PageLink>
-      </p>
-      <p>
-        <PageLink slug="karen/kuksa">Kuksa</PageLink>
-      </p>
     </main>
   </Layout>
 );
