@@ -23,7 +23,7 @@ const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => (
 
     <main className="page">
       <h1>{page.title}</h1>
-      {page.content && <div>{renderDocument(page.content)}</div>}
+      {page.content && renderDocument(page.content)}
     </main>
 
     {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}

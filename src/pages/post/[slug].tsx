@@ -1,15 +1,18 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import { ContentfulPost, fetchPost } from '../../contentful/data';
+import { ContentfulPost, fetchPost, fetchPosts } from '../../contentful/data';
 import Layout from '../../components/Layout';
 import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
+import Sidebar from '../../components/Sidebar';
+import PostLink from '../../components/PostLink';
 
 interface InitialProps {
   post: ContentfulPost;
+  posts: ContentfulPost[];
 }
 
-const PostPage: NextPage<InitialProps> = ({ post }) => (
+const PostPage: NextPage<InitialProps> = ({ post, posts }) => (
   <Layout>
     <Head>
       <title>{post.title} – Scoutkåren Munksnäs Spejarna</title>
@@ -25,8 +28,22 @@ const PostPage: NextPage<InitialProps> = ({ post }) => (
         />
       )}
       <p className="date">{dayjs(post.date).format('LL')}</p>
-      {post.content && <div>{renderDocument(post.content)}</div>}
+      {renderDocument(post.lead)}
+      {post.content && renderDocument(post.content)}
     </main>
+
+    <Sidebar>
+      <h2>Aktuellt</h2>
+      <ul>
+        {posts.map(post => (
+          <li key={post.slug}>
+            <PostLink slug={post.slug}>
+              <a>{post.title}</a>
+            </PostLink>
+          </li>
+        ))}
+      </ul>
+    </Sidebar>
 
     <style jsx>{`
       .post :global(img) {
@@ -41,9 +58,11 @@ const PostPage: NextPage<InitialProps> = ({ post }) => (
 );
 
 PostPage.getInitialProps = async ({ query }) => {
-  return {
-    post: await fetchPost(query.slug),
-  };
+  const [post, posts] = await Promise.all([
+    fetchPost(query.slug),
+    fetchPosts(),
+  ]);
+  return { post, posts };
 };
 
 export default PostPage;

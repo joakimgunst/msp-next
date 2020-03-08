@@ -9,10 +9,9 @@ import {
   ContentfulSidebar,
 } from '../contentful/data';
 import Layout from '../components/Layout';
-import dayjs from 'dayjs';
-import PostLink from '../components/PostLink';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
+import PostSummary from '../components/PostSummary';
 
 interface InitialProps {
   page: ContentfulPage;
@@ -32,14 +31,7 @@ const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
 
       <h2>Aktuellt</h2>
       {posts.map(post => (
-        <div key={post.slug}>
-          <h3>
-            <PostLink slug={post.slug}>
-              <a>{post.title}</a>
-            </PostLink>
-          </h3>
-          {dayjs(post.date).format('LL')}
-        </div>
+        <PostSummary key={post.slug} post={post} />
       ))}
     </main>
 

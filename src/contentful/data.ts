@@ -5,7 +5,6 @@ import { Asset } from 'contentful';
 export async function fetchPosts() {
   const entries = await contentfulClient.getEntries<ContentfulPost>({
     content_type: 'post',
-    select: 'fields.title,fields.slug,fields.date',
     order: '-fields.date',
   });
   return entries.items.map(item => item.fields);
@@ -40,6 +39,7 @@ export interface ContentfulPost {
   slug: string;
   date: string;
   image?: Asset;
+  lead: Document;
   content?: Document;
 }
 
