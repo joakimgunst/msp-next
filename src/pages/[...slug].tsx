@@ -23,7 +23,10 @@ const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => (
       <meta property="og:title" content={page.title} />
       {page.image && (
         <Fragment>
-          <meta property="og:image" content={page.image.fields.file?.url} />
+          <meta
+            property="og:image"
+            content={'https:' + page.image.fields.file?.url}
+          />
           <meta name="twitter:card" content="summary_large_image" />
         </Fragment>
       )}
