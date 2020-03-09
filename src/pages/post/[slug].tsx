@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
+import { Fragment } from 'react';
 
 interface InitialProps {
   post: ContentfulPost;
@@ -16,6 +17,13 @@ const PostPage: NextPage<InitialProps> = ({ post, posts }) => (
   <Layout>
     <Head>
       <title>{post.title} – Scoutkåren Munksnäs Spejarna</title>
+      <meta property="og:title" content={post.title} />
+      {post.image && (
+        <Fragment>
+          <meta property="og:image" content={post.image.fields.file?.url} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Fragment>
+      )}
     </Head>
 
     <main className="post">

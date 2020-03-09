@@ -9,6 +9,7 @@ import {
 import Layout from '../components/Layout';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
+import { Fragment } from 'react';
 
 interface InitialProps {
   page: ContentfulPage;
@@ -19,6 +20,13 @@ const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => (
   <Layout>
     <Head>
       <title>{page.title} – Scoutkåren Munksnäs Spejarna</title>
+      <meta property="og:title" content={page.title} />
+      {page.image && (
+        <Fragment>
+          <meta property="og:image" content={page.image.fields.file?.url} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Fragment>
+      )}
     </Head>
 
     <main className="page">
