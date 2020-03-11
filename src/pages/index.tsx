@@ -12,11 +12,12 @@ import Layout from '../components/Layout';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
+import { Fragment } from 'react';
 
 interface InitialProps {
-  page: ContentfulPage;
-  sidebar: ContentfulSidebar;
-  posts: ContentfulPost[];
+  page?: ContentfulPage;
+  sidebar?: ContentfulSidebar;
+  posts?: ContentfulPost[];
 }
 
 const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
@@ -26,13 +27,17 @@ const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
     </Head>
 
     <main>
-      <h1>{page.title}</h1>
-      {page.content && <div>{renderDocument(page.content)}</div>}
+      <h1>{page?.title ?? 'Scoutkåren Munksnäs Spejarna'}</h1>
+      {page?.content && <div>{renderDocument(page.content)}</div>}
 
-      <h2>Aktuellt</h2>
-      {posts.map(post => (
-        <PostSummary key={post.slug} post={post} />
-      ))}
+      {posts && (
+        <Fragment>
+          <h2>Aktuellt</h2>
+          {posts.map(post => (
+            <PostSummary key={post.slug} post={post} />
+          ))}
+        </Fragment>
+      )}
     </main>
 
     {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}

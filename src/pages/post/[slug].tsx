@@ -8,13 +8,18 @@ import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
 import { Fragment } from 'react';
 import { getAssetUrl, getAssetTitle } from '../../contentful/utils';
+import NotFoundPage from '../404';
 
 interface InitialProps {
-  post: ContentfulPost;
-  posts: ContentfulPost[];
+  post?: ContentfulPost;
+  posts?: ContentfulPost[];
 }
 
 const PostPage: NextPage<InitialProps> = ({ post, posts }) => {
+  if (!post) {
+    return <NotFoundPage />;
+  }
+
   const imageUrl = getAssetUrl(post.image);
   const imageTitle = getAssetTitle(post.image);
 
@@ -39,18 +44,20 @@ const PostPage: NextPage<InitialProps> = ({ post, posts }) => {
         {post.content && renderDocument(post.content)}
       </main>
 
-      <Sidebar>
-        <h2>Aktuellt</h2>
-        <ul>
-          {posts.map(post => (
-            <li key={post.slug}>
-              <PostLink slug={post.slug}>
-                <a>{post.title}</a>
-              </PostLink>
-            </li>
-          ))}
-        </ul>
-      </Sidebar>
+      {posts && (
+        <Sidebar>
+          <h2>Aktuellt</h2>
+          <ul>
+            {posts.map(post => (
+              <li key={post.slug}>
+                <PostLink slug={post.slug}>
+                  <a>{post.title}</a>
+                </PostLink>
+              </li>
+            ))}
+          </ul>
+        </Sidebar>
+      )}
 
       <style jsx>{`
         .post :global(img) {
@@ -65,11 +72,16 @@ const PostPage: NextPage<InitialProps> = ({ post, posts }) => {
   );
 };
 
-PostPage.getInitialProps = async ({ query }) => {
+PostPage.getInitialProps = async ({ query, res }) => {
   const [post, posts] = await Promise.all([
     fetchPost(query.slug),
     fetchPosts(),
   ]);
+
+  if (!post && res) {
+    res.statusCode = 404;
+  }
+
   return { post, posts };
 };
 

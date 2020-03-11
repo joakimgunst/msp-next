@@ -11,13 +11,18 @@ import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import { Fragment } from 'react';
 import { getAssetUrl, getAssetTitle } from '../contentful/utils';
+import NotFoundPage from './404';
 
 interface InitialProps {
-  page: ContentfulPage;
-  sidebar: ContentfulSidebar;
+  page?: ContentfulPage;
+  sidebar?: ContentfulSidebar;
 }
 
 const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => {
+  if (!page) {
+    return <NotFoundPage />;
+  }
+
   const imageUrl = getAssetUrl(page.image);
   const imageTitle = getAssetTitle(page.image);
 
@@ -51,11 +56,16 @@ const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => {
   );
 };
 
-StandardPage.getInitialProps = async ({ query }) => {
+StandardPage.getInitialProps = async ({ query, res }) => {
   const [page, sidebar] = await Promise.all([
     fetchPage(query.slug),
     fetchSidebar(query.slug),
   ]);
+
+  if (!page && res) {
+    res.statusCode = 404;
+  }
+
   return { page, sidebar };
 };
 
