@@ -3,8 +3,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
-  const [menuVisible, setMenuVisible] = useState(false);
-  const toggleMenu = () => setMenuVisible(!menuVisible);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className="header">
@@ -24,7 +25,7 @@ const Header: React.FC = () => {
           Meny
         </a>
       </div>
-      <Menu mobileVisible={menuVisible} />
+      <Menu open={menuOpen} onClose={closeMenu} />
 
       <style jsx>{`
         .header-top {

@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 import classNames from 'classnames';
 
 interface Props {
-  mobileVisible: boolean;
+  open: boolean;
+  onClose: () => void;
 }
 
-const Menu: React.FC<Props> = ({ mobileVisible }) => {
+const Menu: React.FC<Props> = ({ open, onClose }) => {
   const { asPath } = useRouter();
 
   function getLinkClass(href: string, exact = false) {
@@ -16,24 +17,36 @@ const Menu: React.FC<Props> = ({ mobileVisible }) => {
   }
 
   return (
-    <nav className={classNames('menu', mobileVisible && 'mobile-visible')}>
+    <nav className={classNames('menu', open && 'mobile-open')}>
       <Link href="/">
-        <a className={getLinkClass('/', true)}>Hem</a>
+        <a className={getLinkClass('/', true)} onClick={onClose}>
+          Hem
+        </a>
       </Link>
       <Link href="/kalender">
-        <a className={getLinkClass('/kalender')}>Kalender</a>
+        <a className={getLinkClass('/kalender')} onClick={onClose}>
+          Kalender
+        </a>
       </Link>
       <PageLink slug="karen">
-        <a className={getLinkClass('/karen')}>Kåren</a>
+        <a className={getLinkClass('/karen')} onClick={onClose}>
+          Kåren
+        </a>
       </PageLink>
       <PageLink slug="verksamhet">
-        <a className={getLinkClass('/verksamhet')}>Verksamhet</a>
+        <a className={getLinkClass('/verksamhet')} onClick={onClose}>
+          Verksamhet
+        </a>
       </PageLink>
       <PageLink slug="bli-medlem">
-        <a className={getLinkClass('/bli-medlem')}>Bli medlem</a>
+        <a className={getLinkClass('/bli-medlem')} onClick={onClose}>
+          Bli medlem
+        </a>
       </PageLink>
       <Link href="/kontakt">
-        <a className={getLinkClass('/kontakt')}>Kontaktuppgifter</a>
+        <a className={getLinkClass('/kontakt')} onClick={onClose}>
+          Kontaktuppgifter
+        </a>
       </Link>
 
       <style jsx>{`
@@ -45,7 +58,7 @@ const Menu: React.FC<Props> = ({ mobileVisible }) => {
           overflow: hidden;
         }
 
-        .menu.mobile-visible {
+        .menu.mobile-open {
           display: flex;
         }
 
