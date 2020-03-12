@@ -13,7 +13,9 @@ const NotFoundPage: NextPage = () => (
       <h1>404: Sidan saknas</h1>
       <p>Sidan kunde tyvärr inte hittas.</p>
       <p>
-        <Link href="/">Tillbaka till hemsidan</Link>
+        <Link href="/">
+          <a>Tillbaka till hemsidan</a>
+        </Link>
       </p>
     </main>
   </Layout>
