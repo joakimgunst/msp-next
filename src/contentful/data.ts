@@ -36,6 +36,13 @@ export async function fetchSidebar(slug: string | string[]) {
   });
 }
 
+export async function fetchContacts() {
+  return getContentfulEntries<ContentfulContact>({
+    content_type: 'contact',
+    order: 'fields.order,fields.name',
+  });
+}
+
 export interface ContentfulPost {
   title: string;
   slug: string;
@@ -54,6 +61,15 @@ export interface ContentfulPage {
 
 export interface ContentfulSidebar {
   content: Document;
+}
+
+export interface ContentfulContact {
+  name: string;
+  image?: Asset;
+  title?: string;
+  email?: string;
+  phone?: string;
+  order?: number;
 }
 
 function getFullSlug(slug: string | string[]) {
