@@ -14,13 +14,13 @@ import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
 
-interface InitialProps {
+interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
   posts: ContentfulPost[] | null;
 }
 
-const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
+const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => (
   <Layout>
     <Head>
       <title>Scoutkåren Munksnäs Spejarna</title>

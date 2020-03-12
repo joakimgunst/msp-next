@@ -10,12 +10,12 @@ import { Fragment } from 'react';
 import { getAssetUrl, getAssetTitle } from '../../contentful/utils';
 import NotFoundPage from '../404';
 
-interface InitialProps {
+interface Props {
   post: ContentfulPost | null;
   posts: ContentfulPost[] | null;
 }
 
-const PostPage: NextPage<InitialProps> = ({ post, posts }) => {
+const PostPage: NextPage<Props> = ({ post, posts }) => {
   if (!post) {
     return <NotFoundPage />;
   }

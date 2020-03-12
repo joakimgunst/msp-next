@@ -14,12 +14,12 @@ import { Fragment } from 'react';
 import { getAssetUrl, getAssetTitle } from '../contentful/utils';
 import NotFoundPage from './404';
 
-interface InitialProps {
+interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
 }
 
-const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => {
+const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
   if (!page) {
     return <NotFoundPage />;
   }
