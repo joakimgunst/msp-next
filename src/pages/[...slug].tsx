@@ -11,8 +11,10 @@ import Layout from '../components/Layout';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import { Fragment } from 'react';
-import { getAssetUrl, getAssetTitle } from '../contentful/utils';
+import { getAssetUrl } from '../contentful/utils';
 import NotFoundPage from './404';
+import HeroImage from '../components/HEroImage';
+import ContentBlock from '../components/ContentBlock';
 
 interface Props {
   page: ContentfulPage | null;
@@ -24,7 +26,6 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
     return <NotFoundPage />;
   }
   const imageUrl = getAssetUrl(page.image);
-  const imageTitle = getAssetTitle(page.image);
 
   return (
     <Layout>
@@ -41,17 +42,11 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
 
       <main className="page">
         <h1>{page.title}</h1>
-        {page.image && <img className="hero" src={imageUrl} alt={imageTitle} />}
-        {page.content && renderDocument(page.content)}
+        {page.image && <HeroImage image={page.image} />}
+        {page.content && <ContentBlock content={page.content} />}
       </main>
 
       {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
-
-      <style jsx>{`
-        .page :global(img) {
-          border-radius: 0.25rem;
-        }
-      `}</style>
     </Layout>
   );
 };
