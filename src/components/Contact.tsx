@@ -1,5 +1,7 @@
 import { ContentfulContact } from '../contentful/data';
 import { getAssetUrl, getAssetTitle } from '../contentful/utils';
+import EmailLink from './EmailLink';
+import PhoneLink from './PhoneLink';
 
 interface Props {
   contact: ContentfulContact;
@@ -23,8 +25,8 @@ const Contact: React.FC<Props> = ({ contact }) => {
       )}
       <div className="name">{name}</div>
       {title && <div>{title}</div>}
-      {email && <a href={'mailto:' + email}>{email}</a>}
-      {phone && <div>{phone}</div>}
+      {email && <EmailLink email={email} />}
+      {phone && <PhoneLink phone={phone} />}
 
       <style jsx>{`
         .contact {
