@@ -22,9 +22,9 @@ export async function getContentfulEntries<T>(
 
 export async function getContentfulEntry<T>(
   query: ContentfulQuery
-): Promise<T | undefined> {
+): Promise<T | null> {
   const entries = await contentfulClient.getEntries<T>(query);
-  return entries.items[0]?.fields;
+  return entries.items[0]?.fields ?? null;
 }
 
 interface ContentfulQuery {

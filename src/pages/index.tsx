@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { NextPage } from 'next';
+import { NextPage, GetStaticProps } from 'next';
 import {
   ContentfulPost,
   fetchPosts,
@@ -15,9 +15,9 @@ import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
 
 interface InitialProps {
-  page?: ContentfulPage;
-  sidebar?: ContentfulSidebar;
-  posts?: ContentfulPost[];
+  page: ContentfulPage | null;
+  sidebar: ContentfulSidebar | null;
+  posts: ContentfulPost[] | null;
 }
 
 const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
@@ -44,13 +44,13 @@ const HomePage: NextPage<InitialProps> = ({ page, sidebar, posts }) => (
   </Layout>
 );
 
-HomePage.getInitialProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const [page, sidebar, posts] = await Promise.all([
     fetchPage('hem'),
     fetchSidebar('hem'),
     fetchPosts(),
   ]);
-  return { page, sidebar, posts };
+  return { props: { page, sidebar, posts } };
 };
 
 export default HomePage;

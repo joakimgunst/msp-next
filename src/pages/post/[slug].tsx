@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { NextPage } from 'next';
+import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { ContentfulPost, fetchPost, fetchPosts } from '../../contentful/data';
 import Layout from '../../components/Layout';
 import dayjs from 'dayjs';
@@ -11,8 +11,8 @@ import { getAssetUrl, getAssetTitle } from '../../contentful/utils';
 import NotFoundPage from '../404';
 
 interface InitialProps {
-  post?: ContentfulPost;
-  posts?: ContentfulPost[];
+  post: ContentfulPost | null;
+  posts: ContentfulPost[] | null;
 }
 
 const PostPage: NextPage<InitialProps> = ({ post, posts }) => {
@@ -72,17 +72,16 @@ const PostPage: NextPage<InitialProps> = ({ post, posts }) => {
   );
 };
 
-PostPage.getInitialProps = async ({ query, res }) => {
-  const [post, posts] = await Promise.all([
-    fetchPost(query.slug),
-    fetchPosts(),
-  ]);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = params!.slug;
+  const [post, posts] = await Promise.all([fetchPost(slug), fetchPosts()]);
+  return { props: { post, posts } };
+};
 
-  if (!post && res) {
-    res.statusCode = 404;
-  }
-
-  return { post, posts };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await fetchPosts();
+  const paths = posts.map(post => ({ params: { slug: post.slug } }));
+  return { paths, fallback: false };
 };
 
 export default PostPage;

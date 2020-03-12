@@ -1,10 +1,11 @@
 import Head from 'next/head';
-import { NextPage } from 'next';
+import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import {
   ContentfulPage,
   fetchPage,
   ContentfulSidebar,
   fetchSidebar,
+  fetchPages,
 } from '../contentful/data';
 import Layout from '../components/Layout';
 import { renderDocument } from '../contentful/render';
@@ -14,15 +15,14 @@ import { getAssetUrl, getAssetTitle } from '../contentful/utils';
 import NotFoundPage from './404';
 
 interface InitialProps {
-  page?: ContentfulPage;
-  sidebar?: ContentfulSidebar;
+  page: ContentfulPage | null;
+  sidebar: ContentfulSidebar | null;
 }
 
 const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => {
   if (!page) {
     return <NotFoundPage />;
   }
-
   const imageUrl = getAssetUrl(page.image);
   const imageTitle = getAssetTitle(page.image);
 
@@ -56,17 +56,19 @@ const StandardPage: NextPage<InitialProps> = ({ page, sidebar }) => {
   );
 };
 
-StandardPage.getInitialProps = async ({ query, res }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = params!.slug;
   const [page, sidebar] = await Promise.all([
-    fetchPage(query.slug),
-    fetchSidebar(query.slug),
+    fetchPage(slug),
+    fetchSidebar(slug),
   ]);
+  return { props: { page, sidebar } };
+};
 
-  if (!page && res) {
-    res.statusCode = 404;
-  }
-
-  return { page, sidebar };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const pages = await fetchPages();
+  const paths = pages.map(page => ({ params: { slug: page.slug.split('/') } }));
+  return { paths, fallback: false };
 };
 
 export default StandardPage;

@@ -16,6 +16,12 @@ export async function fetchPost(slug: string | string[]) {
   });
 }
 
+export async function fetchPages() {
+  return getContentfulEntries<ContentfulPage>({
+    content_type: 'page',
+  });
+}
+
 export async function fetchPage(slug: string | string[]) {
   return getContentfulEntry<ContentfulPage>({
     content_type: 'page',
