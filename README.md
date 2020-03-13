@@ -29,8 +29,14 @@ To deploy to a feature environment run:
 now deploy
 ```
 
-To deploy to production run:
+## Production deployments
+
+To deploy to production manually run:
 
 ```bash
 now deploy --prod
 ```
+
+A new production deployment is done automatically whenever code is pushed to the `master` branch on GitHub.
+
+A webhook is also configured in Contentful so that a production deployment is done whenever there are changes in the content.
