@@ -9,7 +9,7 @@ import PostLink from '../../components/PostLink';
 import { Fragment } from 'react';
 import { getAssetUrl } from '../../contentful/utils';
 import NotFoundPage from '../404';
-import HeroImage from '../../components/HEroImage';
+import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
 
 interface Props {
