@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { ContentfulPost, fetchPost, fetchPosts } from '../../contentful/data';
-import Layout from '../../components/Layout';
 import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
@@ -11,6 +10,7 @@ import { getAssetUrl } from '../../contentful/utils';
 import NotFoundPage from '../404';
 import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
+import MainContent from '../../components/MainContent';
 
 interface Props {
   post: ContentfulPost | null;
@@ -25,7 +25,7 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
   const imageUrl = getAssetUrl(post.image);
 
   return (
-    <Layout>
+    <MainContent>
       <Head>
         <title>{post.title} – Scoutkåren Munksnäs Spejarna</title>
         <meta property="og:title" content={post.title} />
@@ -37,13 +37,13 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
         )}
       </Head>
 
-      <main className="post">
+      <article className="post">
         <h1>{post.title}</h1>
         {post.image && <HeroImage image={post.image} />}
         <p className="date">{dayjs(post.date).format('LL')}</p>
         {renderDocument(post.lead)}
         {post.content && <ContentBlock content={post.content} />}
-      </main>
+      </article>
 
       {posts && (
         <Sidebar>
@@ -65,7 +65,7 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
           font-style: italic;
         }
       `}</style>
-    </Layout>
+    </MainContent>
   );
 };
 

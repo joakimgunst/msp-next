@@ -7,7 +7,6 @@ import {
   fetchSidebar,
   fetchPages,
 } from '../contentful/data';
-import Layout from '../components/Layout';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import { Fragment } from 'react';
@@ -15,6 +14,7 @@ import { getAssetUrl } from '../contentful/utils';
 import NotFoundPage from './404';
 import HeroImage from '../components/HeroImage';
 import ContentBlock from '../components/ContentBlock';
+import MainContent from '../components/MainContent';
 
 interface Props {
   page: ContentfulPage | null;
@@ -28,7 +28,7 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
   const imageUrl = getAssetUrl(page.image);
 
   return (
-    <Layout>
+    <MainContent>
       <Head>
         <title>{page.title} – Scoutkåren Munksnäs Spejarna</title>
         <meta property="og:title" content={page.title} />
@@ -40,14 +40,14 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
         )}
       </Head>
 
-      <main className="page">
+      <div className="page">
         <h1>{page.title}</h1>
         {page.image && <HeroImage image={page.image} />}
         {page.content && <ContentBlock content={page.content} />}
-      </main>
+      </div>
 
       {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
-    </Layout>
+    </MainContent>
   );
 };
 

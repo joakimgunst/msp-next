@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import Layout from '../components/Layout';
 import Link from 'next/link';
+import MainContent from '../components/MainContent';
 
 const NotFoundPage: NextPage = () => (
-  <Layout fullWidth>
+  <MainContent fullWidth>
     <Head>
       <title>404 – Scoutkåren Munksnäs Spejarna</title>
     </Head>
 
-    <main>
+    <div>
       <h1>404: Sidan saknas</h1>
       <p>Sidan kunde tyvärr inte hittas.</p>
       <p>
@@ -17,8 +17,8 @@ const NotFoundPage: NextPage = () => (
           <a>Tillbaka till hemsidan</a>
         </Link>
       </p>
-    </main>
-  </Layout>
+    </div>
+  </MainContent>
 );
 
 export default NotFoundPage;

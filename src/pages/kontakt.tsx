@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
-import Layout from '../components/Layout';
 import {
   fetchContacts,
   fetchSidebar,
@@ -10,6 +9,7 @@ import {
 import Contact from '../components/Contact';
 import Sidebar from '../components/Sidebar';
 import { renderDocument } from '../contentful/render';
+import MainContent from '../components/MainContent';
 
 interface Props {
   contacts: ContentfulContact[];
@@ -17,19 +17,19 @@ interface Props {
 }
 
 const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
-  <Layout>
+  <MainContent>
     <Head>
       <title>Kontaktuppgifter – Scoutkåren Munksnäs Spejarna</title>
     </Head>
 
-    <main>
+    <div>
       <h1>Kontaktuppgifter</h1>
       <div className="contacts">
         {contacts.map(contact => (
           <Contact key={contact.name} contact={contact} />
         ))}
       </div>
-    </main>
+    </div>
 
     {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
 
@@ -47,7 +47,7 @@ const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
         }
       }
     `}</style>
-  </Layout>
+  </MainContent>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

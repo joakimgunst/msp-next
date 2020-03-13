@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import Layout from '../components/Layout';
+import MainContent from '../components/MainContent';
 
 const CalendarPage: NextPage = () => (
-  <Layout fullWidth>
+  <MainContent fullWidth>
     <Head>
       <title>Kalender – Scoutkåren Munksnäs Spejarna</title>
     </Head>
 
-    <main>
+    <div>
       <h1>Kalender</h1>
       <iframe
         src="https://www.google.com/calendar/embed?src=o41qm4rm0fh5u9c1oeigfssgjg%40group.calendar.google.com&ctz=Europe/Helsinki&hl=sv"
@@ -16,7 +16,7 @@ const CalendarPage: NextPage = () => (
         frameBorder="0"
         scrolling="no"
       ></iframe>
-    </main>
+    </div>
 
     <style jsx>{`
       .calendar {
@@ -24,7 +24,7 @@ const CalendarPage: NextPage = () => (
         height: 600px;
       }
     `}</style>
-  </Layout>
+  </MainContent>
 );
 
 export default CalendarPage;

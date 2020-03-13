@@ -8,11 +8,11 @@ import {
   ContentfulPage,
   ContentfulSidebar,
 } from '../contentful/data';
-import Layout from '../components/Layout';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
+import MainContent from '../components/MainContent';
 
 interface Props {
   page: ContentfulPage | null;
@@ -21,12 +21,12 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => (
-  <Layout>
+  <MainContent>
     <Head>
       <title>Scoutkåren Munksnäs Spejarna</title>
     </Head>
 
-    <main>
+    <div>
       <h1>{page?.title ?? 'Scoutkåren Munksnäs Spejarna'}</h1>
       {page?.content && <div>{renderDocument(page.content)}</div>}
 
@@ -38,10 +38,10 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => (
           ))}
         </Fragment>
       )}
-    </main>
+    </div>
 
     {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
-  </Layout>
+  </MainContent>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
