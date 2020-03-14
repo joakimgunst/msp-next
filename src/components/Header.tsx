@@ -79,7 +79,9 @@ const Header: React.FC = () => {
             font-size: 2em;
             margin-left: 2rem;
           }
+        }
 
+        @media (min-width: 1024px) {
           .menu-toggle {
             display: none;
           }

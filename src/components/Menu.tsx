@@ -38,6 +38,11 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
           Verksamhet
         </a>
       </PageLink>
+      <PageLink slug="evenemang">
+        <a className={getLinkClass('/evenemang')} onClick={onClose}>
+          Evenemang och bilder
+        </a>
+      </PageLink>
       <PageLink slug="bli-medlem">
         <a className={getLinkClass('/bli-medlem')} onClick={onClose}>
           Bli medlem
@@ -62,7 +67,7 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
           display: flex;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
           .menu {
             display: flex;
             flex-direction: row;
