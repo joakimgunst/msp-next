@@ -4,5 +4,32 @@
       "CONTENTFUL_SPACE_ID": "@contentful_space_id",
       "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token"
     }
-  }
+  },
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/blimedlem",
+      "destination": "/bli-medlem"
+    },
+    {
+      "source": "/karen/munksnasscoutvanner",
+      "destination": "/karen/munksnas-scoutvanner"
+    },
+    {
+      "source": "/verksamhet/yngrevargungar",
+      "destination": "/verksamhet/yngre-vargungar"
+    },
+    {
+      "source": "/verksamhet/aldrevargungar",
+      "destination": "/verksamhet/aldre-vargungar"
+    },
+    {
+      "source": "/verksamhet/yngrepatrullen",
+      "destination": "/verksamhet/yngre-patrullen"
+    },
+    {
+      "source": "/verksamhet/aldrepatrullen",
+      "destination": "/verksamhet/aldre-vargungar"
+    }
+  ]
 }
