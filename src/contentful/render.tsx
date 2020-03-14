@@ -5,6 +5,7 @@ import {
   EntryHyperlink,
   AssetHyperlink,
   AssetLinkBlock,
+  Hyperlink,
 } from '@contentful/rich-text-types';
 import {
   documentToReactComponents,
@@ -15,6 +16,7 @@ import { Entry, Asset } from 'contentful';
 import { ContentfulPage, ContentfulPost } from './data';
 import PostLink from '../components/PostLink';
 import { ReactNode } from 'react';
+import Link from 'next/link';
 
 const options: Options = {
   renderNode: {
@@ -34,7 +36,7 @@ const options: Options = {
           </PostLink>
         );
       }
-      throw new Error('Unknwon node');
+      return <b>UNKNOWN ENTRY</b>;
     },
     [INLINES.ASSET_HYPERLINK]: (node, children) => {
       const link = node as AssetHyperlink;
@@ -50,7 +52,7 @@ const options: Options = {
           </a>
         );
       }
-      throw new Error('Unknwon node');
+      return <b>UNKNOWN ASSET</b>;
     },
     [BLOCKS.EMBEDDED_ASSET]: node => {
       const link = node as AssetLinkBlock;
@@ -58,7 +60,19 @@ const options: Options = {
       if (isAsset(target)) {
         return <img src={target.fields.file?.url} alt={target.fields.title} />;
       }
-      throw new Error('Unknwon node');
+      return <b>UNKNOWN ASSET</b>;
+    },
+    [INLINES.HYPERLINK]: (node, children) => {
+      const link = node as Hyperlink;
+      const uri = link.data.uri;
+      if (uri.startsWith('/')) {
+        return (
+          <Link href={uri}>
+            <a>{children}</a>
+          </Link>
+        );
+      }
+      return <a href={uri}>{children}</a>;
     },
   },
   renderText: text =>
