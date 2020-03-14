@@ -57,3 +57,15 @@ li p {
 img {
   vertical-align: middle;
 }
+
+hr {
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+blockquote {
+  margin: 1rem 0;
+  padding: 0.1rem 1.5rem;
+  background: var(--color-shading);
+  border-radius: 0.5em;
+}
