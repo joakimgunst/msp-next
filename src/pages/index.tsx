@@ -13,6 +13,8 @@ import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
 import MainContent from '../components/MainContent';
+import { getAssetUrl } from '../contentful/utils';
+import HeroImage from '../components/HeroImage';
 
 interface Props {
   page: ContentfulPage | null;
@@ -20,29 +22,40 @@ interface Props {
   posts: ContentfulPost[] | null;
 }
 
-const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => (
-  <MainContent>
-    <Head>
-      <title>Scoutkåren Munksnäs Spejarna</title>
-    </Head>
+const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
+  const imageUrl = getAssetUrl(page?.image);
 
-    <div>
-      <h1>{page?.title ?? 'Scoutkåren Munksnäs Spejarna'}</h1>
-      {page?.content && <div>{renderDocument(page.content)}</div>}
+  return (
+    <MainContent>
+      <Head>
+        <title>Scoutkåren Munksnäs Spejarna</title>
+        {imageUrl && (
+          <Fragment>
+            <meta property="og:image" content={'https:' + imageUrl} />
+            <meta name="twitter:card" content="summary_large_image" />
+          </Fragment>
+        )}
+      </Head>
 
-      {posts && (
-        <Fragment>
-          <h2>Aktuellt</h2>
-          {posts.map(post => (
-            <PostSummary key={post.slug} post={post} />
-          ))}
-        </Fragment>
-      )}
-    </div>
+      <div>
+        <h1>{page?.title ?? 'Scoutkåren Munksnäs Spejarna'}</h1>
+        {page?.image && <HeroImage image={page.image} />}
+        {page?.content && <div>{renderDocument(page.content)}</div>}
 
-    {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
-  </MainContent>
-);
+        {posts && (
+          <Fragment>
+            <h2>Aktuellt</h2>
+            {posts.map(post => (
+              <PostSummary key={post.slug} post={post} />
+            ))}
+          </Fragment>
+        )}
+      </div>
+
+      {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+    </MainContent>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const [page, sidebar, posts] = await Promise.all([
