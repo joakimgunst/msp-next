@@ -13,7 +13,7 @@ import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
 import MainContent from '../components/MainContent';
-import { getAssetUrl } from '../contentful/utils';
+import { getOpenGraphImageUrl } from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
 
 interface Props {
@@ -23,15 +23,15 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
-  const imageUrl = getAssetUrl(page?.image);
+  const ogImageUrl = getOpenGraphImageUrl(page?.image);
 
   return (
     <MainContent>
       <Head>
         <title>Scoutkåren Munksnäs Spejarna</title>
-        {imageUrl && (
+        {ogImageUrl && (
           <Fragment>
-            <meta property="og:image" content={'https:' + imageUrl} />
+            <meta property="og:image" content={ogImageUrl} />
             <meta name="twitter:card" content="summary_large_image" />
           </Fragment>
         )}

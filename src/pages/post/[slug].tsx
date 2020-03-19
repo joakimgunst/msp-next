@@ -6,7 +6,7 @@ import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
 import { Fragment } from 'react';
-import { getAssetUrl } from '../../contentful/utils';
+import { getOpenGraphImageUrl } from '../../contentful/utils';
 import NotFoundPage from '../404';
 import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
@@ -22,16 +22,16 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
     return <NotFoundPage />;
   }
 
-  const imageUrl = getAssetUrl(post.image);
+  const ogImageUrl = getOpenGraphImageUrl(post.image);
 
   return (
     <MainContent>
       <Head>
         <title>{post.title} – Scoutkåren Munksnäs Spejarna</title>
         <meta property="og:title" content={post.title} />
-        {imageUrl && (
+        {ogImageUrl && (
           <Fragment>
-            <meta property="og:image" content={'https:' + imageUrl} />
+            <meta property="og:image" content={ogImageUrl} />
             <meta name="twitter:card" content="summary_large_image" />
           </Fragment>
         )}
