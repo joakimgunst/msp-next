@@ -15,6 +15,7 @@ import { Fragment } from 'react';
 import MainContent from '../components/MainContent';
 import { getOpenGraphImageUrl } from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
+import { siteName } from '../config';
 
 interface Props {
   page: ContentfulPage | null;
@@ -23,12 +24,14 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
+  const title = page?.title ?? siteName;
   const ogImageUrl = getOpenGraphImageUrl(page?.image);
 
   return (
     <MainContent>
       <Head>
-        <title>Scoutkåren Munksnäs Spejarna</title>
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
         {ogImageUrl && (
           <Fragment>
             <meta property="og:image" content={ogImageUrl} />
@@ -38,7 +41,7 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
       </Head>
 
       <div>
-        <h1>{page?.title ?? 'Scoutkåren Munksnäs Spejarna'}</h1>
+        <h1>{title}</h1>
         {page?.image && <HeroImage image={page.image} />}
         {page?.content && <div>{renderDocument(page.content)}</div>}
 

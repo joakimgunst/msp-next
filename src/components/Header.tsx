@@ -1,6 +1,7 @@
 import Menu from './Menu';
 import { useState } from 'react';
 import Link from 'next/link';
+import { siteName } from '../config';
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,11 +13,7 @@ const Header: React.FC = () => {
       <div className="header-top">
         <Link href="/">
           <a>
-            <img
-              className="logo"
-              src="/images/msp_logo.svg"
-              alt="Scoutkåren Munksnäs Spejarna"
-            />
+            <img className="logo" src="/images/msp_logo.svg" alt={siteName} />
           </a>
         </Link>
         <div className="title">Scoutkåren Munksnäs Spejarna</div>

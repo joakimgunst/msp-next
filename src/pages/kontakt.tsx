@@ -10,6 +10,7 @@ import Contact from '../components/Contact';
 import Sidebar from '../components/Sidebar';
 import { renderDocument } from '../contentful/render';
 import MainContent from '../components/MainContent';
+import { siteName } from '../config';
 
 interface Props {
   contacts: ContentfulContact[];
@@ -19,7 +20,7 @@ interface Props {
 const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
   <MainContent>
     <Head>
-      <title>Kontaktuppgifter – Scoutkåren Munksnäs Spejarna</title>
+      <title>Kontaktuppgifter – {siteName}</title>
     </Head>
 
     <div>

@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
 import MainContent from '../components/MainContent';
+import { siteName } from '../config';
 
 const CalendarPage: NextPage = () => (
   <MainContent fullWidth>
     <Head>
-      <title>Kalender – Scoutkåren Munksnäs Spejarna</title>
+      <title>Kalender – {siteName}</title>
     </Head>
 
     <div>

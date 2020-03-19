@@ -11,6 +11,7 @@ import NotFoundPage from '../404';
 import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
 import MainContent from '../../components/MainContent';
+import { siteName } from '../../config';
 
 interface Props {
   post: ContentfulPost | null;
@@ -27,7 +28,9 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
   return (
     <MainContent>
       <Head>
-        <title>{post.title} – Scoutkåren Munksnäs Spejarna</title>
+        <title>
+          {post.title} – {siteName}
+        </title>
         <meta property="og:title" content={post.title} />
         {ogImageUrl && (
           <Fragment>

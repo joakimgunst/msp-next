@@ -6,6 +6,7 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import { GA_TRACKING_ID } from '../lib/gtag';
+import { siteDescription } from '../config';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -21,10 +22,7 @@ class MyDocument extends Document {
             name="keywords"
             content="msp, munksnäs, spejarna, scout, scouting, spejare, muncca, scoutkår, scoutkåren, hobby, friluft, vargunge, vandring, hajk, läger"
           />
-          <meta
-            name="description"
-            content="Scoutkåren Munksnäs Spejarna r.f., förkortat MSP, är en finlandssvensk landscoutkår verksam i Munksnäs i västra Helsingfors."
-          />
+          <meta name="description" content={siteDescription} />
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
