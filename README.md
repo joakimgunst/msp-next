@@ -1,6 +1,6 @@
-# Scoutkåren Munksnäs Spejarna
+# Munksnäs Spejarna web site
 
-This is the new web site for the scout group Munksnäs Spejarna. It will replace the old site at [www.munksnasspejarna.fi](https://www.munksnasspejarna.fi/) when complete. The site is created using [Next.js](https://nextjs.org/) with [Contentful](https://www.contentful.com/) as a CMS. It is deployed to [ZEIT Now](https://zeit.co/).
+This is the web site for the scout group Munksnäs Spejarna. It is located at [www.munksnasspejarna.fi](https://www.munksnasspejarna.fi/). The site is created using [Next.js](https://nextjs.org/) with [Contentful](https://www.contentful.com/) as a CMS. It is deployed to [ZEIT Now](https://zeit.co/).
 
 ## Development
 
