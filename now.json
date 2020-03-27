@@ -30,6 +30,10 @@
     {
       "source": "/verksamhet/aldrepatrullen",
       "destination": "/verksamhet/aldre-vargungar"
+    },
+    {
+      "source": "/karen/historia",
+      "destination": "/karen/karhistorik"
     }
   ]
 }
