@@ -48,7 +48,7 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
         {posts && (
           <Fragment>
             <h2>Aktuellt</h2>
-            {posts.map(post => (
+            {posts.map((post) => (
               <PostSummary key={post.slug} post={post} />
             ))}
           </Fragment>

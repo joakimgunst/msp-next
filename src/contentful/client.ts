@@ -17,7 +17,7 @@ export async function getContentfulEntries<T>(
   query: ContentfulQuery
 ): Promise<T[]> {
   const entries = await contentfulClient.getEntries<T>(query);
-  return entries.items.map(item => item.fields);
+  return entries.items.map((item) => item.fields);
 }
 
 export async function getContentfulEntry<T>(

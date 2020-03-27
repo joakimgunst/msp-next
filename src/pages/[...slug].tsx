@@ -66,7 +66,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const pages = await fetchPages();
-  const paths = pages.map(page => ({ params: { slug: page.slug.split('/') } }));
+  const paths = pages.map((page) => ({
+    params: { slug: page.slug.split('/') },
+  }));
   return { paths, fallback: false };
 };
 

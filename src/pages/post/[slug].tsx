@@ -52,7 +52,7 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
         <Sidebar>
           <h2>Aktuellt</h2>
           <ul>
-            {posts.map(post => (
+            {posts.map((post) => (
               <li key={post.slug}>
                 <PostLink slug={post.slug}>
                   <a>{post.title}</a>
@@ -80,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await fetchPosts();
-  const paths = posts.map(post => ({ params: { slug: post.slug } }));
+  const paths = posts.map((post) => ({ params: { slug: post.slug } }));
   return { paths, fallback: false };
 };
 

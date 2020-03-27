@@ -12,7 +12,7 @@ import { pageview } from '../lib/gtag';
 dayjs.extend(LocalizedFormat);
 dayjs.locale('sv');
 
-Router.events.on('routeChangeComplete', url => pageview(url));
+Router.events.on('routeChangeComplete', (url) => pageview(url));
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

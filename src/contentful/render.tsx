@@ -54,7 +54,7 @@ const options: Options = {
       }
       return <b>UNKNOWN ASSET</b>;
     },
-    [BLOCKS.EMBEDDED_ASSET]: node => {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const link = node as AssetLinkBlock;
       const target = link.data.target;
       if (isAsset(target)) {
@@ -75,7 +75,7 @@ const options: Options = {
       return <a href={uri}>{children}</a>;
     },
   },
-  renderText: text =>
+  renderText: (text) =>
     text.split('\n').reduce<ReactNode[]>((children, textSegment, index) => {
       return [...children, index > 0 && <br key={index} />, textSegment];
     }, []),

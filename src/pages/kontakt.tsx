@@ -26,7 +26,7 @@ const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
     <div>
       <h1>Kontaktuppgifter</h1>
       <div className="contacts">
-        {contacts.map(contact => (
+        {contacts.map((contact) => (
           <Contact key={contact.name} contact={contact} />
         ))}
       </div>
