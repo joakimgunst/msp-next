@@ -28,7 +28,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "prettier": "^2.0.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.0-beta"
   },
   "resolutions": {
     "next/**/minimist": "^1.2.5"
