@@ -68,6 +68,10 @@ class MyDocument extends Document {
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#315926" />
           <meta name="theme-color" content="#c62127" />
+          <meta
+            name="google-site-verification"
+            content="D-TKUiiTZy6AaXE27F-yZplXObhC9VLi8BKdLXr7Gpg"
+          />
         </Head>
         <body>
           <Main />
