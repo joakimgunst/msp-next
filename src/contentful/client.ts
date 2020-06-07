@@ -1,17 +1,31 @@
 import { createClient } from 'contentful';
 
 if (!process.env.CONTENTFUL_SPACE_ID) {
-  throw new Error('CONTENTFUL_SPACE_ID environment variable undefined');
+  throw new Error('CONTENTFUL_SPACE_ID env variable undefined');
 }
 
 if (!process.env.CONTENTFUL_ACCESS_TOKEN) {
-  throw new Error('CONTENTFUL_ACCESS_TOKEN environment variable undefined');
+  throw new Error('CONTENTFUL_ACCESS_TOKEN env variable undefined');
+}
+
+if (!process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN) {
+  throw new Error('CONTENTFUL_PREVIEW_ACCESS_TOKEN env variable undefined');
 }
 
 const contentfulClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 });
+
+const previewClient = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+  host: 'preview.contentful.com',
+});
+
+function getClient(preview?: boolean) {
+  return preview ? previewClient : contentfulClient;
+}
 
 export async function getContentfulEntries<T>(
   query: ContentfulQuery
@@ -21,9 +35,10 @@ export async function getContentfulEntries<T>(
 }
 
 export async function getContentfulEntry<T>(
-  query: ContentfulQuery
+  query: ContentfulQuery,
+  preview?: boolean
 ): Promise<T | null> {
-  const entries = await contentfulClient.getEntries<T>(query);
+  const entries = await getClient(preview).getEntries<T>(query);
   return entries.items[0]?.fields ?? null;
 }
 

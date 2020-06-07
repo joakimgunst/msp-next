@@ -72,9 +72,12 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
   const slug = params!.slug;
-  const [post, posts] = await Promise.all([fetchPost(slug), fetchPosts()]);
+  const [post, posts] = await Promise.all([
+    fetchPost(slug, preview),
+    fetchPosts(),
+  ]);
   return { props: { post, posts } };
 };
 

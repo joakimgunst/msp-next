@@ -9,11 +9,14 @@ export async function fetchPosts() {
   });
 }
 
-export async function fetchPost(slug: string | string[]) {
-  return getContentfulEntry<ContentfulPost>({
-    content_type: 'post',
-    'fields.slug': getFullSlug(slug),
-  });
+export async function fetchPost(slug: string | string[], preview?: boolean) {
+  return getContentfulEntry<ContentfulPost>(
+    {
+      content_type: 'post',
+      'fields.slug': getFullSlug(slug),
+    },
+    preview
+  );
 }
 
 export async function fetchPages() {
@@ -22,11 +25,14 @@ export async function fetchPages() {
   });
 }
 
-export async function fetchPage(slug: string | string[]) {
-  return getContentfulEntry<ContentfulPage>({
-    content_type: 'page',
-    'fields.slug': getFullSlug(slug),
-  });
+export async function fetchPage(slug: string | string[], preview?: boolean) {
+  return getContentfulEntry<ContentfulPage>(
+    {
+      content_type: 'page',
+      'fields.slug': getFullSlug(slug),
+    },
+    preview
+  );
 }
 
 export async function fetchSidebar(slug: string | string[]) {
