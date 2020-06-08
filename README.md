@@ -1,40 +1,70 @@
 # Munksnäs Spejarna web site
 
-This is the web site for the scout group Munksnäs Spejarna. It is located at [www.munksnasspejarna.fi](https://www.munksnasspejarna.fi/). The site is created using [Next.js](https://nextjs.org/) with [Contentful](https://www.contentful.com/) as a CMS. It is deployed to [ZEIT Now](https://zeit.co/).
+This is the web site for the scout group Munksnäs Spejarna. It is located at [www.munksnasspejarna.fi](https://www.munksnasspejarna.fi/). The site is created using [Next.js](https://nextjs.org/) with [Contentful](https://www.contentful.com/) as a CMS. It is deployed to [Vercel](https://vercel.com/).
 
-## Development
+## Development with Vercel CLI
 
-Install the Now CLI:
+Using the Vercel CLI is currently only available to [Joakim](https://github.com/joakimgunst), as the project uses the free single-user Hobby plan.
+
+Install the Vercel CLI:
 
 ```bash
-npm i -g now
+npm i -g vercel
 ```
 
-Create an `.env.build` file in the root directory and enter the following values, which you can get from [Joakim](https://github.com/joakimgunst):
+Login to Vercel:
+
+```bash
+vercel login
+```
+
+Link the project:
+
+```bash
+vercel
+```
+
+Download the environment variables:
+
+```bash
+vercel env pull
+```
+
+Run the development server:
+
+```bash
+vercel dev
+```
+
+## Development without the Vercel CLI
+
+Create an `.env` file with the following environment variables, which you can get from Joakim.
 
 ```txt
 CONTENTFUL_SPACE_ID=<space_id>
 CONTENTFUL_ACCESS_TOKEN=<access_token>
+CONTENTFUL_PREVIEW_ACCESS_TOKEN=<preview_access_token>
+CONTENTFUL_PREVIEW_SECRET=<preview_secret>
 ```
 
-Then run the development server:
+Run the development server:
 
 ```bash
-now dev
+yarn dev
 ```
 
-To deploy to a feature environment run:
+## Deployments
+
+To deploy to a preview environment run:
 
 ```bash
-now deploy
+vercel deploy
 ```
 
-## Production deployments
-
-To deploy to production manually run:
+To manually deploy to production run:
 
 ```bash
-now deploy --prod
+vercel deploy --prod
 ```
 
 A new production deployment is done automatically whenever code is pushed to the `master` branch on GitHub.
