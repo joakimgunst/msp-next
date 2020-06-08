@@ -2,11 +2,14 @@ import { Document } from '@contentful/rich-text-types';
 import { getContentfulEntries, getContentfulEntry } from './client';
 import { Asset } from 'contentful';
 
-export async function fetchPosts() {
-  return getContentfulEntries<ContentfulPost>({
-    content_type: 'post',
-    order: '-fields.date',
-  });
+export async function fetchPosts(preview?: boolean) {
+  return getContentfulEntries<ContentfulPost>(
+    {
+      content_type: 'post',
+      order: '-fields.date',
+    },
+    preview
+  );
 }
 
 export async function fetchPost(slug: string | string[], preview?: boolean) {
@@ -19,10 +22,13 @@ export async function fetchPost(slug: string | string[], preview?: boolean) {
   );
 }
 
-export async function fetchPages() {
-  return getContentfulEntries<ContentfulPage>({
-    content_type: 'page',
-  });
+export async function fetchPages(preview?: boolean) {
+  return getContentfulEntries<ContentfulPage>(
+    {
+      content_type: 'page',
+    },
+    preview
+  );
 }
 
 export async function fetchPage(slug: string | string[], preview?: boolean) {
@@ -35,18 +41,24 @@ export async function fetchPage(slug: string | string[], preview?: boolean) {
   );
 }
 
-export async function fetchSidebar(slug: string | string[]) {
-  return getContentfulEntry<ContentfulSidebar>({
-    content_type: 'sidebar',
-    'fields.slug': getRootSlug(slug),
-  });
+export async function fetchSidebar(slug: string | string[], preview?: boolean) {
+  return getContentfulEntry<ContentfulSidebar>(
+    {
+      content_type: 'sidebar',
+      'fields.slug': getRootSlug(slug),
+    },
+    preview
+  );
 }
 
-export async function fetchContacts() {
-  return getContentfulEntries<ContentfulContact>({
-    content_type: 'contact',
-    order: 'fields.order,fields.name',
-  });
+export async function fetchContacts(preview?: boolean) {
+  return getContentfulEntries<ContentfulContact>(
+    {
+      content_type: 'contact',
+      order: 'fields.order,fields.name',
+    },
+    preview
+  );
 }
 
 export interface ContentfulPost {

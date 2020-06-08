@@ -28,9 +28,10 @@ function getClient(preview?: boolean) {
 }
 
 export async function getContentfulEntries<T>(
-  query: ContentfulQuery
+  query: ContentfulQuery,
+  preview?: boolean
 ): Promise<T[]> {
-  const entries = await contentfulClient.getEntries<T>(query);
+  const entries = await getClient(preview).getEntries<T>(query);
   return entries.items.map((item) => item.fields);
 }
 

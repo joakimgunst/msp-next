@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
   const slug = params!.slug;
   const [page, sidebar] = await Promise.all([
     fetchPage(slug, preview),
-    fetchSidebar(slug),
+    fetchSidebar(slug, preview),
   ]);
   return { props: { page, sidebar } };
 };
