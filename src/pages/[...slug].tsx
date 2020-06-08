@@ -56,7 +56,7 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
-  const slug = params!.slug;
+  const slug = params!.slug!;
   const [page, sidebar] = await Promise.all([
     fetchPage(slug, preview),
     fetchSidebar(slug, preview),
