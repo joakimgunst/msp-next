@@ -20,6 +20,7 @@ import { siteName } from '../config';
 interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
+  preview: boolean;
 }
 
 const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
@@ -55,13 +56,16 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+}) => {
   const slug = params!.slug!;
   const [page, sidebar] = await Promise.all([
     fetchPage(slug, preview),
     fetchSidebar(slug, preview),
   ]);
-  return { props: { page, sidebar } };
+  return { props: { page, sidebar, preview } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

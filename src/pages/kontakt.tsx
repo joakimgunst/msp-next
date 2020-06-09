@@ -15,6 +15,7 @@ import { siteName } from '../config';
 interface Props {
   contacts: ContentfulContact[];
   sidebar: ContentfulSidebar | null;
+  preview: boolean;
 }
 
 const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
@@ -51,12 +52,12 @@ const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
   </MainContent>
 );
 
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const [contacts, sidebar] = await Promise.all([
     fetchContacts(preview),
     fetchSidebar('kontakt', preview),
   ]);
-  return { props: { contacts, sidebar } };
+  return { props: { contacts, sidebar, preview } };
 };
 
 export default ContactPage;

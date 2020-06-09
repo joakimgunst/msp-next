@@ -21,6 +21,7 @@ interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
   posts: ContentfulPost[] | null;
+  preview: boolean;
 }
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
@@ -60,13 +61,13 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const [page, sidebar, posts] = await Promise.all([
     fetchPage('hem', preview),
     fetchSidebar('hem', preview),
     fetchPosts(preview),
   ]);
-  return { props: { page, sidebar, posts } };
+  return { props: { page, sidebar, posts, preview } };
 };
 
 export default HomePage;

@@ -16,6 +16,7 @@ import { siteName } from '../../config';
 interface Props {
   post: ContentfulPost | null;
   posts: ContentfulPost[] | null;
+  preview: boolean;
 }
 
 const PostPage: NextPage<Props> = ({ post, posts }) => {
@@ -72,13 +73,16 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+}) => {
   const slug = params!.slug!;
   const [post, posts] = await Promise.all([
     fetchPost(slug, preview),
     fetchPosts(),
   ]);
-  return { props: { post, posts } };
+  return { props: { post, posts, preview } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
