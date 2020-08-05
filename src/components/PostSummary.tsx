@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import PostLink from './PostLink';
 import { renderDocument } from '../contentful/render';
-import { ContentfulPostSummary } from '../contentful/post';
+import { ContentfulPostSummary } from '../contentful/posts';
 
 interface Props {
   post: ContentfulPostSummary;

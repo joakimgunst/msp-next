@@ -1,34 +1,53 @@
 import { gql } from '@apollo/client';
 import { Document } from '@contentful/rich-text-types';
 import { graphqlClient } from './client';
+import { getFullSlug } from './utils';
 
-export async function fetchPosts(
-  preview = false
-): Promise<ContentfulPostSummary[]> {
-  const query = gql`
-    {
-      postCollection (preview: ${preview}, order: [date_DESC]) {
-        items {
+const POST_QUERY = gql`
+  query Post($slug: String!, $preview: Boolean!) {
+    postCollection(preview: $preview, where: { slug: $slug }) {
+      items {
+        title
+        slug
+        date
+        image {
+          url
           title
-          slug
-          date
-          lead {
-            json
-          }
+        }
+        lead {
+          json
+        }
+        content {
+          json
         }
       }
     }
-  `;
+  }
+`;
 
-  const result = await graphqlClient.query({ query });
-  return result.data.postCollection.items;
+export async function fetchPost(
+  slug: string | string[],
+  preview = false
+): Promise<ContentfulPost | null> {
+  const result = await graphqlClient.query({
+    query: POST_QUERY,
+    variables: { preview, slug: getFullSlug(slug) },
+  });
+  return result.data.postCollection.items?.[0] ?? null;
 }
 
-export interface ContentfulPostSummary {
+export interface ContentfulPost {
   title: string;
   slug: string;
   date: string;
+  image?: {
+    url: string;
+    title: string;
+  };
   lead: {
+    json: Document;
+  };
+  content: {
     json: Document;
   };
 }

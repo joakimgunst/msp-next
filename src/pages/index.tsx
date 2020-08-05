@@ -11,10 +11,14 @@ import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
 import MainContent from '../components/MainContent';
-import { getOpenGraphImageUrl } from '../contentful/utils';
+import {
+  getOpenGraphImageUrl,
+  getAssetUrl,
+  getAssetTitle,
+} from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
 import { siteName } from '../config';
-import { fetchPosts, ContentfulPostSummary } from '../contentful/post';
+import { fetchPosts, ContentfulPostSummary } from '../contentful/posts';
 
 interface Props {
   page: ContentfulPage | null;
@@ -24,7 +28,10 @@ interface Props {
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
   const title = page?.title ?? siteName;
+
   const ogImageUrl = getOpenGraphImageUrl(page?.image);
+  const imageUrl = getAssetUrl(page?.image)!;
+  const imageTitle = getAssetTitle(page?.image)!;
 
   return (
     <MainContent>
@@ -41,7 +48,7 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
 
       <div>
         <h1>{title}</h1>
-        {page?.image && <HeroImage image={page.image} />}
+        {page?.image && <HeroImage url={imageUrl} title={imageTitle} />}
         {page?.content && <div>{renderDocument(page.content)}</div>}
 
         {posts && (

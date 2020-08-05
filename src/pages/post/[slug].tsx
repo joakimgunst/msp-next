@@ -1,18 +1,18 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import { ContentfulPost, fetchPost } from '../../contentful/data';
 import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
 import { Fragment } from 'react';
-import { getOpenGraphImageUrl } from '../../contentful/utils';
+import { getOpenGraphImageUrl2 } from '../../contentful/utils';
 import NotFoundPage from '../404';
 import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
 import MainContent from '../../components/MainContent';
 import { siteName } from '../../config';
-import { fetchPosts, ContentfulPostSummary } from '../../contentful/post';
+import { fetchPosts, ContentfulPostSummary } from '../../contentful/posts';
+import { fetchPost, ContentfulPost } from '../../contentful/post';
 
 interface Props {
   post: ContentfulPost | null;
@@ -24,7 +24,8 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
     return <NotFoundPage />;
   }
 
-  const ogImageUrl = getOpenGraphImageUrl(post.image);
+  const { image } = post;
+  const ogImageUrl = image ? getOpenGraphImageUrl2(image.url) : null;
 
   return (
     <MainContent>
@@ -43,10 +44,10 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
 
       <article className="post">
         <h1>{post.title}</h1>
-        {post.image && <HeroImage image={post.image} />}
+        {image && <HeroImage url={image.url} title={image.title} />}
         <p className="date">{dayjs(post.date).format('LL')}</p>
-        {renderDocument(post.lead)}
-        {post.content && <ContentBlock content={post.content} />}
+        {renderDocument(post.lead.json)}
+        {post.content && <ContentBlock content={post.content.json} />}
       </article>
 
       {posts && (

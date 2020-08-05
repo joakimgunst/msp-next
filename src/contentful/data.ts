@@ -1,16 +1,7 @@
 import { Document } from '@contentful/rich-text-types';
 import { getContentfulEntries, getContentfulEntry } from './client';
 import { Asset } from 'contentful';
-
-export async function fetchPost(slug: string | string[], preview?: boolean) {
-  return getContentfulEntry<ContentfulPost>(
-    {
-      content_type: 'post',
-      'fields.slug': getFullSlug(slug),
-    },
-    preview
-  );
-}
+import { getFullSlug, getRootSlug } from './utils';
 
 export async function fetchPages(preview?: boolean) {
   return getContentfulEntries<ContentfulPage>(
@@ -51,15 +42,6 @@ export async function fetchContacts(preview?: boolean) {
   );
 }
 
-export interface ContentfulPost {
-  title: string;
-  slug: string;
-  date: string;
-  image?: Asset;
-  lead: Document;
-  content?: Document;
-}
-
 export interface ContentfulPage {
   title: string;
   slug: string;
@@ -78,12 +60,4 @@ export interface ContentfulContact {
   email?: string;
   phone?: string;
   order?: number;
-}
-
-function getFullSlug(slug: string | string[]) {
-  return Array.isArray(slug) ? slug.join('/') : slug;
-}
-
-function getRootSlug(slug: string | string[]) {
-  return Array.isArray(slug) ? slug[0] : slug;
 }

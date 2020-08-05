@@ -10,7 +10,11 @@ import {
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import { Fragment } from 'react';
-import { getOpenGraphImageUrl } from '../contentful/utils';
+import {
+  getOpenGraphImageUrl,
+  getAssetUrl,
+  getAssetTitle,
+} from '../contentful/utils';
 import NotFoundPage from './404';
 import HeroImage from '../components/HeroImage';
 import ContentBlock from '../components/ContentBlock';
@@ -28,6 +32,8 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
   }
 
   const ogImageUrl = getOpenGraphImageUrl(page.image);
+  const imageUrl = getAssetUrl(page?.image)!;
+  const imageTitle = getAssetTitle(page?.image)!;
 
   return (
     <MainContent>
@@ -46,7 +52,7 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
 
       <div className="page">
         <h1>{page.title}</h1>
-        {page.image && <HeroImage image={page.image} />}
+        {page.image && <HeroImage url={imageUrl} title={imageTitle} />}
         {page.content && <ContentBlock content={page.content} />}
       </div>
 
