@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { graphqlClient } from './client';
+import { getClient } from './client';
 
 const CONTACTS_QUERY = gql`
   query Contacts($preview: Boolean!) {
@@ -21,7 +21,7 @@ const CONTACTS_QUERY = gql`
 export async function fetchContacts(
   preview = false
 ): Promise<ContentfulContact[]> {
-  const result = await graphqlClient.query({
+  const result = await getClient(preview).query({
     query: CONTACTS_QUERY,
     variables: { preview },
   });

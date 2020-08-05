@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { Document } from '@contentful/rich-text-types';
-import { graphqlClient } from './client';
+import { getClient } from './client';
 import { getFullSlug } from './utils';
 
 const PAGE_QUERY = gql`
@@ -25,7 +25,7 @@ export async function fetchPage(
   slug: string | string[],
   preview = false
 ): Promise<ContentfulPage | null> {
-  const result = await graphqlClient.query({
+  const result = await getClient(preview).query({
     query: PAGE_QUERY,
     variables: { preview, slug: getFullSlug(slug) },
   });

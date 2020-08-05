@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { graphqlClient } from './client';
+import { getClient } from './client';
 
 const PAGES_QUERY = gql`
   query Pages($preview: Boolean!) {
@@ -15,7 +15,7 @@ const PAGES_QUERY = gql`
 export async function fetchPages(
   preview = false
 ): Promise<ContentfulPageSummary[]> {
-  const result = await graphqlClient.query({
+  const result = await getClient(preview).query({
     query: PAGES_QUERY,
     variables: { preview },
   });

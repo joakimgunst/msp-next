@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { Document } from '@contentful/rich-text-types';
-import { graphqlClient } from './client';
+import { getClient } from './client';
 import { getRootSlug } from './utils';
 
 const SIDEBAR_QUERY = gql`
@@ -19,7 +19,7 @@ export async function fetchSidebar(
   slug: string | string[],
   preview = false
 ): Promise<ContentfulSidebar | null> {
-  const result = await graphqlClient.query({
+  const result = await getClient(preview).query({
     query: SIDEBAR_QUERY,
     variables: { preview, slug: getRootSlug(slug) },
   });

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { Document } from '@contentful/rich-text-types';
-import { graphqlClient } from './client';
+import { getClient } from './client';
 
 const POSTS_QUERY = gql`
   query Posts($preview: Boolean!) {
@@ -20,7 +20,7 @@ const POSTS_QUERY = gql`
 export async function fetchPosts(
   preview = false
 ): Promise<ContentfulPostSummary[]> {
-  const result = await graphqlClient.query({
+  const result = await getClient(preview).query({
     query: POSTS_QUERY,
     variables: { preview },
   });

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { Document } from '@contentful/rich-text-types';
-import { graphqlClient } from './client';
+import { getClient } from './client';
 import { getFullSlug } from './utils';
 
 const POST_QUERY = gql`
@@ -29,7 +29,7 @@ export async function fetchPost(
   slug: string | string[],
   preview = false
 ): Promise<ContentfulPost | null> {
-  const result = await graphqlClient.query({
+  const result = await getClient(preview).query({
     query: POST_QUERY,
     variables: { preview, slug: getFullSlug(slug) },
   });

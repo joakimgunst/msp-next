@@ -1,4 +1,3 @@
-import { createClient } from 'contentful';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 if (!process.env.CONTENTFUL_SPACE_ID) {
@@ -13,21 +12,24 @@ if (!process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN) {
   throw new Error('CONTENTFUL_PREVIEW_ACCESS_TOKEN env variable undefined');
 }
 
-const contentfulClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
+const graphqlUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
 
-const previewClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
-  host: 'preview.contentful.com',
-});
-
-export const graphqlClient = new ApolloClient({
-  uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+const contentfulClient = new ApolloClient({
+  uri: graphqlUrl,
   cache: new InMemoryCache(),
   headers: {
     authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
   },
 });
+
+const previewClient = new ApolloClient({
+  uri: graphqlUrl,
+  cache: new InMemoryCache(),
+  headers: {
+    authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
+  },
+});
+
+export function getClient(preview: boolean) {
+  return preview ? previewClient : contentfulClient;
+}
