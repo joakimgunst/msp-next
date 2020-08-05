@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import { ContentfulPost, fetchPost, fetchPosts } from '../../contentful/data';
+import { ContentfulPost, fetchPost } from '../../contentful/data';
 import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
@@ -12,10 +12,11 @@ import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
 import MainContent from '../../components/MainContent';
 import { siteName } from '../../config';
+import { fetchPosts, ContentfulPostSummary } from '../../contentful/post';
 
 interface Props {
   post: ContentfulPost | null;
-  posts: ContentfulPost[] | null;
+  posts: ContentfulPostSummary[];
 }
 
 const PostPage: NextPage<Props> = ({ post, posts }) => {
@@ -72,11 +73,14 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({
+  params,
+  preview,
+}) => {
   const slug = params!.slug!;
   const [post, posts] = await Promise.all([
     fetchPost(slug, preview),
-    fetchPosts(),
+    fetchPosts(preview),
   ]);
   return { props: { post, posts } };
 };

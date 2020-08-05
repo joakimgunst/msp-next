@@ -1,10 +1,10 @@
-import { ContentfulPost } from '../contentful/data';
 import dayjs from 'dayjs';
 import PostLink from './PostLink';
 import { renderDocument } from '../contentful/render';
+import { ContentfulPostSummary } from '../contentful/post';
 
 interface Props {
-  post: ContentfulPost;
+  post: ContentfulPostSummary;
 }
 
 const PostSummary: React.FC<Props> = ({ post }) => (
@@ -15,7 +15,7 @@ const PostSummary: React.FC<Props> = ({ post }) => (
       </PostLink>
     </h3>
     <div className="date">{dayjs(post.date).format('LL')}</div>
-    {renderDocument(post.lead)}
+    {renderDocument(post.lead.json)}
 
     <style jsx>{`
       .title {

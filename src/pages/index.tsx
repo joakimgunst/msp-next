@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
 import {
-  ContentfulPost,
-  fetchPosts,
   fetchPage,
   fetchSidebar,
   ContentfulPage,
@@ -16,11 +14,12 @@ import MainContent from '../components/MainContent';
 import { getOpenGraphImageUrl } from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
 import { siteName } from '../config';
+import { fetchPosts, ContentfulPostSummary } from '../contentful/post';
 
 interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
-  posts: ContentfulPost[] | null;
+  posts: ContentfulPostSummary[];
 }
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
@@ -60,7 +59,7 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ preview }) => {
   const [page, sidebar, posts] = await Promise.all([
     fetchPage('hem', preview),
     fetchSidebar('hem', preview),

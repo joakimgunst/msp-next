@@ -2,16 +2,6 @@ import { Document } from '@contentful/rich-text-types';
 import { getContentfulEntries, getContentfulEntry } from './client';
 import { Asset } from 'contentful';
 
-export async function fetchPosts(preview?: boolean) {
-  return getContentfulEntries<ContentfulPost>(
-    {
-      content_type: 'post',
-      order: '-fields.date',
-    },
-    preview
-  );
-}
-
 export async function fetchPost(slug: string | string[], preview?: boolean) {
   return getContentfulEntry<ContentfulPost>(
     {

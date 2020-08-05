@@ -1,4 +1,5 @@
 import { createClient } from 'contentful';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 if (!process.env.CONTENTFUL_SPACE_ID) {
   throw new Error('CONTENTFUL_SPACE_ID env variable undefined');
@@ -46,3 +47,11 @@ export async function getContentfulEntry<T>(
 interface ContentfulQuery {
   [key: string]: string;
 }
+
+export const graphqlClient = new ApolloClient({
+  uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+  cache: new InMemoryCache(),
+  headers: {
+    authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+  },
+});
