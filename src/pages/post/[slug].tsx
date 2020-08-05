@@ -5,7 +5,7 @@ import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
 import { Fragment } from 'react';
-import { getOpenGraphImageUrl2 } from '../../contentful/utils';
+import { getOGImageUrl } from '../../contentful/utils';
 import NotFoundPage from '../404';
 import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
@@ -25,7 +25,6 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
   }
 
   const { image } = post;
-  const ogImageUrl = image ? getOpenGraphImageUrl2(image.url) : null;
 
   return (
     <MainContent>
@@ -34,9 +33,9 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
           {post.title} – {siteName}
         </title>
         <meta property="og:title" content={post.title} />
-        {ogImageUrl && (
+        {image && (
           <Fragment>
-            <meta property="og:image" content={ogImageUrl} />
+            <meta property="og:image" content={getOGImageUrl(image.url)} />
             <meta name="twitter:card" content="summary_large_image" />
           </Fragment>
         )}

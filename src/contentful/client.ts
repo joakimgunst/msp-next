@@ -24,30 +24,6 @@ const previewClient = createClient({
   host: 'preview.contentful.com',
 });
 
-function getClient(preview?: boolean) {
-  return preview ? previewClient : contentfulClient;
-}
-
-export async function getContentfulEntries<T>(
-  query: ContentfulQuery,
-  preview?: boolean
-): Promise<T[]> {
-  const entries = await getClient(preview).getEntries<T>(query);
-  return entries.items.map((item) => item.fields);
-}
-
-export async function getContentfulEntry<T>(
-  query: ContentfulQuery,
-  preview?: boolean
-): Promise<T | null> {
-  const entries = await getClient(preview).getEntries<T>(query);
-  return entries.items[0]?.fields ?? null;
-}
-
-interface ContentfulQuery {
-  [key: string]: string;
-}
-
 export const graphqlClient = new ApolloClient({
   uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
   cache: new InMemoryCache(),

@@ -1,24 +1,17 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
-import {
-  fetchPage,
-  fetchSidebar,
-  ContentfulPage,
-  ContentfulSidebar,
-} from '../contentful/data';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
 import MainContent from '../components/MainContent';
-import {
-  getOpenGraphImageUrl,
-  getAssetUrl,
-  getAssetTitle,
-} from '../contentful/utils';
+import { getOGImageUrl } from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
 import { siteName } from '../config';
 import { fetchPosts, ContentfulPostSummary } from '../contentful/posts';
+import { fetchPage, ContentfulPage } from '../contentful/page';
+import NotFoundPage from './404';
+import { fetchSidebar, ContentfulSidebar } from '../contentful/siderbar';
 
 interface Props {
   page: ContentfulPage | null;
@@ -27,20 +20,21 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
-  const title = page?.title ?? siteName;
+  if (!page) {
+    return <NotFoundPage />;
+  }
 
-  const ogImageUrl = getOpenGraphImageUrl(page?.image);
-  const imageUrl = getAssetUrl(page?.image)!;
-  const imageTitle = getAssetTitle(page?.image)!;
+  const { image, content } = page;
+  const title = page.title ?? siteName;
 
   return (
     <MainContent>
       <Head>
         <title>{title}</title>
         <meta property="og:title" content={title} />
-        {ogImageUrl && (
+        {image && (
           <Fragment>
-            <meta property="og:image" content={ogImageUrl} />
+            <meta property="og:image" content={getOGImageUrl(image.url)} />
             <meta name="twitter:card" content="summary_large_image" />
           </Fragment>
         )}
@@ -48,20 +42,18 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
 
       <div>
         <h1>{title}</h1>
-        {page?.image && <HeroImage url={imageUrl} title={imageTitle} />}
-        {page?.content && <div>{renderDocument(page.content)}</div>}
+        {image && <HeroImage url={image.url} title={image.title} />}
+        {content && <div>{renderDocument(content.json)}</div>}
 
-        {posts && (
-          <Fragment>
-            <h2>Aktuellt</h2>
-            {posts.map((post) => (
-              <PostSummary key={post.slug} post={post} />
-            ))}
-          </Fragment>
-        )}
+        <h2>Aktuellt</h2>
+        {posts.map((post) => (
+          <PostSummary key={post.slug} post={post} />
+        ))}
       </div>
 
-      {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+      {sidebar?.content && (
+        <Sidebar>{renderDocument(sidebar.content.json)}</Sidebar>
+      )}
     </MainContent>
   );
 };
