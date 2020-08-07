@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import dayjs from 'dayjs';
-import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
 import { Fragment } from 'react';
@@ -11,8 +10,13 @@ import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
 import MainContent from '../../components/MainContent';
 import { siteName } from '../../config';
-import { fetchPosts, ContentfulPostSummary } from '../../contentful/posts';
+import { fetchPostSlugs } from '../../contentful/postSlugs';
 import { fetchPost, ContentfulPost } from '../../contentful/post';
+import { renderRichText } from '../../contentful/render';
+import {
+  fetchPostSummaries,
+  ContentfulPostSummary,
+} from '../../contentful/postSummaries';
 
 interface Props {
   post: ContentfulPost | null;
@@ -45,8 +49,8 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
         <h1>{post.title}</h1>
         {image && <HeroImage url={image.url} title={image.title} />}
         <p className="date">{dayjs(post.date).format('LL')}</p>
-        {renderDocument(post.lead.json)}
-        {post.content && <ContentBlock content={post.content.json} />}
+        {renderRichText(post.lead)}
+        {post.content && <ContentBlock content={post.content} />}
       </article>
 
       {posts && (
@@ -80,13 +84,13 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   const slug = params!.slug!;
   const [post, posts] = await Promise.all([
     fetchPost(slug, preview),
-    fetchPosts(preview),
+    fetchPostSummaries(preview),
   ]);
   return { props: { post, posts } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await fetchPosts();
+  const posts = await fetchPostSlugs();
   const paths = posts.map((post) => ({ params: { slug: post.slug } }));
   return { paths, fallback: false };
 };

@@ -1,11 +1,11 @@
 import { gql } from '@apollo/client';
-import { Document } from '@contentful/rich-text-types';
 import { getClient } from './client';
 import { getFullSlug } from './utils';
+import { RICH_TEXT, ContentfulRichText } from './richText';
 
 const POST_QUERY = gql`
   query Post($slug: String!, $preview: Boolean!) {
-    postCollection(preview: $preview, where: { slug: $slug }) {
+    postCollection(preview: $preview, limit: 1, where: { slug: $slug }) {
       items {
         title
         slug
@@ -14,12 +14,8 @@ const POST_QUERY = gql`
           url
           title
         }
-        lead {
-          json
-        }
-        content {
-          json
-        }
+        lead ${RICH_TEXT}
+        content ${RICH_TEXT}
       }
     }
   }
@@ -44,10 +40,6 @@ export interface ContentfulPost {
     url: string;
     title: string;
   };
-  lead: {
-    json: Document;
-  };
-  content?: {
-    json: Document;
-  };
+  lead: ContentfulRichText;
+  content?: ContentfulRichText;
 }

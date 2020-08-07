@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import { renderDocument } from '../contentful/render';
+import { renderRichText } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import { Fragment } from 'react';
 import { getOGImageUrl } from '../contentful/utils';
@@ -9,9 +9,9 @@ import HeroImage from '../components/HeroImage';
 import ContentBlock from '../components/ContentBlock';
 import MainContent from '../components/MainContent';
 import { siteName } from '../config';
-import { fetchPages } from '../contentful/pages';
+import { fetchPageSlugs } from '../contentful/pageSlugs';
 import { fetchPage, ContentfulPage } from '../contentful/page';
-import { fetchSidebar, ContentfulSidebar } from '../contentful/siderbar';
+import { fetchSidebar, ContentfulSidebar } from '../contentful/sidebar';
 
 interface Props {
   page: ContentfulPage | null;
@@ -43,12 +43,10 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
       <div className="page">
         <h1>{page.title}</h1>
         {image && <HeroImage url={image.url} title={image.title} />}
-        {content && <ContentBlock content={content.json} />}
+        {content && <ContentBlock content={content} />}
       </div>
 
-      {sidebar?.content && (
-        <Sidebar>{renderDocument(sidebar.content.json)}</Sidebar>
-      )}
+      {sidebar?.content && <Sidebar>{renderRichText(sidebar.content)}</Sidebar>}
     </MainContent>
   );
 };
@@ -63,7 +61,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const pages = await fetchPages();
+  const pages = await fetchPageSlugs();
   const paths = pages.map((page) => ({
     params: { slug: page.slug.split('/') },
   }));

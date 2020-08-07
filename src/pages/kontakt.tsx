@@ -2,11 +2,11 @@ import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
 import Contact from '../components/Contact';
 import Sidebar from '../components/Sidebar';
-import { renderDocument } from '../contentful/render';
+import { renderRichText } from '../contentful/render';
 import MainContent from '../components/MainContent';
 import { siteName } from '../config';
 import { fetchContacts, ContentfulContact } from '../contentful/contacts';
-import { fetchSidebar, ContentfulSidebar } from '../contentful/siderbar';
+import { fetchSidebar, ContentfulSidebar } from '../contentful/sidebar';
 
 interface Props {
   contacts: ContentfulContact[];
@@ -28,9 +28,7 @@ const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
       </div>
     </div>
 
-    {sidebar?.content && (
-      <Sidebar>{renderDocument(sidebar.content.json)}</Sidebar>
-    )}
+    {sidebar?.content && <Sidebar>{renderRichText(sidebar.content)}</Sidebar>}
 
     <style jsx>{`
       .contacts {

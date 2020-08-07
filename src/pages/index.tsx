@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
-import { renderDocument } from '../contentful/render';
+import { renderRichText } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
 import { Fragment } from 'react';
@@ -8,10 +8,13 @@ import MainContent from '../components/MainContent';
 import { getOGImageUrl } from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
 import { siteName } from '../config';
-import { fetchPosts, ContentfulPostSummary } from '../contentful/posts';
 import { fetchPage, ContentfulPage } from '../contentful/page';
 import NotFoundPage from './404';
-import { fetchSidebar, ContentfulSidebar } from '../contentful/siderbar';
+import { fetchSidebar, ContentfulSidebar } from '../contentful/sidebar';
+import {
+  ContentfulPostSummary,
+  fetchPostSummaries,
+} from '../contentful/postSummaries';
 
 interface Props {
   page: ContentfulPage | null;
@@ -43,7 +46,7 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
       <div>
         <h1>{title}</h1>
         {image && <HeroImage url={image.url} title={image.title} />}
-        {content && <div>{renderDocument(content.json)}</div>}
+        {content && <div>{renderRichText(content)}</div>}
 
         <h2>Aktuellt</h2>
         {posts.map((post) => (
@@ -51,9 +54,7 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
         ))}
       </div>
 
-      {sidebar?.content && (
-        <Sidebar>{renderDocument(sidebar.content.json)}</Sidebar>
-      )}
+      {sidebar?.content && <Sidebar>{renderRichText(sidebar.content)}</Sidebar>}
     </MainContent>
   );
 };
@@ -62,7 +63,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ preview }) => {
   const [page, sidebar, posts] = await Promise.all([
     fetchPage('hem', preview),
     fetchSidebar('hem', preview),
-    fetchPosts(preview),
+    fetchPostSummaries(preview),
   ]);
   return { props: { page, sidebar, posts } };
 };

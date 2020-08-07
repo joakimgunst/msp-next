@@ -1,15 +1,13 @@
 import { gql } from '@apollo/client';
-import { Document } from '@contentful/rich-text-types';
 import { getClient } from './client';
 import { getRootSlug } from './utils';
+import { ContentfulRichText, RICH_TEXT } from './richText';
 
 const SIDEBAR_QUERY = gql`
   query Sidebar($slug: String!, $preview: Boolean!) {
-    sidebarCollection(preview: $preview, where: { slug: $slug }) {
+    sidebarCollection(preview: $preview, limit: 1, where: { slug: $slug }) {
       items {
-        content {
-          json
-        }
+        content ${RICH_TEXT}
       }
     }
   }
@@ -27,7 +25,5 @@ export async function fetchSidebar(
 }
 
 export interface ContentfulSidebar {
-  content?: {
-    json: Document;
-  };
+  content?: ContentfulRichText;
 }
