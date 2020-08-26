@@ -16,6 +16,7 @@ import HeroImage from '../components/HeroImage';
 import ContentBlock from '../components/ContentBlock';
 import MainContent from '../components/MainContent';
 import { siteName } from '../config';
+import { ParsedUrlQuery } from 'querystring';
 
 interface Props {
   page: ContentfulPage | null;
@@ -56,11 +57,15 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({
+interface Query extends ParsedUrlQuery {
+  slug: string[];
+}
+
+export const getStaticProps: GetStaticProps<Props, Query> = async ({
   params,
   preview = false,
 }) => {
-  const slug = params!.slug!;
+  const slug = params!.slug;
   const [page, sidebar] = await Promise.all([
     fetchPage(slug, preview),
     fetchSidebar(slug, preview),
@@ -68,7 +73,7 @@ export const getStaticProps: GetStaticProps = async ({
   return { props: { page, sidebar, preview } };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Query> = async () => {
   const pages = await fetchPages();
   const paths = pages.map((page) => ({
     params: { slug: page.slug.split('/') },

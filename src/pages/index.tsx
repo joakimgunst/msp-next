@@ -61,7 +61,9 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({
+  preview = false,
+}) => {
   const [page, sidebar, posts] = await Promise.all([
     fetchPage('hem', preview),
     fetchSidebar('hem', preview),

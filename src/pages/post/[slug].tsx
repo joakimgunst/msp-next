@@ -12,6 +12,7 @@ import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
 import MainContent from '../../components/MainContent';
 import { siteName } from '../../config';
+import { ParsedUrlQuery } from 'querystring';
 
 interface Props {
   post: ContentfulPost | null;
@@ -73,7 +74,11 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({
+interface Query extends ParsedUrlQuery {
+  slug: string;
+}
+
+export const getStaticProps: GetStaticProps<Props, Query> = async ({
   params,
   preview = false,
 }) => {
@@ -85,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({
   return { props: { post, posts, preview } };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Query> = async () => {
   const posts = await fetchPosts();
   const paths = posts.map((post) => ({ params: { slug: post.slug } }));
   return { paths, fallback: false };

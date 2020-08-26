@@ -52,7 +52,9 @@ const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
   </MainContent>
 );
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({
+  preview = false,
+}) => {
   const [contacts, sidebar] = await Promise.all([
     fetchContacts(preview),
     fetchSidebar('kontakt', preview),
