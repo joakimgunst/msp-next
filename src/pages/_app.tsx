@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Router from 'next/router';
 import { pageview } from '../lib/gtag';
+import PreviewIndicator from '../components/PreviewIndicator';
 
 dayjs.extend(LocalizedFormat);
 dayjs.locale('sv');
@@ -18,6 +19,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Header />
+      {pageProps.preview && <PreviewIndicator />}
       <Component {...pageProps} />
     </Layout>
   );

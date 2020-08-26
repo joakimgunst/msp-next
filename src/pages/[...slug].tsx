@@ -16,10 +16,12 @@ import HeroImage from '../components/HeroImage';
 import ContentBlock from '../components/ContentBlock';
 import MainContent from '../components/MainContent';
 import { siteName } from '../config';
+import { ParsedUrlQuery } from 'querystring';
 
 interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
+  preview: boolean;
 }
 
 const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
@@ -55,16 +57,23 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
-  const slug = params!.slug!;
+interface Query extends ParsedUrlQuery {
+  slug: string[];
+}
+
+export const getStaticProps: GetStaticProps<Props, Query> = async ({
+  params,
+  preview = false,
+}) => {
+  const slug = params!.slug;
   const [page, sidebar] = await Promise.all([
     fetchPage(slug, preview),
     fetchSidebar(slug, preview),
   ]);
-  return { props: { page, sidebar } };
+  return { props: { page, sidebar, preview } };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Query> = async () => {
   const pages = await fetchPages();
   const paths = pages.map((page) => ({
     params: { slug: page.slug.split('/') },
