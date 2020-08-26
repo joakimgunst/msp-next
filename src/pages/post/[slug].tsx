@@ -93,7 +93,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({
 export const getStaticPaths: GetStaticPaths<Query> = async () => {
   const posts = await fetchPosts();
   const paths = posts.map((post) => ({ params: { slug: post.slug } }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export default PostPage;

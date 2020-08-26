@@ -78,7 +78,7 @@ export const getStaticPaths: GetStaticPaths<Query> = async () => {
   const paths = pages.map((page) => ({
     params: { slug: page.slug.split('/') },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export default StandardPage;
