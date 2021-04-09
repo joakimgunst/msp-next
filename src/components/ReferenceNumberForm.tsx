@@ -46,7 +46,7 @@ const ReferenceNumberForm: NextPage = () => {
       <form>
         <input
           value={value}
-          aria-lanel="Namn"
+          aria-label="Namn"
           placeholder="Samuel Scout"
           onChange={handleChange}
           onKeyPress={handleKeyPress}
