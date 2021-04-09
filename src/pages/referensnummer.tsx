@@ -8,7 +8,8 @@ import { ReferenceNumberItem } from './api/reference';
 
 const ReferenceNumberPage: NextPage = () => {
   const [value, setValue] = useState<string>();
-  const [response, setResponse] = useState<ReferenceNumberItem>();
+  const [loading, setLoading] = useState(false);
+  const [number, setNumber] = useState<number>();
   const [error, setError] = useState<string>();
 
   const notFound = error && error.includes('404');
@@ -17,19 +18,21 @@ const ReferenceNumberPage: NextPage = () => {
   async function fetchNumber() {
     if (!value) return;
     try {
+      setNumber(undefined);
+      setError(undefined);
+      setLoading(true);
       const response = await axios.get<ReferenceNumberItem>(
         `/api/reference?name=${encodeURIComponent(value)}`
       );
-      setResponse(response.data);
-      setError(undefined);
+      setNumber(response.data.referenceNumber);
     } catch (e) {
-      setResponse(undefined);
       setError(e.message);
     }
+    setLoading(false);
   }
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setResponse(undefined);
+    setNumber(undefined);
     setError(undefined);
     setValue(e.target.value);
   }
@@ -40,7 +43,6 @@ const ReferenceNumberPage: NextPage = () => {
       fetchNumber();
     }
   }
-
   return (
     <MainContent>
       <Head>
@@ -56,27 +58,26 @@ const ReferenceNumberPage: NextPage = () => {
           efternamn (inte smeknamn) i fältet och tryck på Sök. Om det här inte
           lyckas så kan du kontakta kårsekreteraren.
         </p>
-        <form>
-          <input
-            value={value}
-            aria-lanel="Namn"
-            placeholder="Samuel Scout"
-            onChange={handleChange}
-            onKeyPress={handleKeyPress}
-          />
-          <button type="button" onClick={fetchNumber}>
-            Sök
-          </button>
-        </form>
-        {response && (
-          <div>
-            Ditt referensnummer är <b>{response.referenceNumber}</b>
-          </div>
-        )}
-        {notFound && <div>Inget referensnummer hittades</div>}
-        {otherError && (
-          <div>Ett problem uppstod, vänligen meddela kårsekreteraren</div>
-        )}
+        <div className="grid">
+          <form>
+            <input
+              value={value}
+              aria-lanel="Namn"
+              placeholder="Samuel Scout"
+              onChange={handleChange}
+              onKeyPress={handleKeyPress}
+            />
+            <button type="button" disabled={!value} onClick={fetchNumber}>
+              Sök
+            </button>
+          </form>
+          {loading && <span>Söker...</span>}
+          {number && <span>Ditt referensnummer är {number}</span>}
+          {notFound && <span>Inget referensnummer hittades</span>}
+          {otherError && (
+            <span>Ett problem uppstod, vänligen meddela kårsekreteraren</span>
+          )}
+        </div>
       </div>
 
       <style jsx>{`
@@ -85,8 +86,18 @@ const ReferenceNumberPage: NextPage = () => {
           height: 600px;
         }
 
-        form {
-          margin-bottom: 8px;
+        .grid {
+          display: grid;
+          grid-column-gap: 16px;
+          grid-row-gap: 8px;
+          align-items: center;
+          font-family: var(--font-sans);
+        }
+
+        @media (min-width: 640px) {
+          .grid {
+            grid-template-columns: auto 1fr;
+          }
         }
 
         input {
