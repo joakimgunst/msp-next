@@ -7,7 +7,7 @@ interface ValueRange {
   values: [string, string][];
 }
 
-interface Item {
+export interface ReferenceNumberItem {
   name: string;
   referenceNumber: number;
 }
@@ -36,7 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const items = response.data.values
       .slice(1)
       .filter((v) => v[0])
-      .map<Item>((v) => ({
+      .map<ReferenceNumberItem>((v) => ({
         name: v[0],
         referenceNumber: parseInt(v[1]),
       }));
