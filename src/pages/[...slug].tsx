@@ -73,9 +73,13 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({
   return { props: { page, sidebar, preview } };
 };
 
+// These pages should not be automatically generated because they are used in custom pages
+const excludedPages = ['hem', 'referensnummer'];
+
 export const getStaticPaths: GetStaticPaths<Query> = async () => {
   const pages = await fetchPages();
-  const paths = pages.map((page) => ({
+  const filteredPages = pages.filter((p) => !excludedPages.includes(p.slug));
+  const paths = filteredPages.map((page) => ({
     params: { slug: page.slug.split('/') },
   }));
   return { paths, fallback: true };
