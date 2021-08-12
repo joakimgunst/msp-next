@@ -26,11 +26,11 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Alegreya:400,700,400italic,700italic"
+            href="https://fonts.googleapis.com/css?family=Alegreya:400,700,400italic,700italic&display=swap"
           />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,400italic,700italic"
+            href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,400italic,700italic&display=swap"
           />
           <script
             async
