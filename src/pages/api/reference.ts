@@ -14,7 +14,10 @@ export interface ReferenceNumberItem {
 
 const SHEET_NAME = 'Sheet1';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
   const spreadsheetId = process.env.REFERENCE_NUMBERS_SPREADSHEET_ID;
   const { name } = req.query;
@@ -52,4 +55,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   } catch {
     return res.status(502).json({ message: 'Error while fetching data' });
   }
-};
+}
