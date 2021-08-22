@@ -2,11 +2,12 @@ import { Document } from '@contentful/rich-text-types';
 import { getContentfulEntries, getContentfulEntry } from './client';
 import { Asset } from 'contentful';
 
-export async function fetchPosts(preview?: boolean) {
+export async function fetchPosts(preview?: boolean, limit = 100) {
   return getContentfulEntries<ContentfulPost>(
     {
       content_type: 'post',
       order: '-fields.date',
+      limit: limit.toString(),
     },
     preview
   );
