@@ -7,7 +7,6 @@ import { siteName } from '../config';
 
 interface Props {
   posts: ContentfulPost[];
-  preview: boolean;
 }
 
 const NewsPage: NextPage<Props> = ({ posts }) => {
@@ -34,7 +33,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   preview = false,
 }) => {
   const posts = await fetchPosts(preview);
-  return { props: { posts, preview } };
+  return { props: { posts } };
 };
 
 export default NewsPage;
