@@ -16,11 +16,12 @@ import MainContent from '../components/MainContent';
 import { getOpenGraphImageUrl } from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
 import { siteName } from '../config';
+import Link from 'next/link';
 
 interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
-  posts: ContentfulPost[] | null;
+  posts: ContentfulPost[];
   preview: boolean;
 }
 
@@ -46,17 +47,27 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
         {page?.image && <HeroImage image={page.image} />}
         {page?.content && <div>{renderDocument(page.content)}</div>}
 
-        {posts && (
-          <Fragment>
-            <h2>Aktuellt</h2>
-            {posts.map((post) => (
-              <PostSummary key={post.slug} post={post} />
-            ))}
-          </Fragment>
-        )}
+        <h2>Aktuellt</h2>
+        {posts.map((post) => (
+          <PostSummary key={post.slug} post={post} />
+        ))}
+
+        <div className="show-all">
+          <Link href="/aktuellt">
+            <a>Visa alla nyheter...</a>
+          </Link>
+        </div>
       </div>
 
       {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+
+      <style jsx>{`
+        .show-all {
+          display: flex;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+      `}</style>
     </MainContent>
   );
 };
@@ -67,7 +78,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   const [page, sidebar, posts] = await Promise.all([
     fetchPage('hem', preview),
     fetchSidebar('hem', preview),
-    fetchPosts(preview),
+    fetchPosts(preview, 3),
   ]);
   return { props: { page, sidebar, posts, preview } };
 };
