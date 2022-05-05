@@ -24,14 +24,6 @@ class MyDocument extends Document {
           />
           <meta name="description" content={siteDescription} />
           <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Alegreya:400,700,400italic,700italic&display=swap"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,400italic,700italic&display=swap"
-          />
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}

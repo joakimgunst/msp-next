@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Alegreya";
+  font-weight: normal;
+  src: url("/fonts/Alegreya-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Alegreya";
+  font-style: italic;
+  src: url("/fonts/Alegreya-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Alegreya";
+  font-weight: bold;
+  src: url("/fonts/Alegreya-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Alegreya";
+  font-weight: bold;
+  font-style: italic;
+  src: url("/fonts/Alegreya-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  src: url("/fonts/AlegreyaSans-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: italic;
+  src: url("/fonts/AlegreyaSans-Italic.woff2");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: bold;
+  src: url("/fonts/AlegreyaSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: bold;
+  font-style: italic;
+  src: url("/fonts/AlegreyaSans-BoldItalic.ttf");
+}
+
