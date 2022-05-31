@@ -2,6 +2,7 @@
   "name": "msp-next",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "yarn@1.22.18",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
