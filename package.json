@@ -11,7 +11,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "15.1.0",
+    "@contentful/rich-text-react-renderer": "15.12.1",
     "axios": "0.21.2",
     "classnames": "2.3.1",
     "contentful": "8.4.2",

@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@contentful/rich-text-react-renderer': 15.1.0
+  '@contentful/rich-text-react-renderer': 15.12.1
   '@contentful/rich-text-types': ^15.12.1
   '@types/gtag.js': 0.0.7
   '@types/node': 16.6.0
@@ -20,7 +20,7 @@ specifiers:
   typescript: 4.3.5
 
 dependencies:
-  '@contentful/rich-text-react-renderer': 15.1.0_sfoxds7t5ydpegc3knd667wn6m
+  '@contentful/rich-text-react-renderer': 15.12.1_sfoxds7t5ydpegc3knd667wn6m
   axios: 0.21.2
   classnames: 2.3.1
   contentful: 8.4.2
@@ -77,12 +77,12 @@ packages:
       regenerator-runtime: 0.13.9
     dev: true
 
-  /@contentful/rich-text-react-renderer/15.1.0_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-/oo1zJDaYbc9kF7GjtfSrFMc38QucvVtci887RaMZdTJBLC4wyfoFGpeXo8c1xHkbVUeey13eEfEh2356dx20g==}
+  /@contentful/rich-text-react-renderer/15.12.1_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-bQ69cN51iGBTF3/nYi5MGUaDJ/lnrEXtCUBCxulIZ0fLS/AAEledZTJcEKs+PKeYYgDqiUVDsmx2xZP2QsJJ+Q==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
-      react: ^16.8.6 || ^17.0.0
-      react-dom: ^16.8.6 || ^17.0.0
+      react: ^16.8.6 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
     dependencies:
       '@contentful/rich-text-types': 15.12.1
       react: 17.0.2
