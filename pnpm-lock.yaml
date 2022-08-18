@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@contentful/rich-text-react-renderer': 15.12.1
   '@contentful/rich-text-types': ^15.12.1
-  '@types/gtag.js': 0.0.7
+  '@types/gtag.js': 0.0.10
   '@types/node': 16.11.47
   '@types/react': 17.0.17
   axios: 0.21.2
@@ -32,7 +32,7 @@ dependencies:
 
 devDependencies:
   '@contentful/rich-text-types': 15.12.1
-  '@types/gtag.js': 0.0.7
+  '@types/gtag.js': 0.0.10
   '@types/node': 16.11.47
   '@types/react': 17.0.17
   eslint: 7.32.0
@@ -268,8 +268,8 @@ packages:
     dependencies:
       tslib: 2.4.0
 
-  /@types/gtag.js/0.0.7:
-    resolution: {integrity: sha512-Kl5beBoB0OXw7WeFgHHpLEchvC7HyIu3v1AksNNTemAF6jmEmQGqhZQSHcG6BOU/Lq0xsByQNqLzicLPjVkxYQ==}
+  /@types/gtag.js/0.0.10:
+    resolution: {integrity: sha512-98Hy7woUb3jMAMXkZQwfIOYNyfxmI0+U4m0PpCGdnd/FHk0tDpQFCqgXdNkdEoXsKkcGya/2Gew1cAJjKJspVw==}
     dev: true
 
   /@types/json5/0.0.29:
