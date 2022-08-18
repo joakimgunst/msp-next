@@ -1,4 +1,8 @@
-const Sidebar: React.FC = ({ children }) => (
+interface Props {
+  children?: React.ReactNode;
+}
+
+const Sidebar: React.FC<Props> = ({ children }) => (
   <aside className="sidebar">
     {children}
 
