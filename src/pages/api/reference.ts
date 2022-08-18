@@ -1,4 +1,4 @@
-import axios from 'axios';
+import ky from 'ky';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 interface ValueRange {
@@ -34,9 +34,9 @@ export default async function handler(
 
   try {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${SHEET_NAME}?key=${apiKey}`;
-    const response = await axios.get<ValueRange>(url);
+    const data = await ky.get(url).json<ValueRange>();
 
-    const items = response.data.values
+    const items = data.values
       .slice(1)
       .filter((v) => v[0])
       .map<ReferenceNumberItem>((v) => ({
