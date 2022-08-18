@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 interface Props {
   fullWidth?: boolean;
+  children?: React.ReactNode;
 }
 
 const MainContent: React.FC<Props> = ({ children, fullWidth }) => (
