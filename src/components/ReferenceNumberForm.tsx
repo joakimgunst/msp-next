@@ -23,7 +23,9 @@ const ReferenceNumberForm: NextPage = () => {
       );
       setNumber(response.data.referenceNumber);
     } catch (e) {
-      setError(e.message);
+      if (e instanceof Error) {
+        setError(e.message);
+      }
     }
     setLoading(false);
   }
