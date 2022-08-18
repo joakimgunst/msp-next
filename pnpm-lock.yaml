@@ -8,7 +8,7 @@ specifiers:
   '@types/react': 17.0.17
   axios: 0.21.2
   classnames: 2.3.1
-  contentful: 8.4.2
+  contentful: 8.5.8
   dayjs: 1.10.6
   eslint: 7.32.0
   eslint-config-next: 11.1.4
@@ -23,7 +23,7 @@ dependencies:
   '@contentful/rich-text-react-renderer': 15.12.1_sfoxds7t5ydpegc3knd667wn6m
   axios: 0.21.2
   classnames: 2.3.1
-  contentful: 8.4.2
+  contentful: 8.5.8
   dayjs: 1.10.6
   next: 12.2.4_sfoxds7t5ydpegc3knd667wn6m
   normalize.css: 8.0.1
@@ -586,8 +586,8 @@ packages:
       qs: 6.10.3
     dev: false
 
-  /contentful/8.4.2:
-    resolution: {integrity: sha512-ddbJaJEQm58XBNjzne/lLkapEW9bWX0K3vVF16UEYyekiv2CAIaO5OwWgDD9w+VJe2wliPcDPmbtVeB9BIc/zA==}
+  /contentful/8.5.8:
+    resolution: {integrity: sha512-6YyE95uDJYTyGKQYtqYrMzdDZe3sLkrC0UEnpXuIOeciGACRQP9ouTjRJnLMa5ONUPt0+UJh7JH3epNouPZWIw==}
     engines: {node: '>=12'}
     dependencies:
       axios: 0.21.2
