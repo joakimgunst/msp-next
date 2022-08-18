@@ -5,7 +5,7 @@ specifiers:
   '@contentful/rich-text-types': ^15.12.1
   '@types/gtag.js': 0.0.7
   '@types/node': 16.11.47
-  '@types/react': 17.0.17
+  '@types/react': 17.0.48
   axios: 0.21.2
   classnames: 2.3.1
   contentful: 8.5.8
@@ -34,7 +34,7 @@ devDependencies:
   '@contentful/rich-text-types': 15.12.1
   '@types/gtag.js': 0.0.7
   '@types/node': 16.11.47
-  '@types/react': 17.0.17
+  '@types/react': 17.0.48
   eslint: 7.32.0
   eslint-config-next: 11.1.4_pphwzjzzhnprakhwni3s5sqcxa
   prettier: 2.3.2
@@ -284,8 +284,8 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react/17.0.17:
-    resolution: {integrity: sha512-nrfi7I13cAmrd0wje8czYpf5SFbryczCtPzFc6ijqvdjKcyA3tCvGxwchOUlxb2ucBPuJ9Y3oUqKrRqZvrz0lw==}
+  /@types/react/17.0.48:
+    resolution: {integrity: sha512-zJ6IYlJ8cYYxiJfUaZOQee4lh99mFihBoqkOSEGV+dFi9leROW6+PgstzQ+w3gWTnUfskALtQPGHK6dYmPj+2A==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
