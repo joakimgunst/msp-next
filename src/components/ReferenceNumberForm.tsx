@@ -1,6 +1,6 @@
+import ky from 'ky';
 import { NextPage } from 'next';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import axios from 'axios';
 import { ReferenceNumberItem } from '../pages/api/reference';
 
 const ReferenceNumberForm: NextPage = () => {
@@ -18,10 +18,10 @@ const ReferenceNumberForm: NextPage = () => {
       setNumber(undefined);
       setError(undefined);
       setLoading(true);
-      const response = await axios.get<ReferenceNumberItem>(
-        `/api/reference?name=${encodeURIComponent(value)}`
-      );
-      setNumber(response.data.referenceNumber);
+      const data = await ky
+        .get(`/api/reference?name=${encodeURIComponent(value)}`)
+        .json<ReferenceNumberItem>();
+      setNumber(data.referenceNumber);
     } catch (e) {
       if (e instanceof Error) {
         setError(e.message);
