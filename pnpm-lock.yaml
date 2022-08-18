@@ -9,7 +9,7 @@ specifiers:
   axios: 0.21.2
   classnames: 2.3.1
   contentful: 8.5.8
-  dayjs: 1.10.6
+  dayjs: 1.11.5
   eslint: 7.32.0
   eslint-config-next: 11.1.4
   next: 12.2.4
@@ -24,7 +24,7 @@ dependencies:
   axios: 0.21.2
   classnames: 2.3.1
   contentful: 8.5.8
-  dayjs: 1.10.6
+  dayjs: 1.11.5
   next: 12.2.4_sfoxds7t5ydpegc3knd667wn6m
   normalize.css: 8.0.1
   react: 17.0.2
@@ -622,8 +622,8 @@ packages:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
 
-  /dayjs/1.10.6:
-    resolution: {integrity: sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==}
+  /dayjs/1.11.5:
+    resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}
     dev: false
 
   /debug/2.6.9:
