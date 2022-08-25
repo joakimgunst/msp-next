@@ -24,7 +24,7 @@
   "devDependencies": {
     "@contentful/rich-text-types": "15.12.1",
     "@types/gtag.js": "0.0.10",
-    "@types/node": "16.11.47",
+    "@types/node": "16.11.56",
     "@types/react": "18.0.17",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
