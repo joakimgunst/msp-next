@@ -20,6 +20,9 @@
     --color-border: #2b2f31;
     --color-shading: #262a2b;
   }
+  a {
+    color: var(--color-red-light);
+  }
 }
 
 * {
