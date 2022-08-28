@@ -1,9 +1,10 @@
 :root {
   --color-text: #333;
   --color-background: #fff;
-  --color-red: #c62127;
-  --color-red-light: #de3c41;
-  --color-red-dark: #9a1a1e;
+  --color-link: #c62127;
+  --color-menu: #c62127;
+  --color-menu-hover: #de3c41;
+  --color-menu-active: #9a1a1e;
   --color-border: #ddd;
   --color-shading: #f8f8f8;
   --font-serif: 'Alegreya', serif;
@@ -14,9 +15,10 @@
   :root {
     --color-text: #c0bab2;
     --color-background: #17191a;
-    --color-red: #9e1a1f;
-    --color-red-light: #e14b4f;
-    --color-red-dark: #7b1518;
+    --color-link: #f7586a;
+    --color-menu: #9e1a1f;
+    --color-menu-hover: #b73a3e;
+    --color-menu-active: #7b1518;
     --color-border: #2b2f31;
     --color-shading: #262a2b;
   }
@@ -52,13 +54,13 @@ h1 {
 }
 
 a {
-  color: var(--color-red);
+  color: var(--color-link);
   text-decoration: underline;
   text-decoration-color: var(--color-border);
 }
 
 a:hover {
-  text-decoration-color: var(--color-red);
+  text-decoration-color: var(--color-link);
 }
 
 ul,

@@ -16,7 +16,7 @@ const PreviewIndicator: React.FC = () => {
           left: 0;
           right: 0;
           z-index: 1;
-          background: var(--color-red);
+          background: var(--color-menu);
           text-align: center;
           color: white;
         }

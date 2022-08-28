@@ -58,7 +58,7 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
         .menu {
           display: none;
           flex-direction: column;
-          background: var(--color-red);
+          background: var(--color-menu);
           border-radius: 0.5rem;
           overflow: hidden;
         }
@@ -83,11 +83,11 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
         }
 
         .link:hover {
-          background: var(--color-red-light);
+          background: var(--color-menu-hover);
         }
 
         .link.active {
-          background: var(--color-red-dark);
+          background: var(--color-menu-active);
         }
       `}</style>
     </nav>
