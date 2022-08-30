@@ -14,7 +14,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "types": ["gtag.js"],
-    "incremental": true
+    "incremental": true,
+    "noUnusedLocals": true
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

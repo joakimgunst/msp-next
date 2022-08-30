@@ -1,21 +1,14 @@
 import { Asset } from 'contentful';
-import { getAssetUrl, getAssetTitle } from '../contentful/utils';
+import ContentfulImage from './ContentfulImage';
 
 interface Props {
   image: Asset;
 }
 
 const HeroImage: React.FC<Props> = ({ image }) => {
-  const imageUrl = getAssetUrl(image);
-  const imageTitle = getAssetTitle(image);
-
   return (
     <div className="hero">
-      <img
-        className="hero-image"
-        src={imageUrl + '?fit=fill&w=1200&h=800'}
-        alt={imageTitle}
-      />
+      <ContentfulImage image={image} width={1200} height={800} />
 
       <style jsx>{`
         .hero {
@@ -25,7 +18,7 @@ const HeroImage: React.FC<Props> = ({ image }) => {
           position: relative;
         }
 
-        .hero-image {
+        .hero :global(img) {
           position: absolute;
           width: 100%;
           border-radius: 0.25rem;

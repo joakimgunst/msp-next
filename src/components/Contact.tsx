@@ -1,5 +1,5 @@
 import { ContentfulContact } from '../contentful/data';
-import { getAssetUrl, getAssetTitle } from '../contentful/utils';
+import ContentfulImage from './ContentfulImage';
 import EmailLink from './EmailLink';
 import PhoneLink from './PhoneLink';
 
@@ -9,17 +9,11 @@ interface Props {
 
 const Contact: React.FC<Props> = ({ contact }) => {
   const { name, image, title, email, phone } = contact;
-  const imageUrl = getAssetUrl(image);
-  const imageTitle = getAssetTitle(image);
 
   return (
     <div className="contact">
-      {imageUrl ? (
-        <img
-          className="image"
-          src={imageUrl + '?fit=fill&w=384&h=512'}
-          alt={imageTitle}
-        />
+      {image ? (
+        <ContentfulImage image={image} width={384} height={512} />
       ) : (
         <div className="image-placeholder" />
       )}
@@ -37,7 +31,7 @@ const Contact: React.FC<Props> = ({ contact }) => {
           text-align: center;
         }
 
-        .image,
+        .contact :global(img),
         .image-placeholder {
           width: 12rem;
           height: 16rem;
