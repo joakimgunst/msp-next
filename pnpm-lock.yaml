@@ -11,7 +11,7 @@ specifiers:
   dayjs: 1.11.5
   eslint: 8.23.0
   eslint-config-next: 12.2.5
-  ky: 0.31.1
+  ky: 0.31.4
   next: 12.2.5
   normalize.css: 8.0.1
   prettier: 2.7.1
@@ -24,7 +24,7 @@ dependencies:
   classnames: 2.3.1
   contentful: 9.1.34
   dayjs: 1.11.5
-  ky: 0.31.1
+  ky: 0.31.4
   next: 12.2.5_biqbaboplfbrettd7655fr4n2y
   normalize.css: 8.0.1
   react: 18.2.0
@@ -1392,8 +1392,8 @@ packages:
       object.assign: 4.1.2
     dev: true
 
-  /ky/0.31.1:
-    resolution: {integrity: sha512-wha6TXwen/+4aeHGn8oyHWTQdukT/JZew4mmu2KiCFKn1NHCXiWpeBhGDVFiIX9FN7wsfSkV0C8yZ6YRKE/w4Q==}
+  /ky/0.31.4:
+    resolution: {integrity: sha512-OFuAD3riwhAfHK3J4FrhlujFRpm0ELBEfDHZfFpw89OTozQt3NLF39lNblUO5udj5vSkyaBKnLai/rFCzBfISQ==}
     engines: {node: '>=14.16'}
     dev: false
 
