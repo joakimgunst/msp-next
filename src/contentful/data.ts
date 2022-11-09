@@ -2,12 +2,13 @@ import { Document } from '@contentful/rich-text-types';
 import { getContentfulEntries, getContentfulEntry } from './client';
 import { Asset } from 'contentful';
 
-export async function fetchPosts(preview?: boolean, limit = 100) {
-  return getContentfulEntries<ContentfulPost>(
+export async function fetchPostSummaries(preview?: boolean, limit = 100) {
+  return getContentfulEntries<ContentfulPostSummary>(
     {
       content_type: 'post',
       order: '-fields.date',
       limit: limit.toString(),
+      select: 'sys,fields.title,fields.slug,fields.date,fields.lead',
     },
     preview
   );
@@ -62,12 +63,15 @@ export async function fetchContacts(preview?: boolean) {
   );
 }
 
-export interface ContentfulPost {
+export interface ContentfulPostSummary {
   title: string;
   slug: string;
   date: string;
-  image?: Asset;
   lead: Document;
+}
+
+export interface ContentfulPost extends ContentfulPostSummary {
+  image?: Asset;
   content?: Document;
 }
 

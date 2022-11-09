@@ -1,11 +1,11 @@
 import { NextPage, GetStaticProps } from 'next';
-import { ContentfulPost, fetchPosts } from '../contentful/data';
+import { ContentfulPostSummary, fetchPostSummaries } from '../contentful/data';
 import PostSummary from '../components/PostSummary';
 import MainContent from '../components/MainContent';
 import AppHead from '../components/AppHead';
 
 interface Props {
-  posts: ContentfulPost[];
+  posts: ContentfulPostSummary[];
 }
 
 const NewsPage: NextPage<Props> = ({ posts }) => {
@@ -26,7 +26,7 @@ const NewsPage: NextPage<Props> = ({ posts }) => {
 export const getStaticProps: GetStaticProps<Props> = async ({
   preview = false,
 }) => {
-  const posts = await fetchPosts(preview);
+  const posts = await fetchPostSummaries(preview);
   return { props: { posts } };
 };
 
