@@ -6,7 +6,7 @@ specifiers:
   '@types/gtag.js': 0.0.10
   '@types/node': 16.11.56
   '@types/react': 18.0.17
-  classnames: 2.3.1
+  classnames: 2.3.2
   contentful: 9.1.34
   dayjs: 1.11.5
   eslint: 8.23.0
@@ -21,7 +21,7 @@ specifiers:
 
 dependencies:
   '@contentful/rich-text-react-renderer': 15.12.1_biqbaboplfbrettd7655fr4n2y
-  classnames: 2.3.1
+  classnames: 2.3.2
   contentful: 9.1.34
   dayjs: 1.11.5
   ky: 0.31.1
@@ -512,8 +512,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /classnames/2.3.1:
-    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
     dev: false
 
   /color-convert/2.0.1:
