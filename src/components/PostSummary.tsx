@@ -19,9 +19,7 @@ interface Props {
 const PostSummary: React.FC<Props> = ({ post }) => (
   <div>
     <Title>
-      <PostLink slug={post.slug}>
-        <a>{post.title}</a>
-      </PostLink>
+      <PostLink slug={post.slug}>{post.title}</PostLink>
     </Title>
     <Date>{dayjs(post.date).format('LL')}</Date>
     {renderDocument(post.lead)}
