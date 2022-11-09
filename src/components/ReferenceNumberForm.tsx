@@ -2,6 +2,7 @@ import ky from 'ky';
 import { NextPage } from 'next';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import styled from 'styled-components';
+import media from '../media';
 import { ReferenceNumberItem } from '../pages/api/reference';
 
 const Root = styled.div`
@@ -11,7 +12,7 @@ const Root = styled.div`
   align-items: center;
   font-family: var(--font-sans);
 
-  @media (min-width: 640px) {
+  @media ${media.sm} {
     grid-template-columns: auto 1fr;
   }
 

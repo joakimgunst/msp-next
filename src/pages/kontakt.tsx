@@ -11,6 +11,7 @@ import { renderDocument } from '../contentful/render';
 import MainContent from '../components/MainContent';
 import AppHead from '../components/AppHead';
 import styled from 'styled-components';
+import media from '../media';
 
 const Contacts = styled.div`
   display: grid;
@@ -18,7 +19,7 @@ const Contacts = styled.div`
   grid-column-gap: 1rem;
   justify-items: center;
 
-  @media (min-width: 640px) {
+  @media ${media.sm} {
     grid-template-columns: 1fr 1fr;
   }
 `;
