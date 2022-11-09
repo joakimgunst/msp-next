@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@contentful/rich-text-types": "15.12.1",
-    "@types/gtag.js": "0.0.10",
+    "@types/gtag.js": "0.0.12",
     "@types/node": "16.11.56",
     "@types/react": "18.0.17",
     "eslint": "8.26.0",
