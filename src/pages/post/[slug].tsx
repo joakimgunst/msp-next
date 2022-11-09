@@ -10,6 +10,11 @@ import ContentBlock from '../../components/ContentBlock';
 import MainContent from '../../components/MainContent';
 import { ParsedUrlQuery } from 'querystring';
 import AppHead from '../../components/AppHead';
+import styled from 'styled-components';
+
+const Date = styled.p`
+  font-style: italic;
+`;
 
 interface Props {
   post: ContentfulPost | null;
@@ -25,10 +30,10 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
     <MainContent>
       <AppHead title={post.title} image={post.image} />
 
-      <article className="post">
+      <article>
         <h1>{post.title}</h1>
         {post.image && <HeroImage image={post.image} />}
-        <p className="date">{dayjs(post.date).format('LL')}</p>
+        <Date>{dayjs(post.date).format('LL')}</Date>
         {renderDocument(post.lead)}
         {post.content && <ContentBlock content={post.content} />}
       </article>
@@ -47,12 +52,6 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
           </ul>
         </Sidebar>
       )}
-
-      <style jsx>{`
-        .date {
-          font-style: italic;
-        }
-      `}</style>
     </MainContent>
   );
 };

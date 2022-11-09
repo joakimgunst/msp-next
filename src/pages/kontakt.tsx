@@ -10,6 +10,18 @@ import Sidebar from '../components/Sidebar';
 import { renderDocument } from '../contentful/render';
 import MainContent from '../components/MainContent';
 import AppHead from '../components/AppHead';
+import styled from 'styled-components';
+
+const Contacts = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 1rem;
+  justify-items: center;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
 interface Props {
   contacts: ContentfulContact[];
@@ -22,29 +34,14 @@ const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
 
     <div>
       <h1>Kontaktuppgifter</h1>
-      <div className="contacts">
+      <Contacts>
         {contacts.map((contact) => (
           <Contact key={contact.name} contact={contact} />
         ))}
-      </div>
+      </Contacts>
     </div>
 
     {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
-
-    <style jsx>{`
-      .contacts {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-column-gap: 1rem;
-        justify-items: center;
-      }
-
-      @media (min-width: 640px) {
-        .contacts {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-    `}</style>
   </MainContent>
 );
 

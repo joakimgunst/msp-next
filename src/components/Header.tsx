@@ -2,6 +2,61 @@ import Menu from './Menu';
 import { useState } from 'react';
 import Link from 'next/link';
 import { siteName } from '../config';
+import styled from 'styled-components';
+
+const HeaderTop = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
+
+const Logo = styled.img`
+  height: 50px;
+  width: 40px;
+
+  @media (min-width: 768px) {
+    height: 100px;
+    width: 80px;
+  }
+`;
+
+const TitleBase = styled.div`
+  font-weight: bold;
+  font-family: 'Alegreya Sans', sans-serif;
+  line-height: 1.2;
+  font-size: 1.2em;
+  margin-left: 1rem;
+`;
+
+const Title = styled(TitleBase)`
+  display: none;
+
+  @media (min-width: 640px) {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2em;
+    margin-left: 2rem;
+  }
+`;
+
+const ShortTitle = styled(TitleBase)`
+  @media (min-width: 640px) {
+    display: none;
+  }
+`;
+
+const MenuToggle = styled.a`
+  margin-left: auto;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding-left: 1rem;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+`;
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,81 +64,18 @@ const Header: React.FC = () => {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="header">
-      <div className="header-top">
+    <header>
+      <HeaderTop>
         <Link href="/">
           <a>
-            <img className="logo" src="/images/msp_logo.svg" alt={siteName} />
+            <Logo src="/images/msp_logo.svg" alt={siteName} />
           </a>
         </Link>
-        <div className="title">Scoutkåren Munksnäs Spejarna</div>
-        <div className="short-title">Munksnäs Spejarna</div>
-        <a className="menu-toggle" onClick={toggleMenu}>
-          Meny
-        </a>
-      </div>
+        <Title>Scoutkåren Munksnäs Spejarna</Title>
+        <ShortTitle>Munksnäs Spejarna</ShortTitle>
+        <MenuToggle onClick={toggleMenu}>Meny</MenuToggle>
+      </HeaderTop>
       <Menu open={menuOpen} onClose={closeMenu} />
-
-      <style jsx>{`
-        .header-top {
-          display: flex;
-          align-items: center;
-          margin-bottom: 1rem;
-        }
-
-        .logo {
-          height: 50px;
-          width: 40px;
-        }
-
-        .title,
-        .short-title {
-          font-weight: bold;
-          font-family: 'Alegreya Sans', sans-serif;
-          line-height: 1.2;
-          font-size: 1.2em;
-          margin-left: 1rem;
-        }
-
-        .title {
-          display: none;
-        }
-
-        .menu-toggle {
-          margin-left: auto;
-          text-decoration: none;
-          font-size: 1.2em;
-          padding-left: 1rem;
-        }
-
-        @media (min-width: 640px) {
-          .title {
-            display: block;
-          }
-
-          .short-title {
-            display: none;
-          }
-        }
-
-        @media (min-width: 768px) {
-          .logo {
-            height: 100px;
-            width: 80px;
-          }
-
-          .title {
-            font-size: 2em;
-            margin-left: 2rem;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .menu-toggle {
-            display: none;
-          }
-        }
-      `}</style>
     </header>
   );
 };

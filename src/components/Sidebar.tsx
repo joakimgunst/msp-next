@@ -1,23 +1,13 @@
-interface Props {
-  children?: React.ReactNode;
-}
+import styled from 'styled-components';
 
-const Sidebar: React.FC<Props> = ({ children }) => (
-  <aside className="sidebar">
-    {children}
+const Sidebar = styled.aside`
+  padding: 1.25rem;
+  background: var(--color-shading);
+  border-radius: 0.5em;
 
-    <style jsx>{`
-      .sidebar {
-        padding: 1.25rem;
-        background: var(--color-shading);
-        border-radius: 0.5em;
-      }
-
-      .sidebar :global(h2:first-child) {
-        margin-top: 0;
-      }
-    `}</style>
-  </aside>
-);
+  h2:first-child {
+    margin-top: 0;
+  }
+`;
 
 export default Sidebar;

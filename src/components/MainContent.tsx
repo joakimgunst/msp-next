@@ -1,33 +1,24 @@
-import classNames from 'classnames';
+import styled, { css } from 'styled-components';
 
 interface Props {
   fullWidth?: boolean;
-  children?: React.ReactNode;
 }
 
-const MainContent: React.FC<Props> = ({ children, fullWidth }) => (
-  <main className={classNames('main', fullWidth && 'full-width')}>
-    {children}
+const MainContent = styled.main<Props>`
+  margin-top: 2rem;
+  display: grid;
+  grid-gap: 2rem;
 
-    <style jsx>{`
-      .main {
-        margin-top: 2rem;
-        display: grid;
-        grid-gap: 2rem;
-      }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 20rem;
+    grid-gap: 3rem;
 
-      @media (min-width: 1024px) {
-        .main {
-          grid-template-columns: 1fr 20rem;
-          grid-gap: 3rem;
-        }
-      }
-
-      .full-width {
+    ${({ fullWidth }) =>
+      fullWidth &&
+      css`
         grid-template-columns: 1fr;
-      }
-    `}</style>
-  </main>
-);
+      `}
+  }
+`;
 
 export default MainContent;
