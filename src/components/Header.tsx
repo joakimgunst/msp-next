@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { siteName } from '../config';
 import styled from 'styled-components';
+import media from '../media';
 
 const HeaderTop = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const Logo = styled.img`
   height: 50px;
   width: 40px;
 
-  @media (min-width: 768px) {
+  @media ${media.md} {
     height: 100px;
     width: 80px;
   }
@@ -31,18 +32,18 @@ const TitleBase = styled.div`
 const Title = styled(TitleBase)`
   display: none;
 
-  @media (min-width: 640px) {
+  @media ${media.sm} {
     display: block;
   }
 
-  @media (min-width: 768px) {
+  @media ${media.md} {
     font-size: 2em;
     margin-left: 2rem;
   }
 `;
 
 const ShortTitle = styled(TitleBase)`
-  @media (min-width: 640px) {
+  @media ${media.sm} {
     display: none;
   }
 `;
@@ -53,7 +54,7 @@ const MenuToggle = styled.a`
   font-size: 1.2em;
   padding-left: 1rem;
 
-  @media (min-width: 1024px) {
+  @media ${media.lg} {
     display: none;
   }
 `;

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from '../media';
 
 interface Props {
   fullWidth?: boolean;
@@ -9,7 +10,7 @@ const MainContent = styled.main<Props>`
   display: grid;
   grid-gap: 2rem;
 
-  @media (min-width: 1024px) {
+  @media ${media.lg} {
     grid-template-columns: 1fr 20rem;
     grid-gap: 3rem;
 

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled, { css } from 'styled-components';
+import media from '../media';
 
 const Root = styled.nav<{ mobileOpen: boolean }>`
   display: none;
@@ -15,7 +16,7 @@ const Root = styled.nav<{ mobileOpen: boolean }>`
       display: flex;
     `}
 
-  @media (min-width: 1024px) {
+  @media ${media.lg} {
     display: flex;
     flex-direction: row;
   }
