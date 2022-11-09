@@ -1,11 +1,11 @@
 import { NextPage, GetStaticProps } from 'next';
 import {
-  ContentfulPost,
-  fetchPosts,
+  fetchPostSummaries,
   fetchPage,
   fetchSidebar,
   ContentfulPage,
   ContentfulSidebar,
+  ContentfulPostSummary,
 } from '../contentful/data';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
@@ -26,7 +26,7 @@ const ShowAll = styled.div`
 interface Props {
   page: ContentfulPage | null;
   sidebar: ContentfulSidebar | null;
-  posts: ContentfulPost[];
+  posts: ContentfulPostSummary[];
 }
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ preview }) => {
   const [page, sidebar, posts] = await Promise.all([
     fetchPage('hem', preview),
     fetchSidebar('hem', preview),
-    fetchPosts(preview, 3),
+    fetchPostSummaries(preview, 3),
   ]);
   return { props: { page, sidebar, posts } };
 };

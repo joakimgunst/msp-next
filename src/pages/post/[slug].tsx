@@ -1,5 +1,10 @@
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import { ContentfulPost, fetchPost, fetchPosts } from '../../contentful/data';
+import {
+  ContentfulPost,
+  ContentfulPostSummary,
+  fetchPost,
+  fetchPostSummaries,
+} from '../../contentful/data';
 import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
@@ -18,7 +23,7 @@ const Date = styled.p`
 
 interface Props {
   post: ContentfulPost | null;
-  posts: ContentfulPost[] | null;
+  posts: ContentfulPostSummary[] | null;
 }
 
 const PostPage: NextPage<Props> = ({ post, posts }) => {
@@ -65,13 +70,13 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({
   const slug = params!.slug!;
   const [post, posts] = await Promise.all([
     fetchPost(slug, preview),
-    fetchPosts(),
+    fetchPostSummaries(),
   ]);
   return { props: { post, posts } };
 };
 
 export const getStaticPaths: GetStaticPaths<Query> = async () => {
-  const posts = await fetchPosts();
+  const posts = await fetchPostSummaries();
   const paths = posts.map((post) => ({ params: { slug: post.slug } }));
   return { paths, fallback: true };
 };
