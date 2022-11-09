@@ -1,19 +1,9 @@
-interface Props {
-  children?: React.ReactNode;
-}
+import styled from 'styled-components';
 
-const Layout: React.FC<Props> = ({ children }) => (
-  <div className="layout">
-    {children}
-
-    <style jsx>{`
-      .layout {
-        margin: 0 auto;
-        max-width: 68rem;
-        padding: 2rem;
-      }
-    `}</style>
-  </div>
-);
+const Layout = styled.div`
+  margin: 0 auto;
+  max-width: 68rem;
+  padding: 2rem;
+`;
 
 export default Layout;

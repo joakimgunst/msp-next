@@ -1,5 +1,19 @@
 import { Asset } from 'contentful';
+import styled from 'styled-components';
 import ContentfulImage from './ContentfulImage';
+
+const Root = styled.div`
+  width: 100%;
+  height: auto;
+  padding-bottom: calc(2 / 3 * 100%);
+  position: relative;
+
+  img {
+    position: absolute;
+    width: 100%;
+    border-radius: 0.25rem;
+  }
+`;
 
 interface Props {
   image: Asset;
@@ -7,24 +21,9 @@ interface Props {
 
 const HeroImage: React.FC<Props> = ({ image }) => {
   return (
-    <div className="hero">
+    <Root>
       <ContentfulImage image={image} width={1200} height={800} />
-
-      <style jsx>{`
-        .hero {
-          width: 100%;
-          height: auto;
-          padding-bottom: calc(2 / 3 * 100%);
-          position: relative;
-        }
-
-        .hero :global(img) {
-          position: absolute;
-          width: 100%;
-          border-radius: 0.25rem;
-        }
-      `}</style>
-    </div>
+    </Root>
   );
 };
 

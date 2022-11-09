@@ -29,7 +29,7 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
     <MainContent>
       <AppHead title={page.title} image={page.image} />
 
-      <div className="page">
+      <div>
         <h1>{page.title}</h1>
         {page.image && <HeroImage image={page.image} />}
         {page.content && <ContentBlock content={page.content} />}
