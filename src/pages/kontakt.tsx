@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
 import {
   fetchContacts,
@@ -10,7 +9,7 @@ import Contact from '../components/Contact';
 import Sidebar from '../components/Sidebar';
 import { renderDocument } from '../contentful/render';
 import MainContent from '../components/MainContent';
-import { siteName } from '../config';
+import AppHead from '../components/AppHead';
 
 interface Props {
   contacts: ContentfulContact[];
@@ -19,9 +18,7 @@ interface Props {
 
 const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
   <MainContent>
-    <Head>
-      <title>Kontaktuppgifter – {siteName}</title>
-    </Head>
+    <AppHead title="Kontaktuppgifter" />
 
     <div>
       <h1>Kontaktuppgifter</h1>

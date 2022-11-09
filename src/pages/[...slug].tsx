@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import {
   ContentfulPage,
@@ -9,14 +8,12 @@ import {
 } from '../contentful/data';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
-import { Fragment } from 'react';
-import { getOpenGraphImageUrl } from '../contentful/utils';
 import NotFoundPage from './404';
 import HeroImage from '../components/HeroImage';
 import ContentBlock from '../components/ContentBlock';
 import MainContent from '../components/MainContent';
-import { siteName } from '../config';
 import { ParsedUrlQuery } from 'querystring';
+import AppHead from '../components/AppHead';
 
 interface Props {
   page: ContentfulPage | null;
@@ -28,22 +25,9 @@ const StandardPage: NextPage<Props> = ({ page, sidebar }) => {
     return <NotFoundPage />;
   }
 
-  const ogImageUrl = getOpenGraphImageUrl(page.image);
-
   return (
     <MainContent>
-      <Head>
-        <title>
-          {page.title} – {siteName}
-        </title>
-        <meta property="og:title" content={page.title} />
-        {ogImageUrl && (
-          <Fragment>
-            <meta property="og:image" content={ogImageUrl} />
-            <meta name="twitter:card" content="summary_large_image" />
-          </Fragment>
-        )}
-      </Head>
+      <AppHead title={page.title} image={page.image} />
 
       <div className="page">
         <h1>{page.title}</h1>

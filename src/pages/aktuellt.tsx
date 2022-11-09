@@ -1,9 +1,8 @@
-import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
 import { ContentfulPost, fetchPosts } from '../contentful/data';
 import PostSummary from '../components/PostSummary';
 import MainContent from '../components/MainContent';
-import { siteName } from '../config';
+import AppHead from '../components/AppHead';
 
 interface Props {
   posts: ContentfulPost[];
@@ -13,12 +12,7 @@ const NewsPage: NextPage<Props> = ({ posts }) => {
   const title = 'Aktuellt';
   return (
     <MainContent>
-      <Head>
-        <title>
-          {title} – {siteName}
-        </title>
-      </Head>
-
+      <AppHead title={title} />
       <div>
         <h1>{title}</h1>
         {posts.map((post) => (
