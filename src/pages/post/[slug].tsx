@@ -1,18 +1,15 @@
-import Head from 'next/head';
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { ContentfulPost, fetchPost, fetchPosts } from '../../contentful/data';
 import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
-import { Fragment } from 'react';
-import { getOpenGraphImageUrl } from '../../contentful/utils';
 import NotFoundPage from '../404';
 import HeroImage from '../../components/HeroImage';
 import ContentBlock from '../../components/ContentBlock';
 import MainContent from '../../components/MainContent';
-import { siteName } from '../../config';
 import { ParsedUrlQuery } from 'querystring';
+import AppHead from '../../components/AppHead';
 
 interface Props {
   post: ContentfulPost | null;
@@ -24,22 +21,9 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
     return <NotFoundPage />;
   }
 
-  const ogImageUrl = getOpenGraphImageUrl(post.image);
-
   return (
     <MainContent>
-      <Head>
-        <title>
-          {post.title} – {siteName}
-        </title>
-        <meta property="og:title" content={post.title} />
-        {ogImageUrl && (
-          <Fragment>
-            <meta property="og:image" content={ogImageUrl} />
-            <meta name="twitter:card" content="summary_large_image" />
-          </Fragment>
-        )}
-      </Head>
+      <AppHead title={post.title} image={post.image} />
 
       <article className="post">
         <h1>{post.title}</h1>

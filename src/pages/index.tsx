@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { NextPage, GetStaticProps } from 'next';
 import {
   ContentfulPost,
@@ -11,12 +10,11 @@ import {
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import PostSummary from '../components/PostSummary';
-import { Fragment } from 'react';
 import MainContent from '../components/MainContent';
-import { getOpenGraphImageUrl } from '../contentful/utils';
 import HeroImage from '../components/HeroImage';
 import { siteName } from '../config';
 import Link from 'next/link';
+import AppHead from '../components/AppHead';
 
 interface Props {
   page: ContentfulPage | null;
@@ -26,20 +24,10 @@ interface Props {
 
 const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
   const title = page?.title ?? siteName;
-  const ogImageUrl = getOpenGraphImageUrl(page?.image);
 
   return (
     <MainContent>
-      <Head>
-        <title>{title}</title>
-        <meta property="og:title" content={title} />
-        {ogImageUrl && (
-          <Fragment>
-            <meta property="og:image" content={ogImageUrl} />
-            <meta name="twitter:card" content="summary_large_image" />
-          </Fragment>
-        )}
-      </Head>
+      <AppHead title={title} image={page?.image} noSiteName />
 
       <div>
         <h1>{title}</h1>
@@ -52,9 +40,7 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
         ))}
 
         <div className="show-all">
-          <Link href="/aktuellt">
-            <a>Visa alla nyheter...</a>
-          </Link>
+          <Link href="/aktuellt">Visa alla nyheter...</Link>
         </div>
       </div>
 

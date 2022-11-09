@@ -1,14 +1,11 @@
-import Head from 'next/head';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import MainContent from '../components/MainContent';
-import { siteName } from '../config';
+import AppHead from '../components/AppHead';
 
 const NotFoundPage: NextPage = () => (
   <MainContent fullWidth>
-    <Head>
-      <title>404 – {siteName}</title>
-    </Head>
+    <AppHead title="404" />
 
     <div>
       <h1>404: Sidan saknas</h1>
