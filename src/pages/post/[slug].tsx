@@ -44,9 +44,7 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
           <ul>
             {posts.map((post) => (
               <li key={post.slug}>
-                <PostLink slug={post.slug}>
-                  <a>{post.title}</a>
-                </PostLink>
+                <PostLink slug={post.slug}>{post.title}</PostLink>
               </li>
             ))}
           </ul>

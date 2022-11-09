@@ -25,17 +25,9 @@ const options: Options = {
       const link = node as EntryHyperlink;
       const target = link.data.target;
       if (isPageEntry(target)) {
-        return (
-          <PageLink slug={target.fields.slug}>
-            <a>{children}</a>
-          </PageLink>
-        );
+        return <PageLink slug={target.fields.slug}>{children}</PageLink>;
       } else if (isPostEntry(target)) {
-        return (
-          <PostLink slug={target.fields.slug}>
-            <a>{children}</a>
-          </PostLink>
-        );
+        return <PostLink slug={target.fields.slug}>{children}</PostLink>;
       }
       return <b>UNKNOWN ENTRY</b>;
     },
@@ -67,11 +59,7 @@ const options: Options = {
       const link = node as Hyperlink;
       const uri = link.data.uri;
       if (uri.startsWith('/')) {
-        return (
-          <Link href={uri}>
-            <a>{children}</a>
-          </Link>
-        );
+        return <Link href={uri}>{children}</Link>;
       }
       return <a href={uri}>{children}</a>;
     },

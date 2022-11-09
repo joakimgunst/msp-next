@@ -67,9 +67,7 @@ const Header: React.FC = () => {
     <header>
       <HeaderTop>
         <Link href="/">
-          <a>
-            <Logo src="/images/msp_logo.svg" alt={siteName} />
-          </a>
+          <Logo src="/images/msp_logo.svg" alt={siteName} />
         </Link>
         <Title>Scoutkåren Munksnäs Spejarna</Title>
         <ShortTitle>Munksnäs Spejarna</ShortTitle>
