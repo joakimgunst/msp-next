@@ -23,7 +23,7 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "@contentful/rich-text-types": "15.13.2",
+    "@contentful/rich-text-types": "15.14.1",
     "@types/gtag.js": "0.0.12",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
