@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import Router from 'next/router';
 import { pageview } from '../lib/gtag';
 import PreviewIndicator from '../components/PreviewIndicator';
+import { Analytics } from '@vercel/analytics/react';
 
 dayjs.extend(LocalizedFormat);
 dayjs.locale('sv');
@@ -22,6 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Header />
       <PreviewIndicator />
       <Component {...pageProps} />
+      <Analytics />
     </Layout>
   );
 }
