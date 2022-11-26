@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled, { css } from 'styled-components';
@@ -22,7 +23,7 @@ const Root = styled.nav<{ mobileOpen: boolean }>`
   }
 `;
 
-const NavLink = styled(Link)<{ active: boolean }>`
+const NavLink = styled(Link)`
   display: block;
   padding: 0.5rem 1rem;
   color: white;
@@ -33,11 +34,9 @@ const NavLink = styled(Link)<{ active: boolean }>`
     background: var(--color-menu-hover);
   }
 
-  ${({ active }) =>
-    active &&
-    css`
-      background: var(--color-menu-active) !important;
-    `}
+  &.active {
+    background: var(--color-menu-active) !important;
+  }
 `;
 
 const links = [
@@ -68,7 +67,7 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
         <NavLink
           key={href}
           href={href}
-          active={isActive(href, exact)}
+          className={clsx({ active: isActive(href, exact) })}
           onClick={onClose}
         >
           {label}
