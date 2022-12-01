@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@contentful/rich-text-react-renderer': 15.12.1
-  '@contentful/rich-text-types': 15.14.1
+  '@contentful/rich-text-react-renderer': 15.16.2
+  '@contentful/rich-text-types': 15.15.1
   '@types/gtag.js': 0.0.12
   '@types/node': 18.11.9
   '@types/react': 18.0.25
@@ -24,7 +24,7 @@ specifiers:
   typescript: 4.9.3
 
 dependencies:
-  '@contentful/rich-text-react-renderer': 15.12.1_biqbaboplfbrettd7655fr4n2y
+  '@contentful/rich-text-react-renderer': 15.16.2_biqbaboplfbrettd7655fr4n2y
   '@vercel/analytics': 0.1.5_react@18.2.0
   clsx: 1.2.1
   contentful: 9.2.13
@@ -38,7 +38,7 @@ dependencies:
   styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
 
 devDependencies:
-  '@contentful/rich-text-types': 15.14.1
+  '@contentful/rich-text-types': 15.15.1
   '@types/gtag.js': 0.0.12
   '@types/node': 18.11.9
   '@types/react': 18.0.25
@@ -185,21 +185,27 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@contentful/rich-text-react-renderer/15.12.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-bQ69cN51iGBTF3/nYi5MGUaDJ/lnrEXtCUBCxulIZ0fLS/AAEledZTJcEKs+PKeYYgDqiUVDsmx2xZP2QsJJ+Q==}
+  /@contentful/rich-text-react-renderer/15.16.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-5UJxF+6DhcwkEsgJsHczJrCxveaQ95Oqj3NaJYmM9VDVKlvPK8cNXmSiWArHCEN0uw3yU/IS2sw16uIam3LsjQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
       react: ^16.8.6 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@contentful/rich-text-types': 15.14.1
+      '@contentful/rich-text-types': 16.0.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@contentful/rich-text-types/15.14.1:
-    resolution: {integrity: sha512-1sPVDz7MBuCCMWGvfZXQ06SqBTtlLN5GCP5ddU4c5tfatxVXhv2h80/pDCeTZVV2oCMw02YuNmBgql60+0oL4Q==}
+  /@contentful/rich-text-types/15.15.1:
+    resolution: {integrity: sha512-oheW0vkxWDuKBIIXDeJfZaRYo+NzKbC4gETMhH+MGJd4nfL9cqrOvtRxZBgnhICN4vDpH4my/zUIZGKcFqGSjQ==}
     engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@contentful/rich-text-types/16.0.2:
+    resolution: {integrity: sha512-ovbmCKQjlyGek4NuABoqDesC3FBV3e5jPMMdtT2mpOy9ia31MKO0NSFMRGZu7Q+veZzmDMja8S1i/XeFCUT9Pw==}
+    engines: {node: '>=6.0.0'}
+    dev: false
 
   /@emotion/is-prop-valid/1.2.0:
     resolution: {integrity: sha512-3aDpDprjM0AwaxGE09bOPkNxHpBd+kA6jty3RnaEXdweX1DF1U3VQpPYb0g1IStAuK7SVQ1cy+bNBBKp4W3Fjg==}
