@@ -28,7 +28,7 @@
     "@contentful/rich-text-types": "15.14.1",
     "@types/gtag.js": "0.0.12",
     "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
+    "@types/react": "18.0.26",
     "@types/styled-components": "^5.1.26",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
