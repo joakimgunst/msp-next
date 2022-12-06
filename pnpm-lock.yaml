@@ -10,7 +10,7 @@ specifiers:
   '@vercel/analytics': 0.1.5
   clsx: 1.2.1
   contentful: 9.2.13
-  dayjs: 1.11.6
+  dayjs: 1.11.7
   eslint: 8.28.0
   eslint-config-next: 13.0.5
   ky: 0.31.4
@@ -28,7 +28,7 @@ dependencies:
   '@vercel/analytics': 0.1.5_react@18.2.0
   clsx: 1.2.1
   contentful: 9.2.13
-  dayjs: 1.11.6
+  dayjs: 1.11.7
   ky: 0.31.4
   next: 13.0.5_biqbaboplfbrettd7655fr4n2y
   normalize.css: 8.0.1
@@ -865,8 +865,8 @@ packages:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
 
-  /dayjs/1.11.6:
-    resolution: {integrity: sha512-zZbY5giJAinCG+7AGaw0wIhNZ6J8AhWuSXKvuc1KAyMiRsvGQWqh4L+MomvhdAYjN+lqvVCMq1I41e3YHvXkyQ==}
+  /dayjs/1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
     dev: false
 
   /debug/2.6.9:
