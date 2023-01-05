@@ -9,7 +9,7 @@ specifiers:
   '@types/styled-components': ^5.1.26
   '@vercel/analytics': 0.1.5
   clsx: 1.2.1
-  contentful: 9.2.13
+  contentful: 9.2.15
   dayjs: 1.11.6
   eslint: 8.28.0
   eslint-config-next: 13.0.5
@@ -27,7 +27,7 @@ dependencies:
   '@contentful/rich-text-react-renderer': 15.12.1_biqbaboplfbrettd7655fr4n2y
   '@vercel/analytics': 0.1.5_react@18.2.0
   clsx: 1.2.1
-  contentful: 9.2.13
+  contentful: 9.2.15
   dayjs: 1.11.6
   ky: 0.31.4
   next: 13.0.5_biqbaboplfbrettd7655fr4n2y
@@ -815,8 +815,8 @@ packages:
       qs: 6.10.3
     dev: false
 
-  /contentful/9.2.13:
-    resolution: {integrity: sha512-JEgNKY1gdzlg6poN5N6ImUbJQ2fPv9Cgxp3KXa5JTdDBpbySRLQI+0QXIUbvGu5HI/u1bpw6hEa2ZRtgYpdSew==}
+  /contentful/9.2.15:
+    resolution: {integrity: sha512-/1pxNzLI1qe2JI5zxSfBJkHUM45UtaCthOzu8t65Bni/n0F+nZV8Aowjo76iJIqp1X03tesQqenriEsOWRbcNg==}
     engines: {node: '>=12'}
     requiresBuild: true
     dependencies:
