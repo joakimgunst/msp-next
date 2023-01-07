@@ -2,7 +2,7 @@
   "name": "msp-next",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@7.17.1",
+  "packageManager": "pnpm@7.22.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,13 +11,13 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "15.12.1",
-    "@vercel/analytics": "0.1.5",
+    "@contentful/rich-text-react-renderer": "15.16.2",
+    "@vercel/analytics": "0.1.6",
     "clsx": "1.2.1",
-    "contentful": "9.2.13",
-    "dayjs": "1.11.6",
-    "ky": "0.31.4",
-    "next": "13.0.5",
+    "contentful": "9.2.15",
+    "dayjs": "1.11.7",
+    "ky": "0.33.1",
+    "next": "13.1.1",
     "normalize.css": "8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -27,13 +27,13 @@
   "devDependencies": {
     "@contentful/rich-text-types": "16.0.2",
     "@types/gtag.js": "0.0.12",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26",
     "@types/styled-components": "^5.1.26",
-    "eslint": "8.28.0",
-    "eslint-config-next": "13.0.5",
-    "prettier": "2.8.0",
-    "typescript": "4.9.3"
+    "eslint": "8.31.0",
+    "eslint-config-next": "13.1.1",
+    "prettier": "2.8.2",
+    "typescript": "4.9.4"
   },
   "pnpm": {
     "peerDependencyRules": {
