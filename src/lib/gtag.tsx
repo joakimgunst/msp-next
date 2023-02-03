@@ -1,10 +1,12 @@
-const prod = process.env.NODE_ENV === 'production';
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-export const GA_TRACKING_ID = prod ? 'UA-10908509-1' : 'UA-10908509-3';
+if (!GA_MEASUREMENT_ID) {
+  throw new Error('NEXT_PUBLIC_GA_MEASUREMENT_ID env variable is missing');
+}
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (path: string) => {
-  window.gtag('config', GA_TRACKING_ID, {
+  window.gtag('config', GA_MEASUREMENT_ID, {
     page_path: path,
   });
 };
