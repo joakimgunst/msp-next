@@ -5,9 +5,14 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document';
-import { GA_TRACKING_ID } from '../lib/gtag';
 import { siteDescription } from '../config';
 import { ServerStyleSheet } from 'styled-components';
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+if (!GA_MEASUREMENT_ID) {
+  throw new Error('NEXT_PUBLIC_GA_MEASUREMENT_ID env variable is missing');
+}
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -48,7 +53,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -56,9 +61,7 @@ class MyDocument extends Document {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                  page_path: window.location.pathname,
-                });
+                gtag('config', '${GA_MEASUREMENT_ID}');
               `,
             }}
           />
