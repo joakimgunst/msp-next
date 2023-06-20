@@ -2,15 +2,7 @@ import { ContentfulPost } from '../contentful/data';
 import dayjs from 'dayjs';
 import PostLink from './PostLink';
 import { renderDocument } from '../contentful/render';
-import styled from 'styled-components';
-
-const Title = styled.h3`
-  margin-bottom: 0;
-`;
-
-const Date = styled.div`
-  font-style: italic;
-`;
+import styles from './PostSummary.module.css';
 
 interface Props {
   post: ContentfulPost;
@@ -18,10 +10,10 @@ interface Props {
 
 const PostSummary: React.FC<Props> = ({ post }) => (
   <div>
-    <Title>
+    <h3 className={styles.title}>
       <PostLink slug={post.slug}>{post.title}</PostLink>
-    </Title>
-    <Date>{dayjs(post.date).format('LL')}</Date>
+    </h3>
+    <div className={styles.date}>{dayjs(post.date).format('LL')}</div>
     {renderDocument(post.lead)}
   </div>
 );

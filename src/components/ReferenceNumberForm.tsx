@@ -1,25 +1,8 @@
 import ky from 'ky';
 import { NextPage } from 'next';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import styled from 'styled-components';
-import media from '../media';
 import { ReferenceNumberItem } from '../pages/api/reference';
-
-const Root = styled.div`
-  display: grid;
-  grid-column-gap: 16px;
-  grid-row-gap: 8px;
-  align-items: center;
-  font-family: var(--font-sans);
-
-  @media ${media.sm} {
-    grid-template-columns: auto 1fr;
-  }
-
-  input {
-    margin-right: 8px;
-  }
-`;
+import styles from './ReferenceNumberForm.module.css';
 
 const ReferenceNumberForm: NextPage = () => {
   const [value, setValue] = useState<string>();
@@ -60,7 +43,7 @@ const ReferenceNumberForm: NextPage = () => {
   }
 
   return (
-    <Root>
+    <div className={styles.root}>
       <form>
         <input
           value={value}
@@ -77,7 +60,7 @@ const ReferenceNumberForm: NextPage = () => {
       {number && <span>Ditt referensnummer är {number}</span>}
       {notFound && <span>Inget referensnummer hittades</span>}
       {otherError && <span>Ett problem uppstod, vänligen meddela kårsekreteraren</span>}
-    </Root>
+    </div>
   );
 };
 

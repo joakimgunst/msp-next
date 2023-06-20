@@ -15,13 +15,7 @@ import HeroImage from '../components/HeroImage';
 import { siteName } from '../config';
 import Link from 'next/link';
 import AppHead from '../components/AppHead';
-import styled from 'styled-components';
-
-const ShowAll = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-`;
+import styles from './index.module.css';
 
 interface Props {
   page: ContentfulPage | null;
@@ -46,9 +40,9 @@ const HomePage: NextPage<Props> = ({ page, sidebar, posts }) => {
           <PostSummary key={post.slug} post={post} />
         ))}
 
-        <ShowAll>
+        <div className={styles.showAll}>
           <Link href="/aktuellt">Visa alla nyheter...</Link>
-        </ShowAll>
+        </div>
       </div>
 
       {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}

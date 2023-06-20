@@ -1,9 +1,5 @@
-import styled from 'styled-components';
+import styles from './Layout.module.css';
 
-const Layout = styled.div`
-  margin: 0 auto;
-  max-width: 68rem;
-  padding: 2rem;
-`;
-
-export default Layout;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <div className={styles.root}>{children}</div>;
+}

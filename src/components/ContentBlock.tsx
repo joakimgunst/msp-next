@@ -1,20 +1,13 @@
 import { renderDocument } from '../contentful/render';
 import { Document } from '@contentful/rich-text-types';
-import styled from 'styled-components';
-
-const Root = styled.div`
-  img {
-    width: 100%;
-    border-radius: 0.25rem;
-  }
-`;
+import styles from './ContentBlock.module.css';
 
 interface Props {
   content: Document;
 }
 
 const ContentBlock: React.FC<Props> = ({ content }) => {
-  return <Root>{renderDocument(content)}</Root>;
+  return <div className={styles.root}>{renderDocument(content)}</div>;
 };
 
 export default ContentBlock;
