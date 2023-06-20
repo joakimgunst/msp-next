@@ -8,10 +8,7 @@ import {
   AssetLinkBlock,
   Hyperlink,
 } from '@contentful/rich-text-types';
-import {
-  documentToReactComponents,
-  Options,
-} from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 import PageLink from '../components/PageLink';
 import { Entry, Asset } from 'contentful';
 import { ContentfulPage, ContentfulPost } from './data';
@@ -36,11 +33,7 @@ const options: Options = {
       const target = link.data.target;
       if (isAsset(target)) {
         return (
-          <a
-            href={target.fields.file?.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={target.fields.file?.url} target="_blank" rel="noopener noreferrer">
             {children}
           </a>
         );

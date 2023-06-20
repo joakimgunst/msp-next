@@ -8,12 +8,7 @@ interface Props {
   className?: string;
 }
 
-const ContentfulImage: React.FC<Props> = ({
-  image,
-  width,
-  height,
-  className,
-}) => {
+const ContentfulImage: React.FC<Props> = ({ image, width, height, className }) => {
   const url = getAssetUrl(image);
   const title = getAssetTitle(image);
   const src = `${url}?fit=fill&w=${width}&h=${height}`;

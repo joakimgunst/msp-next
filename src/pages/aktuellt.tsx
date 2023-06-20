@@ -23,9 +23,7 @@ const NewsPage: NextPage<Props> = ({ posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({
-  preview = false,
-}) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ preview = false }) => {
   const posts = await fetchPostSummaries(preview);
   return { props: { posts } };
 };

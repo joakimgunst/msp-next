@@ -14,10 +14,7 @@ export interface ReferenceNumberItem {
 
 const SHEET_NAME = 'Sheet1';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
   const spreadsheetId = process.env.REFERENCE_NUMBERS_SPREADSHEET_ID;
   const { name } = req.query;
@@ -44,9 +41,7 @@ export default async function handler(
         referenceNumber: parseInt(v[1]),
       }));
 
-    const match = items.find(
-      (i) => i.name.localeCompare(name, 'fi', { sensitivity: 'base' }) === 0
-    );
+    const match = items.find((i) => i.name.localeCompare(name, 'fi', { sensitivity: 'base' }) === 0);
 
     if (!match) {
       return res.status(404).json({ message: 'No reference number found' });
