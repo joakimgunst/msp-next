@@ -40,11 +40,7 @@ const Contact: React.FC<Props> = ({ contact }) => {
 
   return (
     <Root>
-      {image ? (
-        <StyledImage image={image} width={384} height={512} />
-      ) : (
-        <ImagePlaceholder />
-      )}
+      {image ? <StyledImage image={image} width={384} height={512} /> : <ImagePlaceholder />}
       <Name>{name}</Name>
       {title && <div>{title}</div>}
       {email && <EmailLink email={email} />}

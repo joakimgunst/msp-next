@@ -1,11 +1,5 @@
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import {
-  ContentfulPage,
-  fetchPage,
-  ContentfulSidebar,
-  fetchSidebar,
-  fetchPages,
-} from '../contentful/data';
+import { ContentfulPage, fetchPage, ContentfulSidebar, fetchSidebar, fetchPages } from '../contentful/data';
 import { renderDocument } from '../contentful/render';
 import Sidebar from '../components/Sidebar';
 import NotFoundPage from './404';
@@ -44,15 +38,9 @@ interface Query extends ParsedUrlQuery {
   slug: string[];
 }
 
-export const getStaticProps: GetStaticProps<Props, Query> = async ({
-  params,
-  preview,
-}) => {
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params, preview }) => {
   const slug = params!.slug;
-  const [page, sidebar] = await Promise.all([
-    fetchPage(slug, preview),
-    fetchSidebar(slug, preview),
-  ]);
+  const [page, sidebar] = await Promise.all([fetchPage(slug, preview), fetchSidebar(slug, preview)]);
   return { props: { page, sidebar } };
 };
 

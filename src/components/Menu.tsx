@@ -64,12 +64,7 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
   return (
     <Root mobileOpen={open}>
       {links.map(({ href, label, exact }) => (
-        <NavLink
-          key={href}
-          href={href}
-          className={clsx({ active: isActive(href, exact) })}
-          onClick={onClose}
-        >
+        <NavLink key={href} href={href} className={clsx({ active: isActive(href, exact) })} onClick={onClose}>
           {label}
         </NavLink>
       ))}

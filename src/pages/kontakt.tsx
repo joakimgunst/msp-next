@@ -1,10 +1,5 @@
 import { NextPage, GetStaticProps } from 'next';
-import {
-  fetchContacts,
-  fetchSidebar,
-  ContentfulSidebar,
-  ContentfulContact,
-} from '../contentful/data';
+import { fetchContacts, fetchSidebar, ContentfulSidebar, ContentfulContact } from '../contentful/data';
 import Contact from '../components/Contact';
 import Sidebar from '../components/Sidebar';
 import { renderDocument } from '../contentful/render';
@@ -47,10 +42,7 @@ const ContactPage: NextPage<Props> = ({ contacts, sidebar }) => (
 );
 
 export const getStaticProps: GetStaticProps<Props> = async ({ preview }) => {
-  const [contacts, sidebar] = await Promise.all([
-    fetchContacts(preview),
-    fetchSidebar('kontakt', preview),
-  ]);
+  const [contacts, sidebar] = await Promise.all([fetchContacts(preview), fetchSidebar('kontakt', preview)]);
   return { props: { contacts, sidebar } };
 };
 

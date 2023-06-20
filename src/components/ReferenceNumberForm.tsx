@@ -36,9 +36,7 @@ const ReferenceNumberForm: NextPage = () => {
       setNumber(undefined);
       setError(undefined);
       setLoading(true);
-      const data = await ky
-        .get(`/api/reference?name=${encodeURIComponent(value)}`)
-        .json<ReferenceNumberItem>();
+      const data = await ky.get(`/api/reference?name=${encodeURIComponent(value)}`).json<ReferenceNumberItem>();
       setNumber(data.referenceNumber);
     } catch (e) {
       if (e instanceof Error) {
@@ -78,9 +76,7 @@ const ReferenceNumberForm: NextPage = () => {
       {loading && <span>Söker...</span>}
       {number && <span>Ditt referensnummer är {number}</span>}
       {notFound && <span>Inget referensnummer hittades</span>}
-      {otherError && (
-        <span>Ett problem uppstod, vänligen meddela kårsekreteraren</span>
-      )}
+      {otherError && <span>Ett problem uppstod, vänligen meddela kårsekreteraren</span>}
     </Root>
   );
 };

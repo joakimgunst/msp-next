@@ -1,10 +1,5 @@
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import {
-  ContentfulPost,
-  ContentfulPostSummary,
-  fetchPost,
-  fetchPostSummaries,
-} from '../../contentful/data';
+import { ContentfulPost, ContentfulPostSummary, fetchPost, fetchPostSummaries } from '../../contentful/data';
 import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
@@ -63,15 +58,9 @@ interface Query extends ParsedUrlQuery {
   slug: string;
 }
 
-export const getStaticProps: GetStaticProps<Props, Query> = async ({
-  params,
-  preview,
-}) => {
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params, preview }) => {
   const slug = params!.slug!;
-  const [post, posts] = await Promise.all([
-    fetchPost(slug, preview),
-    fetchPostSummaries(),
-  ]);
+  const [post, posts] = await Promise.all([fetchPost(slug, preview), fetchPostSummaries()]);
   return { props: { post, posts } };
 };
 
