@@ -1,21 +1,30 @@
-import { Document } from '@contentful/rich-text-types';
 import { getContentfulEntries, getContentfulEntry } from './client';
+import {
+  TypeContact,
+  TypeContactSkeleton,
+  TypePage,
+  TypePageSkeleton,
+  TypePost,
+  TypePostSkeleton,
+  TypeSidebar,
+  TypeSidebarSkeleton,
+} from '../../contentful/types';
 import { Asset } from 'contentful';
 
 export async function fetchPostSummaries(preview?: boolean, limit = 100) {
-  return getContentfulEntries<ContentfulPostSummary>(
+  return getContentfulEntries<TypePostSkeleton>(
     {
       content_type: 'post',
-      order: '-fields.date',
-      limit: limit.toString(),
-      select: 'sys,fields.title,fields.slug,fields.date,fields.lead',
+      order: ['-fields.date'],
+      limit: limit,
+      select: ['sys', 'fields.title', 'fields.slug', 'fields.date', 'fields.lead'],
     },
     preview
   );
 }
 
 export async function fetchPost(slug: string | string[], preview?: boolean) {
-  return getContentfulEntry<ContentfulPost>(
+  return getContentfulEntry<TypePostSkeleton>(
     {
       content_type: 'post',
       'fields.slug': getFullSlug(slug),
@@ -25,7 +34,7 @@ export async function fetchPost(slug: string | string[], preview?: boolean) {
 }
 
 export async function fetchPages(preview?: boolean) {
-  return getContentfulEntries<ContentfulPage>(
+  return getContentfulEntries<TypePageSkeleton>(
     {
       content_type: 'page',
     },
@@ -34,7 +43,7 @@ export async function fetchPages(preview?: boolean) {
 }
 
 export async function fetchPage(slug: string | string[], preview?: boolean) {
-  return getContentfulEntry<ContentfulPage>(
+  return getContentfulEntry<TypePageSkeleton>(
     {
       content_type: 'page',
       'fields.slug': getFullSlug(slug),
@@ -44,7 +53,7 @@ export async function fetchPage(slug: string | string[], preview?: boolean) {
 }
 
 export async function fetchSidebar(slug: string | string[], preview?: boolean) {
-  return getContentfulEntry<ContentfulSidebar>(
+  return getContentfulEntry<TypeSidebarSkeleton>(
     {
       content_type: 'sidebar',
       'fields.slug': getRootSlug(slug),
@@ -54,46 +63,30 @@ export async function fetchSidebar(slug: string | string[], preview?: boolean) {
 }
 
 export async function fetchContacts(preview?: boolean) {
-  return getContentfulEntries<ContentfulContact>(
+  return getContentfulEntries<TypeContactSkeleton>(
     {
       content_type: 'contact',
-      order: 'fields.order,fields.name',
+      order: ['fields.order', 'fields.name'],
     },
     preview
   );
 }
 
-export interface ContentfulPostSummary {
-  title: string;
-  slug: string;
-  date: string;
-  lead: Document;
-}
+export type ContentfulPostEntry = TypePost<'WITHOUT_UNRESOLVABLE_LINKS', string>;
+export type ContentfulPost = ContentfulPostEntry['fields'];
 
-export interface ContentfulPost extends ContentfulPostSummary {
-  image?: Asset;
-  content?: Document;
-}
+export type ContentfulPostSummary = Pick<ContentfulPost, 'title' | 'slug' | 'date' | 'lead'>;
 
-export interface ContentfulPage {
-  title: string;
-  slug: string;
-  image?: Asset;
-  content?: Document;
-}
+export type ContentfulPageEntry = TypePage<'WITHOUT_UNRESOLVABLE_LINKS', string>;
+export type ContentfulPage = ContentfulPageEntry['fields'];
 
-export interface ContentfulSidebar {
-  content: Document;
-}
+export type ContentfulSidebarEntry = TypeSidebar<'WITHOUT_UNRESOLVABLE_LINKS', string>;
+export type ContentfulSidebar = ContentfulSidebarEntry['fields'];
 
-export interface ContentfulContact {
-  name: string;
-  image?: Asset;
-  title?: string;
-  email?: string;
-  phone?: string;
-  order?: number;
-}
+export type ContentfulContactEntry = TypeContact<'WITHOUT_UNRESOLVABLE_LINKS', string>;
+export type ContentfulContact = ContentfulContactEntry['fields'];
+
+export type ContentfulAsset = Asset<'WITHOUT_UNRESOLVABLE_LINKS'>;
 
 function getFullSlug(slug: string | string[]) {
   return Array.isArray(slug) ? slug.join('/') : slug;

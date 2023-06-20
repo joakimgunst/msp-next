@@ -1,11 +1,11 @@
-import { Asset } from 'contentful';
 import Head from 'next/head';
 import { siteName } from '../config';
 import { getOpenGraphImageUrl } from '../contentful/utils';
+import { ContentfulAsset } from '../contentful/data';
 
 interface Props {
   title: string;
-  image?: Asset;
+  image?: ContentfulAsset;
   noSiteName?: boolean;
 }
 

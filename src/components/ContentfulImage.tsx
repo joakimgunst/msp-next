@@ -1,8 +1,8 @@
-import { Asset } from 'contentful';
 import { getAssetUrl, getAssetTitle } from '../contentful/utils';
+import { ContentfulAsset } from '../contentful/data';
 
 interface Props {
-  image: Asset;
+  image: ContentfulAsset;
   width: number;
   height: number;
   className?: string;

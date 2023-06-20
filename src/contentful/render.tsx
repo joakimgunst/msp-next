@@ -10,8 +10,8 @@ import {
 } from '@contentful/rich-text-types';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 import PageLink from '../components/PageLink';
-import { Entry, Asset } from 'contentful';
-import { ContentfulPage, ContentfulPost } from './data';
+import { Entry, EntrySkeletonType } from 'contentful';
+import { ContentfulAsset, ContentfulPageEntry, ContentfulPostEntry } from './data';
 import PostLink from '../components/PostLink';
 import { ReactNode } from 'react';
 import Link from 'next/link';
@@ -69,20 +69,20 @@ export function renderDocument(document: Document) {
 
 type AnyEntry = { sys: unknown };
 
-function isPageEntry(target: AnyEntry): target is Entry<ContentfulPage> {
+function isPageEntry(target: AnyEntry): target is ContentfulPageEntry {
   return isEntryType('page', target);
 }
 
-function isPostEntry(target: AnyEntry): target is Entry<ContentfulPost> {
+function isPostEntry(target: AnyEntry): target is ContentfulPostEntry {
   return isEntryType('post', target);
 }
 
 function isEntryType(type: string, target: AnyEntry) {
-  const entry = target as Entry<unknown>;
+  const entry = target as Entry<EntrySkeletonType>;
   return entry.sys.contentType?.sys.id === type;
 }
 
-function isAsset(target: AnyEntry): target is Asset {
-  const entry = target as Asset;
+function isAsset(target: AnyEntry): target is ContentfulAsset {
+  const entry = target as ContentfulAsset;
   return entry.sys.type === 'Asset';
 }
