@@ -1,3 +1,4 @@
 .vercel
 .next
+contentful/types
 pnpm-lock.yaml
