@@ -1,6 +1,6 @@
-import { Asset } from 'contentful';
 import styled from 'styled-components';
 import ContentfulImage from './ContentfulImage';
+import { ContentfulAsset } from '../contentful/data';
 
 const Root = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ const Root = styled.div`
 `;
 
 interface Props {
-  image: Asset;
+  image: ContentfulAsset;
 }
 
 const HeroImage: React.FC<Props> = ({ image }) => {
