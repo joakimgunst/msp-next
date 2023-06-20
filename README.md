@@ -73,7 +73,7 @@ A webhook is also configured in Contentful so that a production deployment is do
 
 ## Contentful
 
-Contentful types are automatically generated and are located in the `contentful/types` directory. To generate types, first create a personal access token in the Contentful app. You can then run:
+Contentful types are automatically generated and are located in the `src/contentful/types` directory. To generate types, first create a personal access token in the Contentful app. You can then run:
 
 ```
 export CONTENTFUL_MANAGEMENT_ACCESS_TOKEN=<token>

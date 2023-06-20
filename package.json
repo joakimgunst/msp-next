@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc",
-    "generate-contentful-types": "pnpm cf-content-types-generator --token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --spaceId 5v042gad04cj --environment master --v10 --out contentful/types"
+    "generate-contentful-types": "pnpm cf-content-types-generator --token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --spaceId 5v042gad04cj --environment master --v10 --out src/contentful/types"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "15.17.0",

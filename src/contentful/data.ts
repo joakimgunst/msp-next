@@ -8,7 +8,7 @@ import {
   TypePostSkeleton,
   TypeSidebar,
   TypeSidebarSkeleton,
-} from '../../contentful/types';
+} from '../contentful/types';
 import { Asset } from 'contentful';
 
 export async function fetchPostSummaries(preview?: boolean, limit = 100) {
