@@ -1,6 +1,5 @@
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { ContentfulPost, ContentfulPostSummary, fetchPost, fetchPostSummaries } from '../../contentful/data';
-import dayjs from 'dayjs';
 import { renderDocument } from '../../contentful/render';
 import Sidebar from '../../components/Sidebar';
 import PostLink from '../../components/PostLink';
@@ -11,6 +10,7 @@ import MainContent from '../../components/MainContent';
 import { ParsedUrlQuery } from 'querystring';
 import AppHead from '../../components/AppHead';
 import styles from './[slug].module.css';
+import { formatDate } from '../../utils/dateUtils';
 
 interface Props {
   post: ContentfulPost | null;
@@ -29,7 +29,7 @@ const PostPage: NextPage<Props> = ({ post, posts }) => {
       <article>
         <h1>{post.title}</h1>
         {post.image && <HeroImage image={post.image} />}
-        <p className={styles.date}>{dayjs(post.date).format('LL')}</p>
+        <p className={styles.date}>{formatDate(post.date)}</p>
         {renderDocument(post.lead)}
         {post.content && <ContentBlock content={post.content} />}
       </article>
