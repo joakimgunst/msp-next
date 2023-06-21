@@ -1,0 +1,15 @@
+.root {
+  display: grid;
+  grid-column-gap: 16px;
+  grid-row-gap: 8px;
+  align-items: center;
+  font-family: var(--font-sans);
+
+  @media (min-width: 640px) {
+    grid-template-columns: auto 1fr;
+  }
+
+  & input {
+    margin-right: 8px;
+  }
+}

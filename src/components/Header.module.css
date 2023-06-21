@@ -1,0 +1,56 @@
+.headerTop {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  height: 50px;
+  width: 40px;
+
+  @media (min-width: 768px) {
+    height: 100px;
+    width: 80px;
+  }
+}
+
+.titleBase {
+  font-weight: bold;
+  font-family: 'Alegreya Sans', sans-serif;
+  line-height: 1.2;
+  font-size: 1.2em;
+  margin-left: 1rem;
+}
+
+.title {
+  composes: titleBase;
+  display: none;
+
+  @media (min-width: 640px) {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2em;
+    margin-left: 2rem;
+  }
+}
+
+.shortTitle {
+  composes: titleBase;
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+.menuToggle {
+  margin-left: auto;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding-left: 1rem;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}

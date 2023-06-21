@@ -1,43 +1,6 @@
-import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styled, { css } from 'styled-components';
-import media from '../media';
-
-const Root = styled.nav<{ mobileOpen: boolean }>`
-  display: none;
-  flex-direction: column;
-  background: var(--color-menu);
-  border-radius: 0.5rem;
-  overflow: hidden;
-
-  ${({ mobileOpen }) =>
-    mobileOpen &&
-    css`
-      display: flex;
-    `}
-
-  @media ${media.lg} {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-const NavLink = styled(Link)`
-  display: block;
-  padding: 0.5rem 1rem;
-  color: white;
-  text-decoration: none;
-  transition: background 0.2s;
-
-  &:hover {
-    background: var(--color-menu-hover);
-  }
-
-  &.active {
-    background: var(--color-menu-active) !important;
-  }
-`;
+import styles from './Menu.module.css';
 
 const links = [
   { href: '/', label: 'Hem', exact: true },
@@ -62,13 +25,19 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
   }
 
   return (
-    <Root mobileOpen={open}>
+    <nav className={styles.root} data-mobile-open={open}>
       {links.map(({ href, label, exact }) => (
-        <NavLink key={href} href={href} className={clsx({ active: isActive(href, exact) })} onClick={onClose}>
+        <Link
+          className={styles.navLink}
+          key={href}
+          href={href}
+          aria-current={isActive(href, exact) ? 'page' : undefined}
+          onClick={onClose}
+        >
           {label}
-        </NavLink>
+        </Link>
       ))}
-    </Root>
+    </nav>
   );
 };
 

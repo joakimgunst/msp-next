@@ -1,0 +1,26 @@
+.root {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.image {
+  width: 12rem;
+  height: 16rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.imagePlaceholder {
+  width: 12rem;
+  height: 16rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--color-shading);
+}
+
+.name {
+  font-weight: bold;
+}

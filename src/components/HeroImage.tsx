@@ -1,19 +1,6 @@
-import styled from 'styled-components';
 import ContentfulImage from './ContentfulImage';
 import { ContentfulAsset } from '../contentful/data';
-
-const Root = styled.div`
-  width: 100%;
-  height: auto;
-  padding-bottom: calc(2 / 3 * 100%);
-  position: relative;
-
-  img {
-    position: absolute;
-    width: 100%;
-    border-radius: 0.25rem;
-  }
-`;
+import styles from './HeroImage.module.css';
 
 interface Props {
   image: ContentfulAsset;
@@ -21,9 +8,9 @@ interface Props {
 
 const HeroImage: React.FC<Props> = ({ image }) => {
   return (
-    <Root>
+    <div className={styles.root}>
       <ContentfulImage image={image} width={1200} height={800} />
-    </Root>
+    </div>
   );
 };
 

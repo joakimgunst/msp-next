@@ -1,0 +1,32 @@
+.root {
+  display: none;
+  flex-direction: column;
+  background: var(--color-menu);
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  &[data-mobile-open='true'] {
+    display: flex;
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.navLink {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--color-menu-hover);
+  }
+
+  &[aria-current='page'] {
+    background: var(--color-menu-active);
+  }
+}
