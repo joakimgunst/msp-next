@@ -1,12 +1,13 @@
 import { siteDescription, siteName } from '../config';
 import 'normalize.css';
 import '../styles/global.css';
-import '../styles/fonts.css';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 // import PreviewIndicator from '../components/PreviewIndicator';
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
+import { Alegreya, Alegreya_Sans } from 'next/font/google';
+import clsx from 'clsx';
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -33,9 +34,23 @@ export const metadata = {
   },
 } satisfies Metadata;
 
+const alegreya = Alegreya({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-serif',
+});
+
+const alegreyaSans = Alegreya_Sans({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sv">
+    <html lang="sv" className={clsx(alegreya.variable, alegreyaSans.variable)}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />

@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app';
 import 'normalize.css';
 import '../styles/global.css';
-import '../styles/fonts.css';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import PreviewIndicator from '../components/PreviewIndicator';
