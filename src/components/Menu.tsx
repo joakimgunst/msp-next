@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import styles from './Menu.module.css';
+import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/', label: 'Hem', exact: true },
@@ -18,10 +18,11 @@ interface Props {
 }
 
 const Menu: React.FC<Props> = ({ open, onClose }) => {
-  const { asPath } = useRouter();
+  const pathname = usePathname();
 
   function isActive(href: string, exact = false) {
-    return exact ? asPath === href : asPath.startsWith(href);
+    if (!pathname) return false;
+    return exact ? pathname === href : pathname.startsWith(href);
   }
 
   return (

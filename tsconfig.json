@@ -15,8 +15,16 @@
     "jsx": "preserve",
     "types": ["gtag.js"],
     "incremental": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }

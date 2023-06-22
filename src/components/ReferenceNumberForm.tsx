@@ -1,8 +1,10 @@
+'use client';
+
 import ky from 'ky';
 import { NextPage } from 'next';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { ReferenceNumberItem } from '../pages/api/reference';
 import styles from './ReferenceNumberForm.module.css';
+import type { ReferenceNumberItem } from '@/services/referenceNumberService';
 
 const ReferenceNumberForm: NextPage = () => {
   const [value, setValue] = useState<string>();
@@ -35,7 +37,7 @@ const ReferenceNumberForm: NextPage = () => {
     setValue(e.target.value);
   }
 
-  function handleKeyPress(e: KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
       e.preventDefault();
       fetchNumber();
@@ -50,7 +52,7 @@ const ReferenceNumberForm: NextPage = () => {
           aria-label="Namn"
           placeholder="Samuel Scout"
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
         />
         <button type="button" disabled={!value} onClick={fetchNumber}>
           Sök

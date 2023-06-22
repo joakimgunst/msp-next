@@ -1,10 +1,12 @@
-import { useRouter } from 'next/router';
+'use client';
+
 import styles from './PreviewIndicator.module.css';
+import { usePathname } from 'next/navigation';
 
 const PreviewIndicator: React.FC = () => {
-  const router = useRouter();
-  if (!router.isPreview) return null;
-  const exitLink = `/api/exit-preview?path=${router.asPath}`;
+  const pathname = usePathname();
+  const exitLink = `/api/exit-preview?path=${pathname}`;
+
   return (
     <div className={styles.root}>
       <a className={styles.exitLink} href={exitLink}>

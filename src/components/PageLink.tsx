@@ -5,10 +5,6 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const PageLink: React.FC<Props> = ({ slug, children }) => (
-  <Link href="/[...slug]" as={`/${slug}`}>
-    {children}
-  </Link>
-);
+const PageLink: React.FC<Props> = ({ slug, children }) => <Link href={`/${slug}`}>{children}</Link>;
 
 export default PageLink;
