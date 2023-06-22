@@ -1,7 +1,7 @@
 .sidebar {
   padding: 1.25rem;
   background: var(--color-shading);
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 
   & h2:first-child {
     margin-top: 0;

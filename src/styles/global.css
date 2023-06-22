@@ -85,7 +85,7 @@ blockquote {
   margin: 1rem 0;
   padding: 0.1rem 1.5rem;
   background: var(--color-shading);
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 }
 
 input,

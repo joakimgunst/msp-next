@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    gap: 2rem;
+  }
 }
 
 .logo {
@@ -18,8 +23,7 @@
   font-weight: bold;
   font-family: 'Alegreya Sans', sans-serif;
   line-height: 1.2;
-  font-size: 1.2em;
-  margin-left: 1rem;
+  font-size: 1.2rem;
 }
 
 .title {
@@ -31,8 +35,7 @@
   }
 
   @media (min-width: 768px) {
-    font-size: 2em;
-    margin-left: 2rem;
+    font-size: 2rem;
   }
 }
 
@@ -45,10 +48,14 @@
 }
 
 .menuToggle {
+  background: none;
+  border: none;
   margin-left: auto;
   text-decoration: none;
-  font-size: 1.2em;
-  padding-left: 1rem;
+  font-size: 1.2rem;
+  padding: 0;
+  color: var(--color-link);
+  font-family: var(----font-serif);
 
   @media (min-width: 1024px) {
     display: none;
