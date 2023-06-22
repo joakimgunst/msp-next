@@ -17,7 +17,7 @@ const ContentfulImage: React.FC<Props> = ({ image, width, height, loading, class
   return (
     <picture>
       <source type="image/webp" srcSet={`${src}&fm=webp`}></source>
-      <img src={src} alt={title} className={className} loading={loading} />
+      <img src={src} alt={title} className={className} loading={loading} width={width} height={height} />
     </picture>
   );
 };

@@ -1,12 +1,9 @@
 .root {
-  width: 100%;
-  height: auto;
   padding-bottom: calc(2 / 3 * 100%);
   position: relative;
 
   & img {
     position: absolute;
-    width: 100%;
     border-radius: 0.25rem;
   }
 }
