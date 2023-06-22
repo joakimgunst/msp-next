@@ -1,4 +1,4 @@
-import { siteDescription, siteName } from '../config';
+import { baseUrl, siteDescription, siteName } from '../config';
 import 'normalize.css';
 import '../styles/global.css';
 import Layout from '../components/Layout';
@@ -23,6 +23,7 @@ export const metadata = {
   description: siteDescription,
   keywords:
     'msp, munksnäs, spejarna, scout, scouting, spejare, muncca, scoutkår, scoutkåren, hobby, friluft, vargunge, vandring, hajk, läger',
+  metadataBase: new URL(baseUrl),
   openGraph: {
     siteName,
     locale: 'sv_FI',
