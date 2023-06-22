@@ -3,8 +3,8 @@
 import ky from 'ky';
 import { NextPage } from 'next';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { ReferenceNumberItem } from '@/pages/api/reference';
 import styles from './ReferenceNumberForm.module.css';
+import type { ReferenceNumberItem } from '@/service/referenceNumberService';
 
 const ReferenceNumberForm: NextPage = () => {
   const [value, setValue] = useState<string>();
