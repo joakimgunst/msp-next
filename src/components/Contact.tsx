@@ -14,7 +14,7 @@ const Contact: React.FC<Props> = ({ contact }) => {
   return (
     <div className={styles.root}>
       {image ? (
-        <ContentfulImage className={styles.image} image={image} width={384} height={512} />
+        <ContentfulImage className={styles.image} image={image} width={384} height={512} loading="lazy" />
       ) : (
         <div className={styles.imagePlaceholder} />
       )}
