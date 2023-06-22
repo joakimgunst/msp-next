@@ -9,18 +9,22 @@ import styles from './page.module.css';
 import { formatDate } from '@/utils/dateUtils';
 import { notFound } from 'next/navigation';
 import { getMetadata } from '@/contentful/utils';
+import { draftMode } from 'next/headers';
 
 type Props = { params: { slug: string } };
 
+async function getData(slug: string) {
+  const { isEnabled } = draftMode();
+  return await Promise.all([fetchPost(slug, isEnabled), fetchPostSummaries()]);
+}
+
 export async function generateMetadata({ params: { slug } }: Props) {
-  const preview = false; // TODO
-  const post = await fetchPost(slug, preview);
+  const [post] = await getData(slug);
   return getMetadata(post);
 }
 
 export default async function Page({ params: { slug } }: Props) {
-  const preview = false; // TODO
-  const [post, posts] = await Promise.all([fetchPost(slug, preview), fetchPostSummaries()]);
+  const [post, posts] = await getData(slug);
 
   if (!post) {
     return notFound();

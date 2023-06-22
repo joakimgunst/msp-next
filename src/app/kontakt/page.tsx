@@ -5,14 +5,15 @@ import Sidebar from '@/components/Sidebar';
 import { renderDocument } from '@/contentful/render';
 import MainContent from '@/components/MainContent';
 import styles from './page.module.css';
+import { draftMode } from 'next/headers';
 
 export const metadata = {
   title: 'Kontaktuppgifter',
 } satisfies Metadata;
 
 export default async function Page() {
-  const preview = false; // TODO
-  const [contacts, sidebar] = await Promise.all([fetchContacts(preview), fetchSidebar('kontakt', preview)]);
+  const { isEnabled } = draftMode();
+  const [contacts, sidebar] = await Promise.all([fetchContacts(isEnabled), fetchSidebar('kontakt', isEnabled)]);
 
   return (
     <MainContent>

@@ -3,11 +3,12 @@ import 'normalize.css';
 import '@/styles/global.css';
 import Layout from '@/components/Layout';
 import Header from '@/components/Header';
-// import PreviewIndicator from '@/components/PreviewIndicator';
+import PreviewIndicator from '@/components/PreviewIndicator';
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import { Alegreya, Alegreya_Sans } from 'next/font/google';
 import clsx from 'clsx';
+import { draftMode } from 'next/headers';
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -50,6 +51,8 @@ const alegreyaSans = Alegreya_Sans({
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const { isEnabled } = draftMode();
+
   return (
     <html lang="sv" className={clsx(alegreya.variable, alegreyaSans.variable)}>
       <head>
@@ -73,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Layout>
           <Header />
-          {/* <PreviewIndicator /> */}
+          {isEnabled && <PreviewIndicator />}
           {children}
           <Analytics />
         </Layout>

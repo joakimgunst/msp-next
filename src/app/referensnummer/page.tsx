@@ -3,18 +3,20 @@ import { fetchPage } from '@/contentful/data';
 import { renderDocument } from '@/contentful/render';
 import ReferenceNumberForm from '@/components/ReferenceNumberForm';
 import { getMetadata } from '@/contentful/utils';
+import { draftMode } from 'next/headers';
 
-const slug = 'referensnummer';
+async function getData() {
+  const { isEnabled } = draftMode();
+  return await fetchPage('referensnummer', isEnabled);
+}
 
 export async function generateMetadata() {
-  const preview = false; // TODO
-  const page = await fetchPage(slug, preview);
+  const page = await getData();
   return getMetadata(page);
 }
 
 export default async function Page() {
-  const preview = false; // TODO
-  const page = await fetchPage(slug, preview);
+  const page = await getData();
 
   return (
     <MainContent>

@@ -8,23 +8,25 @@ import { siteName } from '@/config';
 import Link from 'next/link';
 import styles from './page.module.css';
 import { getMetadata } from '@/contentful/utils';
+import { draftMode } from 'next/headers';
 
-const slug = 'hem';
+async function getData() {
+  const slug = 'hem';
+  const { isEnabled } = draftMode();
+  return await Promise.all([
+    fetchPage(slug, isEnabled),
+    fetchSidebar(slug, isEnabled),
+    fetchPostSummaries(isEnabled, 3),
+  ]);
+}
 
 export async function generateMetadata() {
-  const preview = false; // TODO
-  const post = await fetchPage(slug, preview);
+  const [post] = await getData();
   return getMetadata(post);
 }
 
 export default async function Page() {
-  const preview = false; // TODO
-
-  const [page, sidebar, posts] = await Promise.all([
-    fetchPage(slug, preview),
-    fetchSidebar(slug, preview),
-    fetchPostSummaries(preview, 3),
-  ]);
+  const [page, sidebar, posts] = await getData();
 
   return (
     <MainContent>

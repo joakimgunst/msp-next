@@ -6,18 +6,22 @@ import ContentBlock from '@/components/ContentBlock';
 import MainContent from '@/components/MainContent';
 import { notFound } from 'next/navigation';
 import { getMetadata } from '@/contentful/utils';
+import { draftMode } from 'next/headers';
 
 type Props = { params: { slug: string[] } };
 
+async function getData(slug: string[]) {
+  const { isEnabled } = draftMode();
+  return await Promise.all([fetchPage(slug, isEnabled), fetchSidebar(slug, isEnabled)]);
+}
+
 export async function generateMetadata({ params: { slug } }: Props) {
-  const preview = false; // TODO
-  const page = await fetchPage(slug, preview);
+  const [page] = await getData(slug);
   return getMetadata(page);
 }
 
 export default async function Page({ params: { slug } }: Props) {
-  const preview = false; // TODO
-  const [page, sidebar] = await Promise.all([fetchPage(slug, preview), fetchSidebar(slug, preview)]);
+  const [page, sidebar] = await getData(slug);
 
   if (!page) {
     return notFound();

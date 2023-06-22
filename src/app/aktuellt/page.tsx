@@ -2,14 +2,15 @@ import { fetchPostSummaries } from '@/contentful/data';
 import PostSummary from '@/components/PostSummary';
 import MainContent from '@/components/MainContent';
 import { Metadata } from 'next';
+import { draftMode } from 'next/headers';
 
 export const metadata = {
   title: 'Aktuellt',
 } satisfies Metadata;
 
 export default async function Page() {
-  const preview = false; // TODO
-  const posts = await fetchPostSummaries(preview);
+  const { isEnabled } = draftMode();
+  const posts = await fetchPostSummaries(isEnabled);
 
   return (
     <MainContent>
