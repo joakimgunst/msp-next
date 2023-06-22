@@ -21,7 +21,7 @@
 
 .titleBase {
   font-weight: bold;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.2;
   font-size: 1.2rem;
 }
