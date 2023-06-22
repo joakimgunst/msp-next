@@ -5,6 +5,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { siteName } from '../config';
 import styles from './Header.module.css';
+import Image from 'next/image';
+import logo from '@/assets/msp_logo.svg';
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +17,7 @@ const Header: React.FC = () => {
     <header>
       <div className={styles.headerTop}>
         <Link href="/">
-          <img className={styles.logo} src="/images/msp_logo.svg" alt={siteName} />
+          <Image className={styles.logo} src={logo} alt={siteName} />
         </Link>
         <div className={styles.title}>Scoutkåren Munksnäs Spejarna</div>
         <div className={styles.shortTitle}>Munksnäs Spejarna</div>
