@@ -1,6 +1,4 @@
 import { baseUrl, siteDescription, siteName } from '@/config';
-import 'normalize.css';
-import '@/styles/global.css';
 import Layout from '@/components/Layout';
 import Header from '@/components/Header';
 import PreviewIndicator from '@/components/PreviewIndicator';
@@ -10,6 +8,7 @@ import { Alegreya, Alegreya_Sans } from 'next/font/google';
 import clsx from 'clsx';
 import { draftMode } from 'next/headers';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import './global.css';
 
 export const metadata = {
   title: {
