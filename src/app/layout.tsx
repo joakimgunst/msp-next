@@ -57,7 +57,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="sv" className={clsx(alegreya.variable, alegreyaSans.variable)}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <Script id="google-analytics">
           {`
@@ -67,10 +66,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#315926" />
       </head>
       <body>
         <Layout>
