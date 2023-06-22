@@ -9,13 +9,7 @@ import { Metadata } from 'next';
 import { Alegreya, Alegreya_Sans } from 'next/font/google';
 import clsx from 'clsx';
 import { draftMode } from 'next/headers';
-import Script from 'next/script';
-
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
-if (!GA_MEASUREMENT_ID) {
-  throw new Error('NEXT_PUBLIC_GA_MEASUREMENT_ID env variable is missing');
-}
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 export const metadata = {
   title: {
@@ -56,23 +50,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="sv" className={clsx(alegreya.variable, alegreyaSans.variable)}>
-      <head>
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}');
-          `}
-        </Script>
-      </head>
       <body>
         <Layout>
           <Header />
           {isEnabled && <PreviewIndicator />}
           {children}
           <Analytics />
+          <GoogleAnalytics />
         </Layout>
       </body>
     </html>
