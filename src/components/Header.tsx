@@ -17,9 +17,9 @@ const Header: React.FC = () => {
         </Link>
         <div className={styles.title}>Scoutkåren Munksnäs Spejarna</div>
         <div className={styles.shortTitle}>Munksnäs Spejarna</div>
-        <a className={styles.menuToggle} onClick={toggleMenu}>
+        <button className={styles.menuToggle} onClick={toggleMenu}>
           Meny
-        </a>
+        </button>
       </div>
       <Menu open={menuOpen} onClose={closeMenu} />
     </header>
