@@ -5,13 +5,20 @@ import PostLink from '@/components/PostLink';
 import HeroImage from '@/components/HeroImage';
 import ContentBlock from '@/components/ContentBlock';
 import MainContent from '@/components/MainContent';
-import AppHead from '@/components/AppHead';
 import styles from './page.module.css';
 import { formatDate } from '@/utils/dateUtils';
 import { notFound } from 'next/navigation';
+import { getMetadata } from '@/contentful/utils';
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+type Props = { params: { slug: string } };
+
+export async function generateMetadata({ params: { slug } }: Props) {
+  const preview = false; // TODO
+  const post = await fetchPost(slug, preview);
+  return getMetadata(post);
+}
+
+export default async function Page({ params: { slug } }: Props) {
   const preview = false; // TODO
   const [post, posts] = await Promise.all([fetchPost(slug, preview), fetchPostSummaries()]);
 
@@ -21,8 +28,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <MainContent>
-      <AppHead title={post.title} image={post.image} />
-
       <article>
         <h1>{post.title}</h1>
         {post.image && <HeroImage image={post.image} />}

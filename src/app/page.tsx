@@ -7,20 +7,27 @@ import HeroImage from '@/components/HeroImage';
 import { siteName } from '@/config';
 import Link from 'next/link';
 import styles from './page.module.css';
+import { getMetadata } from '@/contentful/utils';
+
+const slug = 'hem';
+
+export async function generateMetadata() {
+  const preview = false; // TODO
+  const post = await fetchPage(slug, preview);
+  return getMetadata(post);
+}
 
 export default async function Page() {
   const preview = false; // TODO
 
   const [page, sidebar, posts] = await Promise.all([
-    fetchPage('hem', preview),
-    fetchSidebar('hem', preview),
+    fetchPage(slug, preview),
+    fetchSidebar(slug, preview),
     fetchPostSummaries(preview, 3),
   ]);
 
   return (
     <MainContent>
-      {/* <AppHead title={title} image={page?.image} noSiteName /> */}
-
       <div>
         <h1>{siteName}</h1>
         {page?.image && <HeroImage image={page.image} />}
