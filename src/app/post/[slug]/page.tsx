@@ -1,13 +1,13 @@
-import { fetchPost, fetchPostSummaries } from '../../../contentful/data';
-import { renderDocument } from '../../../contentful/render';
-import Sidebar from '../../../components/Sidebar';
-import PostLink from '../../../components/PostLink';
-import HeroImage from '../../../components/HeroImage';
-import ContentBlock from '../../../components/ContentBlock';
-import MainContent from '../../../components/MainContent';
-import AppHead from '../../../components/AppHead';
+import { fetchPost, fetchPostSummaries } from '@/contentful/data';
+import { renderDocument } from '@/contentful/render';
+import Sidebar from '@/components/Sidebar';
+import PostLink from '@/components/PostLink';
+import HeroImage from '@/components/HeroImage';
+import ContentBlock from '@/components/ContentBlock';
+import MainContent from '@/components/MainContent';
+import AppHead from '@/components/AppHead';
 import styles from './page.module.css';
-import { formatDate } from '../../../utils/dateUtils';
+import { formatDate } from '@/utils/dateUtils';
 import { notFound } from 'next/navigation';
 
 export default async function Page({ params }: { params: { slug: string } }) {

@@ -1,9 +1,9 @@
-import { baseUrl, siteDescription, siteName } from '../config';
+import { baseUrl, siteDescription, siteName } from '@/config';
 import 'normalize.css';
-import '../styles/global.css';
-import Layout from '../components/Layout';
-import Header from '../components/Header';
-// import PreviewIndicator from '../components/PreviewIndicator';
+import '@/styles/global.css';
+import Layout from '@/components/Layout';
+import Header from '@/components/Header';
+// import PreviewIndicator from '@/components/PreviewIndicator';
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import { Alegreya, Alegreya_Sans } from 'next/font/google';

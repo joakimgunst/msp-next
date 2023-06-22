@@ -1,10 +1,10 @@
-import { fetchPostSummaries, fetchPage, fetchSidebar } from '../contentful/data';
-import { renderDocument } from '../contentful/render';
-import Sidebar from '../components/Sidebar';
-import PostSummary from '../components/PostSummary';
-import MainContent from '../components/MainContent';
-import HeroImage from '../components/HeroImage';
-import { siteName } from '../config';
+import { fetchPostSummaries, fetchPage, fetchSidebar } from '@/contentful/data';
+import { renderDocument } from '@/contentful/render';
+import Sidebar from '@/components/Sidebar';
+import PostSummary from '@/components/PostSummary';
+import MainContent from '@/components/MainContent';
+import HeroImage from '@/components/HeroImage';
+import { siteName } from '@/config';
 import Link from 'next/link';
 import styles from './page.module.css';
 

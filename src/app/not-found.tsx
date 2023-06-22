@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import MainContent from '../components/MainContent';
-import AppHead from '../components/AppHead';
+import MainContent from '@/components/MainContent';
+import AppHead from '@/components/AppHead';
 
 export default function NotFound() {
   return (

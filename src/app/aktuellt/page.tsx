@@ -1,6 +1,6 @@
-import { fetchPostSummaries } from '../../contentful/data';
-import PostSummary from '../../components/PostSummary';
-import MainContent from '../../components/MainContent';
+import { fetchPostSummaries } from '@/contentful/data';
+import PostSummary from '@/components/PostSummary';
+import MainContent from '@/components/MainContent';
 import { Metadata } from 'next';
 
 export const metadata = {
