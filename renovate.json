@@ -1,5 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "schedule:earlyMondays", "group:allNonMajor"],
-  "timezone": "Europe/Helsinki"
+  "extends": ["config:base", "schedule:earlyMondays"],
+  "timezone": "Europe/Helsinki",
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "excludePackagePatterns": ["typescript"]
+    }
+  ]
 }
