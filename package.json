@@ -17,7 +17,7 @@
     "@vercel/analytics": "1.0.2",
     "clsx": "2.0.0",
     "contentful": "10.5.1",
-    "ky": "0.33.3",
+    "ky": "1.0.1",
     "next": "13.4.19",
     "normalize.css": "8.0.1",
     "react": "18.2.0",

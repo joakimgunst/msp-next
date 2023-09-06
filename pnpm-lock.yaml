@@ -18,8 +18,8 @@ dependencies:
     specifier: 10.5.1
     version: 10.5.1
   ky:
-    specifier: 0.33.3
-    version: 0.33.3
+    specifier: 1.0.1
+    version: 1.0.1
   next:
     specifier: 13.4.19
     version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
@@ -2863,9 +2863,9 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
-  /ky@0.33.3:
-    resolution: {integrity: sha512-CasD9OCEQSFIam2U8efFK81Yeg8vNMTBUqtMOHlrcWQHqUX3HeCl9Dr31u4toV7emlH8Mymk5+9p0lL6mKb/Xw==}
-    engines: {node: '>=14.16'}
+  /ky@1.0.1:
+    resolution: {integrity: sha512-UvcwpQO0LOuZwG0Ti3VDo6w57KYt+r4bWEYlNaMt82hgyFtse86QtOGum1RzsZni31FndXQl6NvtDArfunt2JQ==}
+    engines: {node: '>=18'}
     dev: false
 
   /language-subtag-registry@0.3.22:
