@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import { draftMode } from 'next/headers';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './global.css';
+import { LivePreviewProvider } from '@/components/LivePreviewProvider';
 
 export const metadata = {
   title: {
@@ -50,13 +51,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="sv" className={clsx(alegreya.variable, alegreyaSans.variable)}>
       <body>
-        <Layout>
-          <Header />
-          {isEnabled && <PreviewIndicator />}
-          {children}
-          <Analytics />
-          <GoogleAnalytics />
-        </Layout>
+        <LivePreviewProvider>
+          <Layout>
+            <Header />
+            {isEnabled && <PreviewIndicator />}
+            {children}
+            <Analytics />
+            <GoogleAnalytics />
+          </Layout>
+        </LivePreviewProvider>
       </body>
     </html>
   );
