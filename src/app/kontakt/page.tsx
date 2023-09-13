@@ -26,7 +26,7 @@ export default async function Page() {
         </div>
       </div>
 
-      {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+      {sidebar && <Sidebar>{renderDocument(sidebar.fields.content)}</Sidebar>}
     </MainContent>
   );
 }
