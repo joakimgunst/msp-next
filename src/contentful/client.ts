@@ -29,7 +29,7 @@ function getClient(preview?: boolean) {
 
 export async function getContentfulEntries<T extends EntrySkeletonType>(
   query: EntriesQueries<T, 'WITHOUT_UNRESOLVABLE_LINKS'>,
-  preview?: boolean
+  preview?: boolean,
 ) {
   const entries = await getClient(preview).getEntries<T>(query);
   return entries.items.map((item) => item.fields);
@@ -37,7 +37,7 @@ export async function getContentfulEntries<T extends EntrySkeletonType>(
 
 export async function getContentfulEntry<T extends EntrySkeletonType>(
   query: EntriesQueries<T, 'WITHOUT_UNRESOLVABLE_LINKS'>,
-  preview?: boolean
+  preview?: boolean,
 ) {
   const entries = await getClient(preview).getEntries<T>(query);
   return entries.items.at(0)?.fields ?? null;
