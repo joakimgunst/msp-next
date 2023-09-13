@@ -19,7 +19,7 @@ export async function fetchPostSummaries(preview?: boolean, limit = 100) {
       limit: limit,
       select: ['sys', 'fields.title', 'fields.slug', 'fields.date', 'fields.lead'],
     },
-    preview
+    preview,
   );
 }
 
@@ -29,7 +29,7 @@ export async function fetchPost(slug: string | string[], preview?: boolean) {
       content_type: 'post',
       'fields.slug': getFullSlug(slug),
     },
-    preview
+    preview,
   );
 }
 
@@ -38,7 +38,7 @@ export async function fetchPages(preview?: boolean) {
     {
       content_type: 'page',
     },
-    preview
+    preview,
   );
 }
 
@@ -48,7 +48,7 @@ export async function fetchPage(slug: string | string[], preview?: boolean) {
       content_type: 'page',
       'fields.slug': getFullSlug(slug),
     },
-    preview
+    preview,
   );
 }
 
@@ -58,7 +58,7 @@ export async function fetchSidebar(slug: string | string[], preview?: boolean) {
       content_type: 'sidebar',
       'fields.slug': getRootSlug(slug),
     },
-    preview
+    preview,
   );
 }
 
@@ -68,7 +68,7 @@ export async function fetchContacts(preview?: boolean) {
       content_type: 'contact',
       order: ['fields.order', 'fields.name'],
     },
-    preview
+    preview,
   );
 }
 
