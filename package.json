@@ -2,7 +2,7 @@
   "name": "msp-next",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@8.7.4",
+  "packageManager": "pnpm@8.7.5",
   "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
@@ -13,10 +13,10 @@
     "generate-contentful-types": "pnpm cf-content-types-generator --token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --spaceId 5v042gad04cj --environment master --v10 --out src/contentful/types"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "15.17.1",
+    "@contentful/rich-text-react-renderer": "15.17.2",
     "@vercel/analytics": "1.0.2",
     "clsx": "2.0.0",
-    "contentful": "10.5.1",
+    "contentful": "10.5.2",
     "ky": "1.0.1",
     "next": "13.4.19",
     "normalize.css": "8.0.1",
@@ -24,12 +24,12 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@contentful/rich-text-types": "16.2.1",
+    "@contentful/rich-text-types": "16.3.0",
     "@types/gtag.js": "0.0.13",
-    "@types/node": "18.17.14",
+    "@types/node": "18.17.15",
     "@types/react": "18.2.21",
     "cf-content-types-generator": "2.12.2",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "postcss": "8.4.29",
     "postcss-preset-env": "9.1.3",
