@@ -12,7 +12,7 @@ async function getData() {
 
 export async function generateMetadata() {
   const page = await getData();
-  return getMetadata(page);
+  return getMetadata(page?.fields);
 }
 
 export default async function Page() {
@@ -21,8 +21,8 @@ export default async function Page() {
   return (
     <MainContent>
       <div>
-        <h1>{page?.title}</h1>
-        {page?.content && <div>{renderDocument(page.content)}</div>}
+        <h1>{page?.fields.title}</h1>
+        {page?.fields.content && <div>{renderDocument(page.fields.content)}</div>}
         <ReferenceNumberForm />
       </div>
     </MainContent>

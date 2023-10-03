@@ -7,7 +7,7 @@ import HeroImage from '@/components/HeroImage';
 import { siteName } from '@/config';
 import Link from 'next/link';
 import styles from './page.module.css';
-import { getMetadata } from '@/contentful/utils';
+import { getFieldAttrs, getMetadata } from '@/contentful/utils';
 import { draftMode } from 'next/headers';
 
 async function getData() {
@@ -22,7 +22,7 @@ async function getData() {
 
 export async function generateMetadata() {
   const [post] = await getData();
-  return getMetadata(post);
+  return getMetadata(post?.fields);
 }
 
 export default async function Page() {
@@ -32,8 +32,8 @@ export default async function Page() {
     <MainContent>
       <div>
         <h1>{siteName}</h1>
-        {page?.image && <HeroImage image={page.image} />}
-        {page?.content && <div>{renderDocument(page.content)}</div>}
+        {page?.fields.image && <HeroImage image={page.fields.image} />}
+        {page?.fields.content && <div {...getFieldAttrs(page, 'content')}>{renderDocument(page.fields.content)}</div>}
 
         <h2>Aktuellt</h2>
         {posts.map((post) => (
@@ -45,7 +45,7 @@ export default async function Page() {
         </div>
       </div>
 
-      {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+      {sidebar && <Sidebar>{renderDocument(sidebar?.fields.content)}</Sidebar>}
     </MainContent>
   );
 }

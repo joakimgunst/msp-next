@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import { ContentfulAsset, ContentfulPage, ContentfulPost } from './data';
+import { Entry, EntrySkeletonType } from 'contentful';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 export function getAssetUrl(asset: ContentfulAsset | undefined) {
   return asset?.fields?.file?.url;
@@ -24,4 +26,11 @@ export function getMetadata(fields: ContentfulPage | ContentfulPost | null | und
       twitter: { card: 'summary_large_image' },
     }),
   } satisfies Metadata;
+}
+
+export function getFieldAttrs<T extends EntrySkeletonType>(
+  entry: Entry<T>,
+  fieldId: Extract<keyof T['fields'], string>,
+) {
+  return ContentfulLivePreview.getProps({ entryId: entry.sys.id, fieldId });
 }

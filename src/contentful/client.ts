@@ -40,5 +40,5 @@ export async function getContentfulEntry<T extends EntrySkeletonType>(
   preview?: boolean,
 ) {
   const entries = await getClient(preview).getEntries<T>(query);
-  return entries.items.at(0)?.fields ?? null;
+  return entries.items.at(0);
 }

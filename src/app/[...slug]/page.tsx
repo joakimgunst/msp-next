@@ -17,7 +17,7 @@ async function getData(slug: string[]) {
 
 export async function generateMetadata({ params: { slug } }: Props) {
   const [page] = await getData(slug);
-  return getMetadata(page);
+  return getMetadata(page?.fields);
 }
 
 export default async function Page({ params: { slug } }: Props) {
@@ -30,12 +30,12 @@ export default async function Page({ params: { slug } }: Props) {
   return (
     <MainContent>
       <div>
-        <h1>{page.title}</h1>
-        {page.image && <HeroImage image={page.image} />}
-        {page.content && <ContentBlock content={page.content} />}
+        <h1>{page.fields.title}</h1>
+        {page.fields.image && <HeroImage image={page.fields.image} />}
+        {page.fields.content && <ContentBlock content={page.fields.content} />}
       </div>
 
-      {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+      {sidebar && <Sidebar>{renderDocument(sidebar.fields.content)}</Sidebar>}
     </MainContent>
   );
 }

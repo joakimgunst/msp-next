@@ -20,7 +20,7 @@ async function getData(slug: string) {
 
 export async function generateMetadata({ params: { slug } }: Props) {
   const [post] = await getData(slug);
-  return getMetadata(post);
+  return getMetadata(post?.fields);
 }
 
 export default async function Page({ params: { slug } }: Props) {
@@ -33,11 +33,11 @@ export default async function Page({ params: { slug } }: Props) {
   return (
     <MainContent>
       <article>
-        <h1>{post.title}</h1>
-        {post.image && <HeroImage image={post.image} />}
-        <p className={styles.date}>{formatDate(post.date)}</p>
-        {renderDocument(post.lead)}
-        {post.content && <ContentBlock content={post.content} />}
+        <h1>{post.fields.title}</h1>
+        {post.fields.image && <HeroImage image={post.fields.image} />}
+        <p className={styles.date}>{formatDate(post.fields.date)}</p>
+        {renderDocument(post.fields.lead)}
+        {post.fields.content && <ContentBlock content={post.fields.content} />}
       </article>
 
       {posts && (
