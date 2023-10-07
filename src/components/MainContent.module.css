@@ -3,7 +3,7 @@
   display: grid;
   grid-gap: 2rem;
 
-  @media (min-width: 1024px) {
+  @media (--lg) {
     grid-template-columns: 1fr 20rem;
     grid-gap: 3rem;
 

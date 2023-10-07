@@ -4,7 +4,7 @@
   margin-bottom: 1rem;
   gap: 1rem;
 
-  @media (min-width: 768px) {
+  @media (--md) {
     gap: 2rem;
   }
 }
@@ -13,7 +13,7 @@
   height: 50px;
   width: 40px;
 
-  @media (min-width: 768px) {
+  @media (--md) {
     height: 100px;
     width: 80px;
   }
@@ -30,11 +30,11 @@
   composes: titleBase;
   display: none;
 
-  @media (min-width: 640px) {
+  @media (--sm) {
     display: block;
   }
 
-  @media (min-width: 768px) {
+  @media (--md) {
     font-size: 2rem;
   }
 }
@@ -42,7 +42,7 @@
 .shortTitle {
   composes: titleBase;
 
-  @media (min-width: 640px) {
+  @media (--sm) {
     display: none;
   }
 }
@@ -57,7 +57,7 @@
   color: var(--color-link);
   font-family: var(----font-serif);
 
-  @media (min-width: 1024px) {
+  @media (--lg) {
     display: none;
   }
 }
