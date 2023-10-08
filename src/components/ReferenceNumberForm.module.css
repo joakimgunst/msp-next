@@ -5,7 +5,7 @@
   align-items: center;
   font-family: var(--font-sans);
 
-  @media (min-width: 640px) {
+  @media (--sm) {
     grid-template-columns: auto 1fr;
   }
 

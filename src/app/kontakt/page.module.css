@@ -4,7 +4,7 @@
   grid-column-gap: 1rem;
   justify-items: center;
 
-  @media (min-width: 640px) {
+  @media (--sm) {
     grid-template-columns: 1fr 1fr;
   }
 }
