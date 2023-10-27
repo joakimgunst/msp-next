@@ -1,5 +1,3 @@
-import ky from 'ky';
-
 interface ValueRange {
   range: string;
   majorDimension: string;
@@ -27,7 +25,8 @@ if (!spreadsheetId) {
 export async function fetchReferenceNumber(name: string) {
   try {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${SHEET_NAME}?key=${apiKey}`;
-    const data = await ky.get(url).json<ValueRange>();
+    const response = await fetch(url);
+    const data: ValueRange = await response.json();
 
     const items = data.values
       .slice(1)

@@ -17,9 +17,6 @@ dependencies:
   contentful:
     specifier: 10.6.5
     version: 10.6.5
-  ky:
-    specifier: 1.1.1
-    version: 1.1.1
   next:
     specifier: 14.0.0
     version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
@@ -3037,11 +3034,6 @@ packages:
     dependencies:
       json-buffer: 3.0.1
     dev: true
-
-  /ky@1.1.1:
-    resolution: {integrity: sha512-fEzUY9u7/Mlh5TRF1whK46OpwzTBA1VLm0L3waLD0oZepijQqZ51oqIcA3D9AiuxR+MZXt5g5g07n0y0MF5QRA==}
-    engines: {node: '>=18'}
-    dev: false
 
   /language-subtag-registry@0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
