@@ -49,6 +49,9 @@ devDependencies:
   '@types/react':
     specifier: 18.2.33
     version: 18.2.33
+  '@types/react-dom':
+    specifier: 18.2.14
+    version: 18.2.14
   cf-content-types-generator:
     specifier: 2.12.9
     version: 2.12.9(@types/node@18.18.7)(typescript@5.2.2)
@@ -822,6 +825,12 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
+
+  /@types/react-dom@18.2.14:
+    resolution: {integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==}
+    dependencies:
+      '@types/react': 18.2.33
     dev: true
 
   /@types/react@18.2.33:

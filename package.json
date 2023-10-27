@@ -29,6 +29,7 @@
     "@types/gtag.js": "0.0.17",
     "@types/node": "18.18.7",
     "@types/react": "18.2.33",
+    "@types/react-dom": "18.2.14",
     "cf-content-types-generator": "2.12.9",
     "eslint": "8.52.0",
     "eslint-config-next": "14.0.0",
