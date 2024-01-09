@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import { ContentfulAsset, ContentfulPage, ContentfulPost } from './data';
 
 export function getAssetUrl(asset: ContentfulAsset | undefined) {
-  return asset?.fields?.file?.url;
+  const url = asset?.fields?.file?.url;
+  return url?.startsWith('//') ? `https:${url}` : url;
 }
 
 export function getAssetTitle(asset: ContentfulAsset | undefined) {

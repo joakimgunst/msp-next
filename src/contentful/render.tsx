@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import {
   INLINES,
   BLOCKS,
@@ -15,6 +14,7 @@ import { ContentfulAsset, ContentfulPageEntry, ContentfulPostEntry } from './dat
 import PostLink from '../components/PostLink';
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import ContentfulImage from '@/components/ContentfulImage';
 
 const options: Options = {
   renderNode: {
@@ -44,7 +44,13 @@ const options: Options = {
       const link = node as AssetLinkBlock;
       const target = link.data.target;
       if (isAsset(target)) {
-        return <img src={target.fields.file?.url} alt={target.fields.title} />;
+        return (
+          <ContentfulImage
+            image={target}
+            sizes="(min-width: 1024px) 656px, 100vw"
+            style={{ width: '100%', height: 'auto' }}
+          />
+        );
       }
       return <b>UNKNOWN ASSET</b>;
     },

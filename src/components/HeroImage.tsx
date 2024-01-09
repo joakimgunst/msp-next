@@ -7,11 +7,7 @@ interface Props {
 }
 
 const HeroImage: React.FC<Props> = ({ image }) => {
-  return (
-    <div className={styles.root}>
-      <ContentfulImage image={image} width={1200} height={800} />
-    </div>
-  );
+  return <ContentfulImage image={image} sizes="(min-width: 1024px) 656px, 100vw" priority className={styles.root} />;
 };
 
 export default HeroImage;
