@@ -1,24 +1,36 @@
 import { getAssetUrl, getAssetTitle } from '../contentful/utils';
 import { ContentfulAsset } from '../contentful/data';
+import Image from 'next/image';
+import { CSSProperties } from 'react';
 
 interface Props {
   image: ContentfulAsset;
-  width: number;
-  height: number;
-  loading?: 'lazy' | 'eager';
+  sizes?: string;
+  priority?: boolean;
+  width?: number;
+  height?: number;
   className?: string;
+  style?: CSSProperties;
 }
 
-const ContentfulImage: React.FC<Props> = ({ image, width, height, loading, className }) => {
+const ContentfulImage: React.FC<Props> = ({ image, sizes, priority, width, height, className, style }) => {
   const url = getAssetUrl(image);
   const title = getAssetTitle(image);
-  const src = `${url}?fit=fill&w=${width}&h=${height}`;
+  const imageDetails = image.fields.file?.details.image;
+
+  if (!url) return null;
 
   return (
-    <picture>
-      <source type="image/webp" srcSet={`${src}&fm=webp`}></source>
-      <img src={src} alt={title} className={className} loading={loading} width={width} height={height} />
-    </picture>
+    <Image
+      src={url}
+      alt={title ?? ''}
+      sizes={sizes}
+      priority={priority}
+      className={className}
+      style={style}
+      width={width ?? imageDetails?.width}
+      height={height ?? imageDetails?.height}
+    />
   );
 };
 

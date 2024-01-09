@@ -1,9 +1,7 @@
 .root {
-  padding-bottom: calc(2 / 3 * 100%);
-  position: relative;
-
-  & img {
-    position: absolute;
-    border-radius: 0.25rem;
-  }
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
