@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import Header from '@/components/Header';
 import PreviewIndicator from '@/components/PreviewIndicator';
 import { Analytics } from '@vercel/analytics/react';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { Alegreya, Alegreya_Sans } from 'next/font/google';
 import clsx from 'clsx';
 import { draftMode } from 'next/headers';
@@ -24,11 +24,14 @@ export const metadata = {
     locale: 'sv_FI',
   },
   manifest: '/site.webmanifest',
-  themeColor: '#c62127',
   verification: {
     google: 'D-TKUiiTZy6AaXE27F-yZplXObhC9VLi8BKdLXr7Gpg',
   },
 } satisfies Metadata;
+
+export const viewport: Viewport = {
+  themeColor: '#c62127',
+};
 
 const alegreya = Alegreya({
   weight: ['400', '700'],
