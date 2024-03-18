@@ -41,8 +41,8 @@ devDependencies:
     specifier: 0.0.17
     version: 0.0.17
   '@types/node':
-    specifier: 18.18.7
-    version: 18.18.7
+    specifier: 20.11.29
+    version: 20.11.29
   '@types/react':
     specifier: 18.2.33
     version: 18.2.33
@@ -51,7 +51,7 @@ devDependencies:
     version: 18.2.14
   cf-content-types-generator:
     specifier: 2.12.9
-    version: 2.12.9(@types/node@18.18.7)(typescript@5.2.2)
+    version: 2.12.9(@types/node@20.11.29)(typescript@5.2.2)
   eslint:
     specifier: 8.52.0
     version: 8.52.0
@@ -680,7 +680,7 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@oclif/core@2.15.0(@types/node@18.18.7)(typescript@5.2.2):
+  /@oclif/core@2.15.0(@types/node@20.11.29)(typescript@5.2.2):
     resolution: {integrity: sha512-fNEMG5DzJHhYmI3MgpByTvltBOMyFcnRIUMxbiz2ai8rhaYgaTHMG3Q38HcosfIvtw9nCjxpcQtC8MN8QtVCcA==}
     engines: {node: '>=14.0.0'}
     dependencies:
@@ -707,7 +707,7 @@ packages:
       strip-ansi: 6.0.1
       supports-color: 8.1.1
       supports-hyperlinks: 2.3.0
-      ts-node: 10.9.1(@types/node@18.18.7)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.11.29)(typescript@5.2.2)
       tslib: 2.6.2
       widest-line: 3.1.0
       wordwrap: 1.0.0
@@ -719,11 +719,11 @@ packages:
       - typescript
     dev: true
 
-  /@oclif/plugin-help@5.2.19(@types/node@18.18.7)(typescript@5.2.2):
+  /@oclif/plugin-help@5.2.19(@types/node@20.11.29)(typescript@5.2.2):
     resolution: {integrity: sha512-gf6/dFtzMJ8RA4ovlBCBGJsZsd4jPXhYWJho+Gh6KmA+Ev9LupoExbE0qT+a2uHJyHEvIg4uX/MBW3qdERD/8g==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.15.0(@types/node@18.18.7)(typescript@5.2.2)
+      '@oclif/core': 2.15.0(@types/node@20.11.29)(typescript@5.2.2)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -799,7 +799,7 @@ packages:
   /@types/cli-progress@3.11.1:
     resolution: {integrity: sha512-d9iA+0uys9N6wV/SvZkDEWMYwv+e/mhWPLa6lncQ1ZqrC3mXHnDmidanVGoVGnmCQ3mCxyu9S09Y2s18u5wL5w==}
     dependencies:
-      '@types/node': 18.18.7
+      '@types/node': 20.11.29
     dev: true
 
   /@types/gtag.js@0.0.17:
@@ -814,8 +814,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@18.18.7:
-    resolution: {integrity: sha512-bw+lEsxis6eqJYW8Ql6+yTqkE6RuFtsQPSe5JxXbqYRFQEER5aJA9a5UH9igqDWm3X4iLHIKOHlnAXLM4mi7uQ==}
+  /@types/node@20.11.29:
+    resolution: {integrity: sha512-P99thMkD/1YkCvAtOd6/zGedKNA0p2fj4ZpjCzcNiSCBWgm3cNRTBfa/qjFnsKkkojxu4vVLtWpesnZ9+ap+gA==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1305,13 +1305,13 @@ packages:
       redeyed: 2.1.1
     dev: true
 
-  /cf-content-types-generator@2.12.9(@types/node@18.18.7)(typescript@5.2.2):
+  /cf-content-types-generator@2.12.9(@types/node@20.11.29)(typescript@5.2.2):
     resolution: {integrity: sha512-QG7ug7j9/wIccZGvbhk+3w87U7af5YDiyJgAiJlD7x1rm+bWULLiMxjOBEu5TISVQkAl8OW37nRfLJMa8esJvA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      '@oclif/core': 2.15.0(@types/node@18.18.7)(typescript@5.2.2)
-      '@oclif/plugin-help': 5.2.19(@types/node@18.18.7)(typescript@5.2.2)
+      '@oclif/core': 2.15.0(@types/node@20.11.29)(typescript@5.2.2)
+      '@oclif/plugin-help': 5.2.19(@types/node@20.11.29)(typescript@5.2.2)
       contentful: 10.1.8
       contentful-export: 7.19.81
       contentful-management: 10.44.0
@@ -4441,7 +4441,7 @@ packages:
       code-block-writer: 12.0.0
     dev: true
 
-  /ts-node@10.9.1(@types/node@18.18.7)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@20.11.29)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -4460,7 +4460,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.18.7
+      '@types/node': 20.11.29
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
