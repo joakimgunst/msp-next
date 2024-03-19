@@ -26,7 +26,7 @@
     "@contentful/rich-text-types": "16.3.0",
     "@csstools/postcss-global-data": "2.1.0",
     "@types/gtag.js": "0.0.17",
-    "@types/node": "18.18.7",
+    "@types/node": "20.11.30",
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
     "cf-content-types-generator": "2.12.9",
