@@ -37,6 +37,6 @@
     "postcss": "8.4.31",
     "postcss-preset-env": "9.2.0",
     "prettier": "3.0.3",
-    "typescript": "5.2.2"
+    "typescript": "5.5.4"
   }
 }
