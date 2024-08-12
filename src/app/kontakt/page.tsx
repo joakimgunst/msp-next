@@ -1,28 +1,42 @@
 import { Metadata } from 'next';
-import { fetchContacts, fetchSidebar } from '@/contentful/data';
+import { fetchContactPage, fetchSidebar } from '@/contentful/data';
 import Contact from '@/components/Contact';
 import Sidebar from '@/components/Sidebar';
 import { renderDocument } from '@/contentful/render';
 import MainContent from '@/components/MainContent';
 import styles from './page.module.css';
 import { draftMode } from 'next/headers';
+import { notFound } from 'next/navigation';
 
-export const metadata = {
-  title: 'Kontaktuppgifter',
-} satisfies Metadata;
+const SLUG = 'kontakt';
+
+async function getData() {
+  const { isEnabled } = draftMode();
+  return await Promise.all([fetchContactPage(isEnabled), fetchSidebar(SLUG, isEnabled)]);
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const [contactPage] = await getData();
+  return {
+    title: contactPage?.title,
+  };
+}
 
 export default async function Page() {
-  const { isEnabled } = draftMode();
-  const [contacts, sidebar] = await Promise.all([fetchContacts(isEnabled), fetchSidebar('kontakt', isEnabled)]);
+  const [contactPage, sidebar] = await getData();
+
+  if (!contactPage) {
+    return notFound();
+  }
 
   return (
     <MainContent>
       <div>
-        <h1>{metadata.title}</h1>
+        <h1>{contactPage.title}</h1>
         <div className={styles.contacts}>
-          {contacts.map((contact) => (
-            <Contact key={contact.name} contact={contact} />
-          ))}
+          {contactPage.contacts
+            ?.filter((contact) => contact != undefined)
+            .map((contact) => <Contact key={contact?.fields.name} contact={contact?.fields} />)}
         </div>
       </div>
 
