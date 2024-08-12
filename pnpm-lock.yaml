@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@contentful/rich-text-react-renderer':
         specifier: 15.19.0
-        version: 15.19.0(react-dom@18.2.0)(react@18.2.0)
+        version: 15.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@vercel/analytics':
         specifier: 1.1.1
         version: 1.1.1
@@ -22,7 +22,7 @@ importers:
         version: 10.6.5
       next:
         specifier: 14.0.0
-        version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+        version: 14.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       normalize.css:
         specifier: 8.0.1
         version: 8.0.1
@@ -53,19 +53,19 @@ importers:
         version: 18.2.14
       cf-content-types-generator:
         specifier: 2.12.9
-        version: 2.12.9(@types/node@18.18.7)(typescript@5.2.2)
+        version: 2.12.9(@types/node@18.18.7)(typescript@5.5.4)
       eslint:
         specifier: 8.52.0
         version: 8.52.0
       eslint-config-next:
         specifier: 14.0.0
-        version: 14.0.0(eslint@8.52.0)(typescript@5.2.2)
+        version: 14.0.0(eslint@8.52.0)(typescript@5.5.4)
       eslint-config-prettier:
         specifier: 9.0.0
         version: 9.0.0(eslint@8.52.0)
       eslint-plugin-prettier:
         specifier: 5.0.1
-        version: 5.0.1(eslint-config-prettier@9.0.0)(eslint@8.52.0)(prettier@3.0.3)
+        version: 5.0.1(eslint-config-prettier@9.0.0(eslint@8.52.0))(eslint@8.52.0)(prettier@3.0.3)
       postcss:
         specifier: 8.4.31
         version: 8.4.31
@@ -76,8 +76,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       typescript:
-        specifier: 5.2.2
-        version: 5.2.2
+        specifier: 5.5.4
+        version: 5.5.4
 
 packages:
 
@@ -339,6 +339,7 @@ packages:
   '@humanwhocodes/config-array@0.11.13':
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -346,6 +347,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.1':
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
+    deprecated: Use @eslint/object-schema instead
 
   '@jridgewell/resolve-uri@3.1.1':
     resolution: {integrity: sha512-dSYZh7HhCDtCKm4QakX0xFpsRDqjjtZf/kjI/v3T3Nwt5r8/qz/M19F9ySyOqU94SXBmeG9ttTul+YnR4LOxFA==}
@@ -1316,9 +1318,11 @@ packages:
 
   glob@7.1.7:
     resolution: {integrity: sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@13.21.0:
     resolution: {integrity: sha512-ybyme3s4yy/t/3s35bewwXKOf7cvzfreG2lH0lZl0JB7I4GxRP2ghxOK/Nb9EkRXdbBXZLfq/p/0W2JUONB/Gg==}
@@ -1417,6 +1421,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -2207,6 +2212,7 @@ packages:
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   run-applescript@5.0.0:
@@ -2479,8 +2485,8 @@ packages:
   typed-array-length@1.0.4:
     resolution: {integrity: sha512-KjZypGq+I/H7HI5HlOoGHkWUUGq+Q0TPhQurLbyrVrvnKTBgzLhIJ7j6J/XTQOi0d1RjyZ0wdas8bKs2p0x3Ng==}
 
-  typescript@5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+  typescript@5.5.4:
+    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2605,7 +2611,7 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@contentful/rich-text-react-renderer@15.19.0(react-dom@18.2.0)(react@18.2.0)':
+  '@contentful/rich-text-react-renderer@15.19.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@contentful/rich-text-types': 16.3.0
       react: 18.2.0
@@ -2617,22 +2623,22 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@csstools/cascade-layer-name-parser@1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)':
+  '@csstools/cascade-layer-name-parser@1.0.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)':
     dependencies:
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
 
   '@csstools/color-helpers@3.0.2': {}
 
-  '@csstools/css-calc@1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)':
+  '@csstools/css-calc@1.1.4(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)':
     dependencies:
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
 
-  '@csstools/css-color-parser@1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)':
+  '@csstools/css-color-parser@1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)':
     dependencies:
       '@csstools/color-helpers': 3.0.2
-      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
 
@@ -2642,7 +2648,7 @@ snapshots:
 
   '@csstools/css-tokenizer@2.2.1': {}
 
-  '@csstools/media-query-list-parser@2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)':
+  '@csstools/media-query-list-parser@2.1.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)':
     dependencies:
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
@@ -2655,7 +2661,7 @@ snapshots:
 
   '@csstools/postcss-color-function@3.0.7(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.4.31)
@@ -2663,7 +2669,7 @@ snapshots:
 
   '@csstools/postcss-color-mix-function@2.0.7(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.4.31)
@@ -2671,7 +2677,7 @@ snapshots:
 
   '@csstools/postcss-exponential-functions@1.0.1(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       postcss: 8.4.31
@@ -2683,7 +2689,7 @@ snapshots:
 
   '@csstools/postcss-gamut-mapping@1.0.0(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       postcss: 8.4.31
@@ -2694,7 +2700,7 @@ snapshots:
 
   '@csstools/postcss-gradients-interpolation-method@4.0.7(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.4.31)
@@ -2702,7 +2708,7 @@ snapshots:
 
   '@csstools/postcss-hwb-function@3.0.6(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       postcss: 8.4.31
@@ -2739,17 +2745,17 @@ snapshots:
 
   '@csstools/postcss-media-minmax@1.1.0(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
-      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       postcss: 8.4.31
 
   '@csstools/postcss-media-queries-aspect-ratio-number-values@2.0.3(postcss@8.4.31)':
     dependencies:
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
-      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       postcss: 8.4.31
 
   '@csstools/postcss-nested-calc@3.0.0(postcss@8.4.31)':
@@ -2764,7 +2770,7 @@ snapshots:
 
   '@csstools/postcss-oklab-function@3.0.7(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.4.31)
@@ -2777,7 +2783,7 @@ snapshots:
 
   '@csstools/postcss-relative-color-syntax@2.0.7(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.4.31)
@@ -2790,7 +2796,7 @@ snapshots:
 
   '@csstools/postcss-stepped-value-functions@3.0.2(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       postcss: 8.4.31
@@ -2803,7 +2809,7 @@ snapshots:
 
   '@csstools/postcss-trigonometric-functions@3.0.2(postcss@8.4.31)':
     dependencies:
-      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       postcss: 8.4.31
@@ -2905,7 +2911,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  '@oclif/core@2.15.0(@types/node@18.18.7)(typescript@5.2.2)':
+  '@oclif/core@2.15.0(@types/node@18.18.7)(typescript@5.5.4)':
     dependencies:
       '@types/cli-progress': 3.11.1
       ansi-escapes: 4.3.2
@@ -2930,7 +2936,7 @@ snapshots:
       strip-ansi: 6.0.1
       supports-color: 8.1.1
       supports-hyperlinks: 2.3.0
-      ts-node: 10.9.1(@types/node@18.18.7)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@18.18.7)(typescript@5.5.4)
       tslib: 2.6.2
       widest-line: 3.1.0
       wordwrap: 1.0.0
@@ -2941,9 +2947,9 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@oclif/plugin-help@5.2.19(@types/node@18.18.7)(typescript@5.2.2)':
+  '@oclif/plugin-help@5.2.19(@types/node@18.18.7)(typescript@5.5.4)':
     dependencies:
-      '@oclif/core': 2.15.0(@types/node@18.18.7)(typescript@5.2.2)
+      '@oclif/core': 2.15.0(@types/node@18.18.7)(typescript@5.5.4)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -2964,6 +2970,7 @@ snapshots:
   '@samverschueren/stream-to-observable@0.3.1(rxjs@6.6.7)':
     dependencies:
       any-observable: 0.3.0(rxjs@6.6.7)
+    optionalDependencies:
       rxjs: 6.6.7
     transitivePeerDependencies:
       - zenObservable
@@ -3015,15 +3022,16 @@ snapshots:
 
   '@types/scheduler@0.16.3': {}
 
-  '@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.2.2)':
+  '@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4)':
     dependencies:
       '@typescript-eslint/scope-manager': 6.6.0
       '@typescript-eslint/types': 6.6.0
-      '@typescript-eslint/typescript-estree': 6.6.0(typescript@5.2.2)
+      '@typescript-eslint/typescript-estree': 6.6.0(typescript@5.5.4)
       '@typescript-eslint/visitor-keys': 6.6.0
       debug: 4.3.4(supports-color@8.1.1)
       eslint: 8.52.0
-      typescript: 5.2.2
+    optionalDependencies:
+      typescript: 5.5.4
     transitivePeerDependencies:
       - supports-color
 
@@ -3034,7 +3042,7 @@ snapshots:
 
   '@typescript-eslint/types@6.6.0': {}
 
-  '@typescript-eslint/typescript-estree@6.6.0(typescript@5.2.2)':
+  '@typescript-eslint/typescript-estree@6.6.0(typescript@5.5.4)':
     dependencies:
       '@typescript-eslint/types': 6.6.0
       '@typescript-eslint/visitor-keys': 6.6.0
@@ -3042,8 +3050,9 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.4
-      ts-api-utils: 1.0.2(typescript@5.2.2)
-      typescript: 5.2.2
+      ts-api-utils: 1.0.2(typescript@5.5.4)
+    optionalDependencies:
+      typescript: 5.5.4
     transitivePeerDependencies:
       - supports-color
 
@@ -3102,7 +3111,7 @@ snapshots:
   ansicolors@0.3.2: {}
 
   any-observable@0.3.0(rxjs@6.6.7):
-    dependencies:
+    optionalDependencies:
       rxjs: 6.6.7
 
   arg@4.1.3: {}
@@ -3292,10 +3301,10 @@ snapshots:
       ansicolors: 0.3.2
       redeyed: 2.1.1
 
-  cf-content-types-generator@2.12.9(@types/node@18.18.7)(typescript@5.2.2):
+  cf-content-types-generator@2.12.9(@types/node@18.18.7)(typescript@5.5.4):
     dependencies:
-      '@oclif/core': 2.15.0(@types/node@18.18.7)(typescript@5.2.2)
-      '@oclif/plugin-help': 5.2.19(@types/node@18.18.7)(typescript@5.2.2)
+      '@oclif/core': 2.15.0(@types/node@18.18.7)(typescript@5.5.4)
+      '@oclif/plugin-help': 5.2.19(@types/node@18.18.7)(typescript@5.5.4)
       contentful: 10.1.8
       contentful-export: 7.19.81
       contentful-management: 10.44.0
@@ -3536,6 +3545,7 @@ snapshots:
   debug@4.3.4(supports-color@8.1.1):
     dependencies:
       ms: 2.1.2
+    optionalDependencies:
       supports-color: 8.1.1
 
   deep-is@0.1.4: {}
@@ -3694,19 +3704,20 @@ snapshots:
     optionalDependencies:
       source-map: 0.6.1
 
-  eslint-config-next@14.0.0(eslint@8.52.0)(typescript@5.2.2):
+  eslint-config-next@14.0.0(eslint@8.52.0)(typescript@5.5.4):
     dependencies:
       '@next/eslint-plugin-next': 14.0.0
       '@rushstack/eslint-patch': 1.3.3
-      '@typescript-eslint/parser': 6.6.0(eslint@8.52.0)(typescript@5.2.2)
+      '@typescript-eslint/parser': 6.6.0(eslint@8.52.0)(typescript@5.5.4)
       eslint: 8.52.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.52.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0)
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.52.0)
       eslint-plugin-react: 7.33.2(eslint@8.52.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.52.0)
-      typescript: 5.2.2
+    optionalDependencies:
+      typescript: 5.5.4
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
@@ -3723,13 +3734,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.52.0):
+  eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0):
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
       enhanced-resolve: 5.15.0
       eslint: 8.52.0
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0))(eslint@8.52.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0)
       fast-glob: 3.3.1
       get-tsconfig: 4.7.0
       is-core-module: 2.13.0
@@ -3740,19 +3751,19 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.8.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0):
+  eslint-module-utils@2.8.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0))(eslint@8.52.0):
     dependencies:
-      '@typescript-eslint/parser': 6.6.0(eslint@8.52.0)(typescript@5.2.2)
       debug: 3.2.7
+    optionalDependencies:
+      '@typescript-eslint/parser': 6.6.0(eslint@8.52.0)(typescript@5.5.4)
       eslint: 8.52.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.52.0)
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0)
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0):
+  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0):
     dependencies:
-      '@typescript-eslint/parser': 6.6.0(eslint@8.52.0)(typescript@5.2.2)
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.3
       array.prototype.flat: 1.3.2
@@ -3761,7 +3772,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.52.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.52.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.6.0(eslint@8.52.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0))(eslint@8.52.0)
       has: 1.0.3
       is-core-module: 2.13.0
       is-glob: 4.0.3
@@ -3771,6 +3782,8 @@ snapshots:
       object.values: 1.1.7
       semver: 6.3.1
       tsconfig-paths: 3.14.2
+    optionalDependencies:
+      '@typescript-eslint/parser': 6.6.0(eslint@8.52.0)(typescript@5.5.4)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -3796,13 +3809,14 @@ snapshots:
       object.fromentries: 2.0.7
       semver: 6.3.1
 
-  eslint-plugin-prettier@5.0.1(eslint-config-prettier@9.0.0)(eslint@8.52.0)(prettier@3.0.3):
+  eslint-plugin-prettier@5.0.1(eslint-config-prettier@9.0.0(eslint@8.52.0))(eslint@8.52.0)(prettier@3.0.3):
     dependencies:
       eslint: 8.52.0
-      eslint-config-prettier: 9.0.0(eslint@8.52.0)
       prettier: 3.0.3
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.5
+    optionalDependencies:
+      eslint-config-prettier: 9.0.0(eslint@8.52.0)
 
   eslint-plugin-react-hooks@4.6.0(eslint@8.52.0):
     dependencies:
@@ -4524,7 +4538,7 @@ snapshots:
 
   natural-orderby@2.0.3: {}
 
-  next@14.0.0(react-dom@18.2.0)(react@18.2.0):
+  next@14.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@next/env': 14.0.0
       '@swc/helpers': 0.5.2
@@ -4722,15 +4736,15 @@ snapshots:
 
   postcss-custom-media@10.0.2(postcss@8.4.31):
     dependencies:
-      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
-      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       postcss: 8.4.31
 
   postcss-custom-properties@13.3.2(postcss@8.4.31):
     dependencies:
-      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       postcss: 8.4.31
@@ -4738,7 +4752,7 @@ snapshots:
 
   postcss-custom-selectors@7.1.6(postcss@8.4.31):
     dependencies:
-      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       postcss: 8.4.31
@@ -4780,7 +4794,7 @@ snapshots:
 
   postcss-lab-function@6.0.7(postcss@8.4.31):
     dependencies:
-      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1))(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
       '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.4.31)
@@ -5181,16 +5195,16 @@ snapshots:
 
   tryer@1.0.1: {}
 
-  ts-api-utils@1.0.2(typescript@5.2.2):
+  ts-api-utils@1.0.2(typescript@5.5.4):
     dependencies:
-      typescript: 5.2.2
+      typescript: 5.5.4
 
   ts-morph@19.0.0:
     dependencies:
       '@ts-morph/common': 0.20.0
       code-block-writer: 12.0.0
 
-  ts-node@10.9.1(@types/node@18.18.7)(typescript@5.2.2):
+  ts-node@10.9.1(@types/node@18.18.7)(typescript@5.5.4):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.9
@@ -5204,7 +5218,7 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.2.2
+      typescript: 5.5.4
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
@@ -5262,7 +5276,7 @@ snapshots:
       for-each: 0.3.3
       is-typed-array: 1.1.12
 
-  typescript@5.2.2: {}
+  typescript@5.5.4: {}
 
   unbox-primitive@1.0.2:
     dependencies:
