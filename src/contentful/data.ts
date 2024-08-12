@@ -1,7 +1,7 @@
 import { getContentfulEntries, getContentfulEntry } from './client';
 import {
   TypeContact,
-  TypeContactSkeleton,
+  TypeContactPageSkeleton,
   TypePage,
   TypePageSkeleton,
   TypePost,
@@ -62,11 +62,10 @@ export async function fetchSidebar(slug: string | string[], preview?: boolean) {
   );
 }
 
-export async function fetchContacts(preview?: boolean) {
-  return getContentfulEntries<TypeContactSkeleton>(
+export async function fetchContactPage(preview?: boolean) {
+  return getContentfulEntry<TypeContactPageSkeleton>(
     {
-      content_type: 'contact',
-      order: ['fields.order', 'fields.name'],
+      content_type: 'contactPage',
     },
     preview,
   );
