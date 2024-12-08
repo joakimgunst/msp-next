@@ -47,8 +47,8 @@ const alegreyaSans = Alegreya_Sans({
   variable: '--font-sans',
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isEnabled } = draftMode();
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { isEnabled } = await draftMode();
 
   return (
     <html lang="sv" className={clsx(alegreya.variable, alegreyaSans.variable)}>

@@ -6,7 +6,7 @@ import { getMetadata } from '@/contentful/utils';
 import { draftMode } from 'next/headers';
 
 async function getData() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   return await fetchPage('referensnummer', isEnabled);
 }
 

@@ -8,19 +8,21 @@ import { notFound } from 'next/navigation';
 import { getMetadata } from '@/contentful/utils';
 import { draftMode } from 'next/headers';
 
-type Props = { params: { slug: string[] } };
+type Props = { params: Promise<{ slug: string[] }> };
 
 async function getData(slug: string[]) {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   return await Promise.all([fetchPage(slug, isEnabled), fetchSidebar(slug, isEnabled)]);
 }
 
-export async function generateMetadata({ params: { slug } }: Props) {
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
   const [page] = await getData(slug);
   return getMetadata(page);
 }
 
-export default async function Page({ params: { slug } }: Props) {
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
   const [page, sidebar] = await getData(slug);
 
   if (!page) {
