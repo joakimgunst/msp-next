@@ -13,6 +13,7 @@ export async function GET(request: Request) {
     return new Response('Missing path parameter', { status: 400 });
   }
 
-  draftMode().enable();
+  const draft = await draftMode();
+  draft.enable();
   redirect(path);
 }

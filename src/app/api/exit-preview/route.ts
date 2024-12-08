@@ -5,6 +5,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const path = searchParams.get('path');
 
-  draftMode().disable();
+  const draft = await draftMode();
+  draft.disable();
   redirect(path ?? '/');
 }

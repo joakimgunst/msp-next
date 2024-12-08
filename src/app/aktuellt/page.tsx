@@ -9,7 +9,7 @@ export const metadata = {
 } satisfies Metadata;
 
 export default async function Page() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   const posts = await fetchPostSummaries(isEnabled);
 
   return (

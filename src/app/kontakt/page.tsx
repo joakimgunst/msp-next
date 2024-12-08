@@ -11,7 +11,7 @@ import { notFound } from 'next/navigation';
 const SLUG = 'kontakt';
 
 async function getData() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   return await Promise.all([fetchContactPage(isEnabled), fetchSidebar(SLUG, isEnabled)]);
 }
 

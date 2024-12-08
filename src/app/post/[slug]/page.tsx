@@ -11,19 +11,21 @@ import { notFound } from 'next/navigation';
 import { getMetadata } from '@/contentful/utils';
 import { draftMode } from 'next/headers';
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 async function getData(slug: string) {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   return await Promise.all([fetchPost(slug, isEnabled), fetchPostSummaries()]);
 }
 
-export async function generateMetadata({ params: { slug } }: Props) {
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
   const [post] = await getData(slug);
   return getMetadata(post);
 }
 
-export default async function Page({ params: { slug } }: Props) {
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
   const [post, posts] = await getData(slug);
 
   if (!post) {

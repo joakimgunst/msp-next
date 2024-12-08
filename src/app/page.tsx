@@ -12,7 +12,7 @@ import { draftMode } from 'next/headers';
 
 async function getData() {
   const slug = 'hem';
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   return await Promise.all([
     fetchPage(slug, isEnabled),
     fetchSidebar(slug, isEnabled),
