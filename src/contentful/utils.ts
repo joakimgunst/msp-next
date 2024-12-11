@@ -12,7 +12,7 @@ export function getAssetTitle(asset: ContentfulAsset | undefined) {
 
 export function getOpenGraphImageUrl(asset: ContentfulAsset | undefined) {
   const imageUrl = getAssetUrl(asset);
-  return 'https:' + imageUrl + '?fit=fill&w=1200&h=630';
+  return imageUrl + '?fit=fill&w=1200&h=630';
 }
 
 export function getMetadata(fields: ContentfulPage | ContentfulPost | null | undefined): Metadata | undefined {
