@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import { ContentfulAsset, ContentfulPage, ContentfulPost } from './data';
+import { Document } from '@contentful/rich-text-types';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 export function getAssetUrl(asset: ContentfulAsset | undefined) {
   const url = asset?.fields?.file?.url;
@@ -20,9 +22,16 @@ export function getMetadata(fields: ContentfulPage | ContentfulPost | null | und
 
   return {
     title: fields.title,
+    description: getFirstParagraph('lead' in fields ? fields.lead : fields.content),
     ...(fields.image && {
       openGraph: { images: [getOpenGraphImageUrl(fields.image)] },
       twitter: { card: 'summary_large_image' },
     }),
   } satisfies Metadata;
+}
+
+function getFirstParagraph(document: Document | undefined): string | undefined {
+  if (!document) return;
+  const text = documentToPlainTextString(document, '\n').split('\n').at(0)?.replaceAll('\xa0', ' ');
+  return text && text.length > 50 ? text : undefined;
 }
