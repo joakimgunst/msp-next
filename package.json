@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "tsc": "tsc",
     "generate-contentful-types": "pnpm cf-content-types-generator --token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --spaceId 5v042gad04cj --environment master --v10 --out src/contentful/types"
   },

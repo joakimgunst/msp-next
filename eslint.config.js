@@ -5,7 +5,8 @@ const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-export default [
+/** @type {import('eslint').Linter.Config[]} */
+const config = [
   {
     ignores: ['.next'],
   },
@@ -14,3 +15,5 @@ export default [
   }),
   prettier,
 ];
+
+export default config;
