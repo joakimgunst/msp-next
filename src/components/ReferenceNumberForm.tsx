@@ -1,11 +1,12 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import styles from './ReferenceNumberForm.module.css';
 import { getReferenceNumber } from '@/actions';
+import { useActionState } from 'react';
 
 export default function ReferenceNumberForm() {
-  const [message, formAction] = useFormState(getReferenceNumber, '');
+  const [message, formAction] = useActionState(getReferenceNumber, '');
 
   return (
     <div className={styles.root}>

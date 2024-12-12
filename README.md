@@ -50,7 +50,7 @@ CONTENTFUL_PREVIEW_SECRET=<preview_secret>
 Run the development server:
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 ## Deployments
@@ -78,4 +78,18 @@ Contentful types are automatically generated and are located in the `src/content
 ```
 export CONTENTFUL_MANAGEMENT_ACCESS_TOKEN=<token>
 pnpm generate-contentful-types
+```
+
+## Tests
+
+Playwright is used for end-to-end testing. Playwright tests are run automatically after a PR is deployed to a preview environment. To run the tests locally:
+
+```bash
+pnpm test
+```
+
+See the [Playwright CLI docs](https://playwright.dev/docs/test-cli) for options. For example, to run a single test in debug mode for Chromium only:
+
+```bash
+pnpm playwright test --debug --project=chromium
 ```
