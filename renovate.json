@@ -11,7 +11,7 @@
       "groupSlug": "all-minor-patch",
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
-      "excludePackagePatterns": ["typescript"]
+      "excludePackagePatterns": ["typescript", "pnpm"]
     }
   ]
 }
