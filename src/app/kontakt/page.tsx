@@ -7,6 +7,7 @@ import MainContent from '@/components/MainContent';
 import styles from './page.module.css';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
+import ContactJsonLd from '@/components/ContactJsonLd';
 
 const SLUG = 'kontakt';
 
@@ -39,8 +40,8 @@ export default async function Page() {
             .map((contact) => <Contact key={contact?.fields.name} contact={contact?.fields} />)}
         </div>
       </div>
-
       {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
+      <ContactJsonLd />
     </MainContent>
   );
 }
