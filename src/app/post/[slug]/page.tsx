@@ -10,6 +10,7 @@ import { formatDate } from '@/utils/dateUtils';
 import { notFound } from 'next/navigation';
 import { getMetadata } from '@/contentful/utils';
 import { draftMode } from 'next/headers';
+import Link from 'next/link';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -46,12 +47,15 @@ export default async function Page({ params }: Props) {
         <Sidebar>
           <h2>Aktuellt</h2>
           <ul>
-            {posts.map((post) => (
+            {posts.slice(0, 10).map((post) => (
               <li key={post.slug}>
                 <PostLink slug={post.slug}>{post.title}</PostLink>
               </li>
             ))}
           </ul>
+          <p className={styles.viewAll}>
+            <Link href="/aktuellt">Visa alla nyheter</Link>
+          </p>
         </Sidebar>
       )}
     </MainContent>
