@@ -1,4 +1,4 @@
-import { test, expect, Page, FullProject } from '@playwright/test';
+import { test, expect, type Page, type FullProject } from '@playwright/test';
 
 function isMobile(project: FullProject) {
   const width = project.use?.viewport?.width;
