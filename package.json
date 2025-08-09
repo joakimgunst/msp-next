@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "oxlint && prettier --check .",
+    "lint-fix": "oxlint --fix && prettier --write .",
     "test": "playwright test",
     "tsc": "tsc",
     "generate-contentful-types": "pnpm cf-content-types-generator --token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --spaceId 5v042gad04cj --environment master --v10 --out src/contentful/types"
