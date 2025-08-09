@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "oxlint && prettier --check .",
     "test": "playwright test",
     "tsc": "tsc",
     "generate-contentful-types": "pnpm cf-content-types-generator --token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --spaceId 5v042gad04cj --environment master --v10 --out src/contentful/types"
@@ -21,6 +21,7 @@
     "contentful": "11.5.13",
     "next": "15.2.4",
     "normalize.css": "8.0.1",
+    "oxlint": "1.11.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
@@ -34,11 +35,6 @@
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
     "cf-content-types-generator": "2.15.5",
-    "eslint": "9.24.0",
-    "eslint-config-next": "15.2.4",
-    "eslint-config-prettier": "10.1.1",
-    "eslint-plugin-playwright": "2.2.0",
-    "eslint-plugin-prettier": "5.2.6",
     "postcss": "8.5.3",
     "postcss-preset-env": "10.1.5",
     "prettier": "3.5.3",
