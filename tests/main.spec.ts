@@ -1,4 +1,4 @@
-import { test, expect, Page, FullProject } from '@playwright/test';
+import { test, expect, type Page, type FullProject } from '@playwright/test';
 
 function isMobile(project: FullProject) {
   const width = project.use?.viewport?.width;
@@ -17,7 +17,7 @@ test('open home page', async ({ page }) => {
 
 test('open page in sidebar', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('link', { name: 'Vargungar' }).click();
+  await page.getByRole('complementary').getByRole('link', { name: 'Vargungar' }).click();
   await expectMainHeading(page, 'Vargungar');
 });
 
