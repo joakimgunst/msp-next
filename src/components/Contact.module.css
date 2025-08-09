@@ -19,7 +19,8 @@
   height: 16rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
-  background: var(--color-shading);
+  background-color: var(--color-shading);
+  object-fit: cover;
 }
 
 .name {
