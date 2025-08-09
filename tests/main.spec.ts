@@ -17,7 +17,7 @@ test('open home page', async ({ page }) => {
 
 test('open page in sidebar', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('link', { name: 'Vargungar' }).click();
+  await page.getByRole('complementary').getByRole('link', { name: 'Vargungar' }).click();
   await expectMainHeading(page, 'Vargungar');
 });
 
