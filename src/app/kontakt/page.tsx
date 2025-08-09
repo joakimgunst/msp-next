@@ -37,7 +37,9 @@ export default async function Page() {
         <div className={styles.contacts}>
           {contactPage.contacts
             ?.filter((contact) => contact != undefined)
-            .map((contact) => <Contact key={contact?.fields.name} contact={contact?.fields} />)}
+            .map((contact) => (
+              <Contact key={contact?.fields.name} contact={contact?.fields} />
+            ))}
         </div>
       </div>
       {sidebar && <Sidebar>{renderDocument(sidebar.content)}</Sidebar>}
