@@ -8,6 +8,7 @@ import { Alegreya, Alegreya_Sans } from 'next/font/google';
 import clsx from 'clsx';
 import { draftMode } from 'next/headers';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './global.css';
 
 export const metadata = {
@@ -59,6 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <Analytics />
           <GoogleAnalytics />
+          <SpeedInsights />
         </Layout>
       </body>
     </html>
