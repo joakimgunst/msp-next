@@ -3,6 +3,7 @@
   "extends": ["config:base", "schedule:earlyMondays"],
   "timezone": "Europe/Helsinki",
   "semanticCommits": "disabled",
+  "labels": ["dependencies"],
   "lockFileMaintenance": {
     "enabled": true
   },
