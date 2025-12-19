@@ -1,5 +1,0 @@
-.vercel
-.next
-src/contentful/types
-pnpm-lock.yaml
-next-env.d.ts
