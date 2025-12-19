@@ -1,5 +1,5 @@
 import { renderDocument } from '../contentful/render';
-import { Document } from '@contentful/rich-text-types';
+import type { Document } from '@contentful/rich-text-types';
 import styles from './ContentBlock.module.css';
 
 interface Props {

@@ -1,5 +1,5 @@
 import ContentfulImage from './ContentfulImage';
-import { ContentfulAsset } from '../contentful/data';
+import type { ContentfulAsset } from '../contentful/data';
 import styles from './HeroImage.module.css';
 
 interface Props {

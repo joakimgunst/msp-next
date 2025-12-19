@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ContentfulContact } from '../contentful/data';
+import type { ContentfulContact } from '../contentful/data';
 import ContentfulImage from './ContentfulImage';
 import EmailLink from './EmailLink';
 import PhoneLink from './PhoneLink';

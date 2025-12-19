@@ -1,4 +1,4 @@
-import { ContentfulPost } from '../contentful/data';
+import type { ContentfulPost } from '../contentful/data';
 import PostLink from './PostLink';
 import { renderDocument } from '../contentful/render';
 import styles from './PostSummary.module.css';
