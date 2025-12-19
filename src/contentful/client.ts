@@ -1,4 +1,5 @@
-import { EntriesQueries, EntrySkeletonType, createClient } from 'contentful';
+import type { EntriesQueries, EntrySkeletonType } from 'contentful';
+import { createClient } from 'contentful';
 
 if (!process.env.CONTENTFUL_SPACE_ID) {
   throw new Error('CONTENTFUL_SPACE_ID env variable undefined');

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import MainContent from '@/components/MainContent';
 import styles from './page.module.css';
 

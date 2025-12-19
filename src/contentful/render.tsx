@@ -1,18 +1,12 @@
-import {
-  INLINES,
-  BLOCKS,
-  Document,
-  EntryHyperlink,
-  AssetHyperlink,
-  AssetLinkBlock,
-  Hyperlink,
-} from '@contentful/rich-text-types';
-import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
+import type { Document, EntryHyperlink, AssetHyperlink, AssetLinkBlock, Hyperlink } from '@contentful/rich-text-types';
+import { INLINES, BLOCKS } from '@contentful/rich-text-types';
+import type { Options } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import PageLink from '../components/PageLink';
-import { Entry, EntrySkeletonType } from 'contentful';
-import { ContentfulAsset, ContentfulPageEntry, ContentfulPostEntry } from './data';
+import type { Entry, EntrySkeletonType } from 'contentful';
+import type { ContentfulAsset, ContentfulPageEntry, ContentfulPostEntry } from './data';
 import PostLink from '../components/PostLink';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import ContentfulImage from '@/components/ContentfulImage';
 

@@ -1,6 +1,6 @@
-import { Metadata } from 'next';
-import { ContentfulAsset, ContentfulPage, ContentfulPost } from './data';
-import { Document } from '@contentful/rich-text-types';
+import type { Metadata } from 'next';
+import type { ContentfulAsset, ContentfulPage, ContentfulPost } from './data';
+import type { Document } from '@contentful/rich-text-types';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 export function getAssetUrl(asset: ContentfulAsset | undefined) {

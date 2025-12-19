@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { fetchContactPage, fetchSidebar } from '@/contentful/data';
 import Contact from '@/components/Contact';
 import Sidebar from '@/components/Sidebar';
