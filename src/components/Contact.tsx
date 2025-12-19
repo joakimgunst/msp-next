@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ContentfulContact } from '../contentful/data';
 import ContentfulImage from './ContentfulImage';
 import EmailLink from './EmailLink';
@@ -17,7 +18,7 @@ const Contact: React.FC<Props> = ({ contact }) => {
       {image ? (
         <ContentfulImage className={styles.image} image={image} width={192} height={256} />
       ) : (
-        <img className={styles.imagePlaceholder} src={placeholder.src} alt="" />
+        <Image className={styles.imagePlaceholder} src={placeholder} alt="" />
       )}
       <div className={styles.name}>{name}</div>
       {title && <div>{title}</div>}
