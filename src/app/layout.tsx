@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import Header from '@/components/Header';
 import PreviewIndicator from '@/components/PreviewIndicator';
 import { Analytics } from '@vercel/analytics/react';
-import { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Alegreya, Alegreya_Sans } from 'next/font/google';
 import clsx from 'clsx';
 import { draftMode } from 'next/headers';

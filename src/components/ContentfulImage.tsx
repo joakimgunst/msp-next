@@ -1,7 +1,7 @@
 import { getAssetUrl, getAssetTitle } from '../contentful/utils';
-import { ContentfulAsset } from '../contentful/data';
+import type { ContentfulAsset } from '../contentful/data';
 import Image from 'next/image';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 interface Props {
   image: ContentfulAsset;

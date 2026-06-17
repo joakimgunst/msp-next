@@ -1,5 +1,5 @@
 import { getContentfulEntries, getContentfulEntry } from './client';
-import {
+import type {
   TypeContact,
   TypeContactPageSkeleton,
   TypePage,
@@ -9,7 +9,7 @@ import {
   TypeSidebar,
   TypeSidebarSkeleton,
 } from '../contentful/types';
-import { Asset } from 'contentful';
+import type { Asset } from 'contentful';
 
 export async function fetchPostSummaries(preview?: boolean, limit = 100) {
   return getContentfulEntries<TypePostSkeleton>(

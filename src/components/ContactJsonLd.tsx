@@ -1,5 +1,5 @@
 import { baseUrl } from '@/config';
-import { Organization, WithContext } from 'schema-dts';
+import type { Organization, WithContext } from 'schema-dts';
 
 export default function ContactJsonLd() {
   const jsonLd: WithContext<Organization> = {

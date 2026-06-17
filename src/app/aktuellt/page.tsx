@@ -1,7 +1,7 @@
 import { fetchPostSummaries } from '@/contentful/data';
 import PostSummary from '@/components/PostSummary';
 import MainContent from '@/components/MainContent';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
 export const metadata = {

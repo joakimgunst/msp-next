@@ -1,6 +1,7 @@
 {
   "plugins": ["typescript", "unicorn", "react", "react-perf", "nextjs", "oxc", "import", "jsx-a11y", "promise"],
   "rules": {
-    "nextjs/no-html-link-for-pages": "off"
+    "nextjs/no-html-link-for-pages": "off",
+    "typescript/consistent-type-imports": "error"
   }
 }
