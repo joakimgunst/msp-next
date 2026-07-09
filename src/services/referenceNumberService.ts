@@ -14,15 +14,16 @@ const SHEET_NAME = 'Sheet1';
 const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
 const spreadsheetId = process.env.REFERENCE_NUMBERS_SPREADSHEET_ID;
 
-if (!apiKey) {
-  throw new Error('API key not found');
-}
-
-if (!spreadsheetId) {
-  throw new Error('Spreadsheet id not found');
-}
-
 export async function fetchReferenceNumber(name: string) {
+  // Check inside the function so a missing env variable only breaks this
+  // feature instead of every route importing the service
+  if (!apiKey) {
+    throw new Error('GOOGLE_SHEETS_API_KEY env variable is missing');
+  }
+  if (!spreadsheetId) {
+    throw new Error('REFERENCE_NUMBERS_SPREADSHEET_ID env variable is missing');
+  }
+
   try {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${SHEET_NAME}?key=${apiKey}`;
     const response = await fetch(url);
