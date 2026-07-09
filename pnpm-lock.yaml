@@ -32,9 +32,6 @@ importers:
       normalize.css:
         specifier: 8.0.1
         version: 8.0.1
-      oxlint:
-        specifier: 1.72.0
-        version: 1.72.0
       react:
         specifier: 19.2.7
         version: 19.2.7
@@ -69,6 +66,9 @@ importers:
       cf-content-types-generator:
         specifier: 3.0.1
         version: 3.0.1
+      oxlint:
+        specifier: 1.72.0
+        version: 1.72.0
       postcss:
         specifier: 8.5.16
         version: 8.5.16
