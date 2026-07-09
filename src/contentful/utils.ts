@@ -14,17 +14,19 @@ export function getAssetTitle(asset: ContentfulAsset | undefined) {
 
 export function getOpenGraphImageUrl(asset: ContentfulAsset | undefined) {
   const imageUrl = getAssetUrl(asset);
-  return imageUrl + '?fit=fill&w=1200&h=630';
+  return imageUrl ? `${imageUrl}?fit=fill&w=1200&h=630` : undefined;
 }
 
 export function getMetadata(fields: ContentfulPage | ContentfulPost | null | undefined): Metadata | undefined {
   if (!fields) return;
 
+  const imageUrl = getOpenGraphImageUrl(fields.image);
+
   return {
     title: fields.title,
     description: getFirstParagraph('lead' in fields ? fields.lead : fields.content),
-    ...(fields.image && {
-      openGraph: { images: [getOpenGraphImageUrl(fields.image)] },
+    ...(imageUrl && {
+      openGraph: { images: [imageUrl] },
       twitter: { card: 'summary_large_image' },
     }),
   } satisfies Metadata;
