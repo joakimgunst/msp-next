@@ -6,15 +6,16 @@ import { getReferenceNumber } from '@/actions';
 import { useActionState } from 'react';
 
 export default function ReferenceNumberForm() {
-  const [message, formAction] = useActionState(getReferenceNumber, '');
+  const [state, formAction] = useActionState(getReferenceNumber, { name: '', message: '' });
 
   return (
     <div className={styles.root}>
       <form action={formAction}>
-        <input name="name" aria-label="Namn" placeholder="Samuel Scout" required />
+        {/* defaultValue keeps the entered name when the form resets on submit */}
+        <input name="name" aria-label="Namn" placeholder="Samuel Scout" required defaultValue={state.name} />
         <SubmitButton />
       </form>
-      {message && <span>{message}</span>}
+      {state.message && <span>{state.message}</span>}
     </div>
   );
 }

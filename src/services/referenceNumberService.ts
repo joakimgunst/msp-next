@@ -27,7 +27,14 @@ export async function fetchReferenceNumber(name: string) {
   try {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${SHEET_NAME}?key=${apiKey}`;
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Google Sheets API responded with status ${response.status}`);
+    }
+
     const data: ValueRange = await response.json();
+    if (!Array.isArray(data.values)) {
+      throw new Error('Unexpected response from Google Sheets API');
+    }
 
     const items = data.values
       .slice(1)
@@ -35,7 +42,8 @@ export async function fetchReferenceNumber(name: string) {
       .map<ReferenceNumberItem>((v) => ({
         name: v[0].trim(),
         referenceNumber: parseInt(v[1]),
-      }));
+      }))
+      .filter((i) => Number.isInteger(i.referenceNumber));
 
     return items.find((i) => i.name.localeCompare(name.trim(), 'fi', { sensitivity: 'base' }) === 0);
   } catch (err) {

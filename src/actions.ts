@@ -2,20 +2,29 @@
 
 import { fetchReferenceNumber } from '@/services/referenceNumberService';
 
-export async function getReferenceNumber(_prevState: string, formData: FormData): Promise<string> {
+export interface ReferenceNumberFormState {
+  name: string;
+  message: string;
+}
+
+export async function getReferenceNumber(
+  _prevState: ReferenceNumberFormState,
+  formData: FormData,
+): Promise<ReferenceNumberFormState> {
   const name = formData.get('name');
 
   if (typeof name !== 'string') {
-    return 'Namn saknas';
+    return { name: '', message: 'Namn saknas' };
   }
 
   try {
     const match = await fetchReferenceNumber(name);
     if (!match) {
-      return 'Inget referensnummer hittades';
+      return { name, message: 'Inget referensnummer hittades' };
     }
-    return `Ditt referensnummer är ${match.referenceNumber}`;
-  } catch {
-    return 'Ett oväntat problem uppstod';
+    return { name, message: `Ditt referensnummer är ${match.referenceNumber}` };
+  } catch (err) {
+    console.error('Failed to fetch reference number', err);
+    return { name, message: 'Ett oväntat problem uppstod' };
   }
 }
