@@ -11,6 +11,7 @@ import { documentToReactComponents, Options } from '@contentful/rich-text-react-
 import PageLink from '../components/PageLink';
 import { Entry, EntrySkeletonType } from 'contentful';
 import { ContentfulAsset, ContentfulPageEntry, ContentfulPostEntry } from './data';
+import { getAssetUrl } from './utils';
 import PostLink from '../components/PostLink';
 import { ReactNode } from 'react';
 import Link from 'next/link';
@@ -33,7 +34,7 @@ const options: Options = {
       const target = link.data.target;
       if (isAsset(target)) {
         return (
-          <a href={target.fields.file?.url} target="_blank" rel="noopener noreferrer">
+          <a href={getAssetUrl(target)} target="_blank" rel="noopener noreferrer">
             {children}
           </a>
         );
