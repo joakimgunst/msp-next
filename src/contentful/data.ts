@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { getContentfulEntries, getContentfulEntry } from './client';
+import { getContentfulEntries, getContentfulEntry, getContentfulEntryItems } from './client';
 import {
   TypeContact,
   TypeContactPageSkeleton,
@@ -76,6 +76,22 @@ const fetchSidebarBySlug = cache(async (slug: string, preview?: boolean) => {
     },
     preview,
   );
+});
+
+// Full entries including sys.updatedAt, used for the sitemap
+export const fetchPageEntries = cache(async () => {
+  return getContentfulEntryItems<TypePageSkeleton>({
+    content_type: 'page',
+    select: ['sys', 'fields.slug'],
+  });
+});
+
+export const fetchPostEntries = cache(async () => {
+  return getContentfulEntryItems<TypePostSkeleton>({
+    content_type: 'post',
+    limit: 1000,
+    select: ['sys', 'fields.slug'],
+  });
 });
 
 export const fetchContactPage = cache(async (preview?: boolean) => {

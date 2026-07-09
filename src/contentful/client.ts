@@ -35,6 +35,16 @@ export async function getContentfulEntries<T extends EntrySkeletonType>(
   return entries.items.map((item) => item.fields);
 }
 
+// Returns full entries including sys metadata, unlike getContentfulEntries
+// which only returns the fields
+export async function getContentfulEntryItems<T extends EntrySkeletonType>(
+  query: EntriesQueries<T, 'WITHOUT_UNRESOLVABLE_LINKS'>,
+  preview?: boolean,
+) {
+  const entries = await getClient(preview).getEntries<T>(query);
+  return entries.items;
+}
+
 export async function getContentfulEntry<T extends EntrySkeletonType>(
   query: EntriesQueries<T, 'WITHOUT_UNRESOLVABLE_LINKS'>,
   preview?: boolean,
