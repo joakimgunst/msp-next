@@ -22,7 +22,8 @@ const Menu: React.FC<Props> = ({ open, onClose }) => {
 
   function isActive(href: string, exact = false) {
     if (!pathname) return false;
-    return exact ? pathname === href : pathname.startsWith(href);
+    if (exact) return pathname === href;
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
 
   return (
