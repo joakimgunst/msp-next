@@ -50,10 +50,10 @@
   }
 
   &[aria-current='page'] {
-    box-shadow: inset 0.25rem 0 0 white;
+    box-shadow: inset 0.25rem 0 0 var(--color-menu-accent);
 
     @media (--lg) {
-      box-shadow: inset 0 -0.25rem 0 white;
+      box-shadow: inset 0 -0.25rem 0 var(--color-menu-accent);
     }
   }
 }
@@ -109,6 +109,6 @@
   }
 
   &[aria-current='page'] {
-    box-shadow: inset 0.25rem 0 0 white;
+    box-shadow: inset 0.25rem 0 0 var(--color-menu-accent);
   }
 }
