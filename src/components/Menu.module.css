@@ -1,17 +1,39 @@
+/* Expand/collapse animations use the grid-template-rows 0fr/1fr technique,
+   which works in all modern browsers unlike transitions to height: auto */
+
 .root {
-  display: none;
-  flex-direction: column;
-  background: var(--color-menu);
-  border-radius: 0.5rem;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
 
   &[data-mobile-open='true'] {
-    display: flex;
+    grid-template-rows: 1fr;
   }
 
   @media (--lg) {
-    display: flex;
+    grid-template-rows: 1fr;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--color-menu);
+  border-radius: 0.5rem;
+  /* Keep collapsed menu links out of the tab order; visibility transitions
+     discretely so the menu stays visible while collapsing */
+  visibility: hidden;
+  transition: visibility 0.25s;
+
+  [data-mobile-open='true'] > & {
+    visibility: visible;
+  }
+
+  @media (--lg) {
     flex-direction: row;
+    visibility: visible;
   }
 }
 
@@ -87,13 +109,33 @@
   }
 }
 
-.subList {
-  display: flex;
-  flex-direction: column;
-  background: var(--color-menu-active);
+.subListWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+
+  &[data-expanded='true'] {
+    grid-template-rows: 1fr;
+  }
 
   @media (--lg) {
     display: none;
+  }
+}
+
+.subList {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--color-menu-active);
+  visibility: hidden;
+  transition: visibility 0.25s;
+
+  /* inherit rather than visible so links stay hidden while the whole
+     mobile menu is closed */
+  [data-expanded='true'] > & {
+    visibility: inherit;
   }
 }
 
@@ -110,5 +152,15 @@
 
   &[aria-current='page'] {
     box-shadow: inset 0.25rem 0 0 var(--color-menu-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .nav,
+  .subListWrapper,
+  .subList,
+  .chevron {
+    transition: none;
   }
 }

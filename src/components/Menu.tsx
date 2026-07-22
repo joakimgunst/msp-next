@@ -36,63 +36,67 @@ const Menu: React.FC<Props> = ({ open, onClose, subpages }) => {
   }
 
   return (
-    <nav id="site-menu" aria-label="Huvudmeny" className={styles.root} data-mobile-open={open}>
-      {links.map(({ href, label, exact }) => {
-        const items = subpages[href] ?? [];
-        const isExpanded = expanded.includes(href);
-        const subListId = `site-menu-sub${href.replaceAll('/', '-')}`;
+    <div className={styles.root} data-mobile-open={open}>
+      <nav id="site-menu" aria-label="Huvudmeny" className={styles.nav}>
+        {links.map(({ href, label, exact }) => {
+          const items = subpages[href] ?? [];
+          const isExpanded = expanded.includes(href);
+          const subListId = `site-menu-sub${href.replaceAll('/', '-')}`;
 
-        return (
-          <div className={styles.group} key={href}>
-            <div className={styles.groupHeader}>
-              <Link
-                className={styles.navLink}
-                href={href}
-                aria-current={isActive(href, exact) ? 'page' : undefined}
-                onClick={onClose}
-              >
-                {label}
-              </Link>
-              {items.length > 0 && (
-                <button
-                  className={styles.expandToggle}
-                  aria-expanded={isExpanded}
-                  aria-controls={subListId}
-                  aria-label={`Undersidor för ${label}`}
-                  onClick={() => toggleExpanded(href)}
+          return (
+            <div className={styles.group} key={href}>
+              <div className={styles.groupHeader}>
+                <Link
+                  className={styles.navLink}
+                  href={href}
+                  aria-current={isActive(href, exact) ? 'page' : undefined}
+                  onClick={onClose}
                 >
-                  <svg className={styles.chevron} viewBox="0 0 16 16" width="16" height="16" aria-hidden>
-                    <path
-                      d="M3 6l5 5 5-5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
+                  {label}
+                </Link>
+                {items.length > 0 && (
+                  <button
+                    className={styles.expandToggle}
+                    aria-expanded={isExpanded}
+                    aria-controls={subListId}
+                    aria-label={`Undersidor för ${label}`}
+                    onClick={() => toggleExpanded(href)}
+                  >
+                    <svg className={styles.chevron} viewBox="0 0 16 16" width="16" height="16" aria-hidden>
+                      <path
+                        d="M3 6l5 5 5-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              {items.length > 0 && (
+                <div id={subListId} className={styles.subListWrapper} data-expanded={isExpanded}>
+                  <div className={styles.subList}>
+                    {items.map((item) => (
+                      <Link
+                        key={item.href}
+                        className={styles.subLink}
+                        href={item.href}
+                        aria-current={isActive(item.href, true) ? 'page' : undefined}
+                        onClick={onClose}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               )}
             </div>
-            {items.length > 0 && isExpanded && (
-              <div id={subListId} className={styles.subList}>
-                {items.map((item) => (
-                  <Link
-                    key={item.href}
-                    className={styles.subLink}
-                    href={item.href}
-                    aria-current={isActive(item.href, true) ? 'page' : undefined}
-                    onClick={onClose}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </nav>
+          );
+        })}
+      </nav>
+    </div>
   );
 };
 
