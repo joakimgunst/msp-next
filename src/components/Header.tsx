@@ -7,8 +7,13 @@ import { siteName } from '../config';
 import styles from './Header.module.css';
 import Image from 'next/image';
 import logo from '@/assets/msp_logo.svg';
+import { MenuSubpages } from '@/utils/navigationUtils';
 
-const Header: React.FC = () => {
+interface Props {
+  subpages: MenuSubpages;
+}
+
+const Header: React.FC<Props> = ({ subpages }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
@@ -25,7 +30,7 @@ const Header: React.FC = () => {
           Meny
         </button>
       </div>
-      <Menu open={menuOpen} onClose={closeMenu} />
+      <Menu open={menuOpen} onClose={closeMenu} subpages={subpages} />
     </header>
   );
 };

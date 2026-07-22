@@ -15,9 +15,87 @@
   }
 }
 
+.group {
+  display: flex;
+  flex-direction: column;
+
+  @media (--lg) {
+    display: contents;
+  }
+}
+
+.groupHeader {
+  display: flex;
+  align-items: stretch;
+
+  @media (--lg) {
+    display: contents;
+  }
+}
+
 .navLink {
   display: block;
+  flex: 1;
   padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  @media (--lg) {
+    flex: initial;
+  }
+
+  &:hover {
+    background: var(--color-menu-hover);
+  }
+
+  &[aria-current='page'] {
+    background: var(--color-menu-active);
+  }
+}
+
+.expandToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-menu-hover);
+  }
+
+  @media (--lg) {
+    display: none;
+  }
+}
+
+.chevron {
+  transition: transform 0.2s;
+
+  [aria-expanded='true'] > & {
+    transform: rotate(180deg);
+  }
+}
+
+.subList {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-menu-active);
+
+  @media (--lg) {
+    display: none;
+  }
+}
+
+.subLink {
+  display: block;
+  padding: 0.5rem 1rem 0.5rem 2rem;
   color: white;
   text-decoration: none;
   transition: background 0.2s;
@@ -27,6 +105,6 @@
   }
 
   &[aria-current='page'] {
-    background: var(--color-menu-active);
+    font-weight: bold;
   }
 }
