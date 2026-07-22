@@ -47,6 +47,14 @@ CONTENTFUL_PREVIEW_ACCESS_TOKEN=<preview_access_token>
 CONTENTFUL_PREVIEW_SECRET=<preview_secret>
 ```
 
+The following environment variables are optional. Without them, Google Analytics is disabled and the reference number lookup does not work.
+
+```txt
+NEXT_PUBLIC_GA_MEASUREMENT_ID=<ga_measurement_id>
+GOOGLE_SHEETS_API_KEY=<google_sheets_api_key>
+REFERENCE_NUMBERS_SPREADSHEET_ID=<reference_numbers_spreadsheet_id>
+```
+
 Run the development server:
 
 ```bash

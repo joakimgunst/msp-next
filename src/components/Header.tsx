@@ -21,7 +21,7 @@ const Header: React.FC = () => {
         </Link>
         <div className={styles.title}>Scoutkåren Munksnäs Spejarna</div>
         <div className={styles.shortTitle}>Munksnäs Spejarna</div>
-        <button className={styles.menuToggle} onClick={toggleMenu}>
+        <button className={styles.menuToggle} onClick={toggleMenu} aria-expanded={menuOpen} aria-controls="site-menu">
           Meny
         </button>
       </div>

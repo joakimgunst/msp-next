@@ -1,16 +1,25 @@
 import { baseUrl } from '@/config';
-import { fetchPages, fetchPostSummaries } from '@/contentful/data';
+import { fetchPageEntries, fetchPostEntries } from '@/contentful/data';
 import type { MetadataRoute } from 'next';
 
 const STATIC_PATHS = ['', 'kalender', 'kontakt', 'aktuellt'];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [pages, posts] = await Promise.all([fetchPages(), fetchPostSummaries(false, 1000)]);
-  const pagePaths = pages.map((page) => page.slug).filter((slug) => slug !== 'hem');
-  const postPaths = posts.map((post) => `post/${post.slug}`);
-  const allPaths = [...STATIC_PATHS, ...pagePaths, ...postPaths];
+  const [pages, posts] = await Promise.all([fetchPageEntries(), fetchPostEntries()]);
 
-  const items = allPaths.map((path) => ({ url: joinPaths(baseUrl, path) }));
+  const staticItems = STATIC_PATHS.map((path) => ({ path }));
+  const pageItems = pages
+    .filter((page) => page.fields.slug !== 'hem')
+    .map((page) => ({ path: page.fields.slug, lastModified: page.sys.updatedAt }));
+  const postItems = posts.map((post) => ({
+    path: `post/${post.fields.slug}`,
+    lastModified: post.sys.updatedAt,
+  }));
+
+  const items = [...staticItems, ...pageItems, ...postItems].map(({ path, ...rest }) => ({
+    url: joinPaths(baseUrl, path),
+    ...rest,
+  }));
 
   return items.toSorted((a, b) => a.url.localeCompare(b.url));
 }

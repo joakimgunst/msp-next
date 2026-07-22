@@ -17,8 +17,6 @@ export const metadata = {
     default: siteName,
   },
   description: siteDescription,
-  keywords:
-    'msp, munksnäs, spejarna, scout, scouting, spejare, muncca, scoutkår, scoutkåren, hobby, friluft, vargunge, vandring, hajk, läger',
   metadataBase: new URL(baseUrl),
   openGraph: {
     siteName,

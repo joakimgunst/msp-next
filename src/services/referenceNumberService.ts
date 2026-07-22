@@ -14,19 +14,27 @@ const SHEET_NAME = 'Sheet1';
 const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
 const spreadsheetId = process.env.REFERENCE_NUMBERS_SPREADSHEET_ID;
 
-if (!apiKey) {
-  throw new Error('API key not found');
-}
-
-if (!spreadsheetId) {
-  throw new Error('Spreadsheet id not found');
-}
-
 export async function fetchReferenceNumber(name: string) {
+  // Check inside the function so a missing env variable only breaks this
+  // feature instead of every route importing the service
+  if (!apiKey) {
+    throw new Error('GOOGLE_SHEETS_API_KEY env variable is missing');
+  }
+  if (!spreadsheetId) {
+    throw new Error('REFERENCE_NUMBERS_SPREADSHEET_ID env variable is missing');
+  }
+
   try {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${SHEET_NAME}?key=${apiKey}`;
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Google Sheets API responded with status ${response.status}`);
+    }
+
     const data: ValueRange = await response.json();
+    if (!Array.isArray(data.values)) {
+      throw new Error('Unexpected response from Google Sheets API');
+    }
 
     const items = data.values
       .slice(1)
@@ -34,7 +42,8 @@ export async function fetchReferenceNumber(name: string) {
       .map<ReferenceNumberItem>((v) => ({
         name: v[0].trim(),
         referenceNumber: parseInt(v[1]),
-      }));
+      }))
+      .filter((i) => Number.isInteger(i.referenceNumber));
 
     return items.find((i) => i.name.localeCompare(name.trim(), 'fi', { sensitivity: 'base' }) === 0);
   } catch (err) {
