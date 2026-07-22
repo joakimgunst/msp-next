@@ -7,6 +7,7 @@
   --color-menu: #c62127;
   --color-menu-hover: #de3c41;
   --color-menu-active: #9a1a1e;
+  --color-menu-accent: #e7cd0f;
   --color-border: #ddd;
   --color-shading: #f8f8f8;
 }
@@ -19,6 +20,7 @@
     --color-menu: #9e1a1f;
     --color-menu-hover: #b73a3e;
     --color-menu-active: #7b1518;
+    --color-menu-accent: #c9b30d;
     --color-border: #2b2f31;
     --color-shading: #262a2b;
   }

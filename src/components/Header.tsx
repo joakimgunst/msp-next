@@ -7,11 +7,27 @@ import { siteName } from '../config';
 import styles from './Header.module.css';
 import Image from 'next/image';
 import logo from '@/assets/msp_logo.svg';
+import { MenuSubpages } from '@/utils/navigationUtils';
 
-const Header: React.FC = () => {
+interface Props {
+  subpages: MenuSubpages;
+}
+
+const Header: React.FC<Props> = ({ subpages }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  // Animate when toggling with the menu button, but close instantly when
+  // navigating so the collapse doesn't shift the scroll position of the new page
+  const [animate, setAnimate] = useState(true);
+
+  const toggleMenu = () => {
+    setAnimate(true);
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setAnimate(false);
+    setMenuOpen(false);
+  };
 
   return (
     <header>
@@ -25,7 +41,7 @@ const Header: React.FC = () => {
           Meny
         </button>
       </div>
-      <Menu open={menuOpen} onClose={closeMenu} />
+      <Menu open={menuOpen} onClose={closeMenu} animate={animate} subpages={subpages} />
     </header>
   );
 };

@@ -7,6 +7,8 @@ import { Metadata, Viewport } from 'next';
 import { Alegreya, Alegreya_Sans } from 'next/font/google';
 import clsx from 'clsx';
 import { draftMode } from 'next/headers';
+import { fetchPages } from '@/contentful/data';
+import { getMenuSubpages } from '@/utils/navigationUtils';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './global.css';
@@ -48,12 +50,13 @@ const alegreyaSans = Alegreya_Sans({
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode();
+  const pages = await fetchPages(isEnabled);
 
   return (
     <html lang="sv" className={clsx(alegreya.variable, alegreyaSans.variable)}>
       <body>
         <Layout>
-          <Header />
+          <Header subpages={getMenuSubpages(pages)} />
           {isEnabled && <PreviewIndicator />}
           {children}
           <Analytics />
