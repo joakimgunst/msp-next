@@ -50,7 +50,11 @@
   }
 
   &[aria-current='page'] {
-    background: var(--color-menu-active);
+    box-shadow: inset 0.25rem 0 0 white;
+
+    @media (--lg) {
+      box-shadow: inset 0 -0.25rem 0 white;
+    }
   }
 }
 
@@ -105,6 +109,6 @@
   }
 
   &[aria-current='page'] {
-    font-weight: bold;
+    box-shadow: inset 0.25rem 0 0 white;
   }
 }
