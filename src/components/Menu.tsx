@@ -17,10 +17,11 @@ const links = [
 interface Props {
   open: boolean;
   onClose: () => void;
+  animate: boolean;
   subpages: MenuSubpages;
 }
 
-const Menu: React.FC<Props> = ({ open, onClose, subpages }) => {
+const Menu: React.FC<Props> = ({ open, onClose, animate, subpages }) => {
   const pathname = usePathname();
   // Expand the section of the current page by default
   const [expanded, setExpanded] = useState<string[]>(() => (pathname ? [`/${pathname.split('/')[1]}`] : []));
@@ -36,7 +37,7 @@ const Menu: React.FC<Props> = ({ open, onClose, subpages }) => {
   }
 
   return (
-    <div className={styles.root} data-mobile-open={open}>
+    <div className={styles.root} data-mobile-open={open} data-animate={animate}>
       <nav id="site-menu" aria-label="Huvudmeny" className={styles.nav}>
         {links.map(({ href, label, exact }) => {
           const items = subpages[href] ?? [];

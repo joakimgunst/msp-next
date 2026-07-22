@@ -6,6 +6,11 @@
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.25s ease;
 
+  &[data-animate='false'],
+  &[data-animate='false'] .nav {
+    transition: none;
+  }
+
   &[data-mobile-open='true'] {
     grid-template-rows: 1fr;
   }

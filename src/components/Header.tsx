@@ -15,8 +15,19 @@ interface Props {
 
 const Header: React.FC<Props> = ({ subpages }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  // Animate when toggling with the menu button, but close instantly when
+  // navigating so the collapse doesn't shift the scroll position of the new page
+  const [animate, setAnimate] = useState(true);
+
+  const toggleMenu = () => {
+    setAnimate(true);
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setAnimate(false);
+    setMenuOpen(false);
+  };
 
   return (
     <header>
@@ -30,7 +41,7 @@ const Header: React.FC<Props> = ({ subpages }) => {
           Meny
         </button>
       </div>
-      <Menu open={menuOpen} onClose={closeMenu} subpages={subpages} />
+      <Menu open={menuOpen} onClose={closeMenu} animate={animate} subpages={subpages} />
     </header>
   );
 };
