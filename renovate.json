@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "schedule:earlyMondays", "security:minimumReleaseAgeNpm"],
+  "extends": ["config:recommended", "schedule:earlyMondays", "security:minimumReleaseAgeNpm"],
   "timezone": "Europe/Helsinki",
   "semanticCommits": "disabled",
   "labels": ["dependencies"],
@@ -11,9 +11,8 @@
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "excludePackagePatterns": ["typescript", "pnpm"]
+      "matchPackageNames": ["!/typescript/", "!/pnpm/"],
+      "matchUpdateTypes": ["minor", "patch"]
     }
   ]
 }
