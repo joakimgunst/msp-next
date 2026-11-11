@@ -16,7 +16,7 @@
     "generate-contentful-types": "pnpm cf-content-types-generator --token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --spaceId 5v042gad04cj --environment master --v10 --out src/contentful/types"
   },
   "engines": {
-    "node": "24.x"
+    "node": "26.x"
   },
   "dependencies": {
     "@contentful/rich-text-plain-text-renderer": "17.2.1",
